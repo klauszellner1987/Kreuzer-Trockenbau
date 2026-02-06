@@ -14,23 +14,27 @@ const navLinks = [
 <div class="fixed top-0 left-0 right-0 z-[60] h-px bg-accent-500/60"></div>
 
 <header id="navbar" class="fixed top-px left-0 right-0 z-50 transition-all duration-500 bg-dark-950/50 backdrop-blur-md border-b border-white/0">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-14 sm:h-16">
+  <!-- Schwarzer Verlauf links: solide bis nach "Start", dann sanfter Übergang -->
+  <div class="absolute inset-0 pointer-events-none navbar-black-fade"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center h-14 sm:h-16 gap-8 lg:gap-10">
 
       <!-- Logo -->
-      <a href="/" class="shrink-0">
-        <div class="h-7 sm:h-8 overflow-hidden" style="width: 100px;">
+      <a href="/" class="shrink-0 logo-wrap relative" id="logo-link">
+        <div class="relative h-7 sm:h-8 overflow-hidden" style="width: 100px;">
           <img
             src="/images/kreuzer-logo.png"
             alt="Kreuzer Trockenbau"
-            class="w-auto max-w-none"
+            class="logo-img w-auto max-w-none"
             style="height: 135%; margin-top: -1px; filter: saturate(0.5) brightness(1.5);"
           />
+          <!-- Shimmer-Overlay -->
+          <div class="logo-shimmer absolute inset-0 pointer-events-none"></div>
         </div>
       </a>
 
-      <!-- Desktop: Nav + Phone in one line -->
-      <div class="hidden md:flex items-center gap-8">
+      <!-- Desktop: Nav + Phone -->
+      <div class="hidden md:flex items-center gap-6 sm:gap-8">
         <nav class="flex items-center gap-6">
           {navLinks.map((link) => (
             <a
@@ -47,7 +51,7 @@ const navLinks = [
           ))}
         </nav>
 
-        <div class="w-px h-4 bg-white/10"></div>
+        <div class="w-px h-4 bg-white/10 ml-auto"></div>
 
         <a
           href="tel:+4909943905270"
@@ -63,7 +67,7 @@ const navLinks = [
       <!-- Mobile Hamburger -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 -mr-2"
+        class="md:hidden p-2 -mr-2 ml-auto"
         aria-label="Menü öffnen"
       >
         <div class="flex flex-col gap-1.5 w-5">
@@ -155,5 +159,55 @@ const navLinks = [
   }
   .nav-link:hover::after {
     width: 100%;
+  }
+
+  /* Schwarzer Verlauf links in der Navbar */
+  .navbar-black-fade {
+    background: linear-gradient(to right, #0a0a0a 0%, #0a0a0a 22%, transparent 38%);
+  }
+
+  /* Logo image hover */
+  .logo-img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+  .logo-wrap:hover .logo-img {
+    transform: scale(1.08);
+    filter: saturate(0.7) brightness(1.7) !important;
+  }
+
+  /* Shimmer-Streifen */
+  .logo-shimmer {
+    background: linear-gradient(
+      105deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.15) 40%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.15) 60%,
+      transparent 75%
+    );
+    background-size: 300% 100%;
+    background-position: 110% 0;
+    opacity: 0;
+  }
+
+  /* Shimmer beim Laden */
+  .logo-shimmer.animate-intro {
+    animation: shimmer-intro 1s 0.6s ease-out forwards;
+  }
+
+  /* Shimmer bei Hover */
+  .logo-wrap:hover .logo-shimmer {
+    opacity: 1;
+    animation: shimmer-hover 0.6s ease-out forwards;
+  }
+
+  @keyframes shimmer-intro {
+    0% { opacity: 1; background-position: 110% 0; }
+    100% { opacity: 0; background-position: -60% 0; }
+  }
+
+  @keyframes shimmer-hover {
+    0% { background-position: 110% 0; }
+    100% { background-position: -60% 0; }
   }
 </style>
