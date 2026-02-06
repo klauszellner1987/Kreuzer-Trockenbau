@@ -52,6 +52,27 @@ const { title, description = 'Kreuzer Trockenbau & Malerbetrieb – Ihr Speziali
       document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .stagger-children').forEach((el) => {
         observer.observe(el);
       });
+
+      // Subtiler Parallax-Effekt
+      const parallaxElements = document.querySelectorAll<HTMLElement>('[data-parallax]');
+      if (parallaxElements.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrollY = window.scrollY;
+              parallaxElements.forEach((el) => {
+                const speed = parseFloat(el.getAttribute('data-parallax') || '0.1');
+                const rect = el.getBoundingClientRect();
+                const offset = (rect.top + scrollY - window.innerHeight / 2) * speed;
+                el.style.transform = `translateY(${offset}px)`;
+              });
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+      }
     </script>
   </body>
 </html>
