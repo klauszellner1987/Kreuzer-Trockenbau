@@ -2,6 +2,7 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
+  image?: string;
 }
 
 export const services: Service[] = [
@@ -9,21 +10,25 @@ export const services: Service[] = [
     title: 'Trockenbau & Innenausbau',
     description: 'Komplettlösungen für Wand, Decke und Boden in Trockenbauweise. Dachgeschossausbau, Raumtrennung und mehr.',
     icon: 'trowel',
+    image: '/images/service-trockenbau.jpg',
   },
   {
     title: 'Malerarbeiten',
     description: 'Meisterhaft, dekorativ und umweltbewusst. Von einfachen Anstrichen bis hin zu umfassendem Raumdesign.',
     icon: 'roller',
+    image: '/images/service-maler.jpg',
   },
   {
     title: 'Bodenbeläge',
     description: 'Verlegen von Parkett-, Vinyl-, Laminat-, Holz- und Teppichböden, inklusive Vorbereitung des Unterbodens.',
     icon: 'floor',
+    image: '/images/service-boden.jpg',
   },
   {
     title: 'Fassadengestaltung',
     description: 'Fassadengestaltung und -sanierung sowie professionelle Wärmedämmung für Ihr Gebäude.',
     icon: 'facade',
+    image: '/images/service-fassade.jpg',
   },
   {
     title: 'Fliesenarbeiten',
