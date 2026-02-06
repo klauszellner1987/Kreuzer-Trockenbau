@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { services } from '../data/services';
+---
+
+<Layout title="Leistungen – Kreuzer Trockenbau & Malerbetrieb" description="Unsere Leistungen: Trockenbau, Innenausbau, Malerarbeiten, Bodenbeläge, Fassadengestaltung, Fliesenarbeiten und mehr.">
+
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 sm:pt-40 sm:pb-20 bg-dark-950 relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent-500/5 rounded-full blur-3xl"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-accent-500 text-sm font-medium uppercase tracking-widest fade-in">Was wir bieten</span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-3 mb-4 fade-in font-heading">Unsere Leistungen</h1>
+      <div class="h-1 w-16 bg-accent-500 rounded-full mx-auto mb-6 fade-in"></div>
+      <p class="text-dark-300 text-lg max-w-2xl mx-auto fade-in">
+        Wir sind ein Handwerker-Team und legen sehr großen Wert auf Qualität, Sauberkeit und Zuverlässigkeit — und das alles zu erschwinglichen Preisen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid (all 8) -->
+  <section class="py-16 sm:py-24 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Info -->
+  <section class="py-16 sm:py-24 bg-dark-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6 font-heading">
+        Wir können noch viel mehr!
+      </h2>
+      <p class="text-dark-300 text-lg leading-relaxed mb-10">
+        Unsere Stärken sind in erster Linie der Trockenbau und das Malerhandwerk. Aber wir sind sehr flexibel! Fragen Sie uns einfach — wir finden eine Lösung für Ihr Projekt.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="tel:+4909943905270"
+          class="px-8 py-4 bg-accent-500 hover:bg-accent-400 text-dark-950 rounded-xl text-base font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5"
+        >
+          Jetzt anrufen
+        </a>
+        <a
+          href="/kontakt"
+          class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-base font-semibold transition-all duration-300 hover:-translate-y-0.5"
+        >
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

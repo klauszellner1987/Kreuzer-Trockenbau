@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class="group relative p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-dark-800/80 to-dark-800/40 border border-white/[0.06] hover:border-accent-500/30 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent-500/10 overflow-hidden">
+  <!-- Subtle top accent line -->
+  <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+  <!-- Background glow on hover -->
+  <div class="absolute -top-12 -right-12 w-32 h-32 bg-accent-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+  <!-- Icon -->
+  <div class="relative w-14 h-14 rounded-2xl bg-accent-500/10 border border-accent-500/15 flex items-center justify-center mb-6 group-hover:bg-accent-500/20 group-hover:border-accent-500/30 transition-all duration-500 group-hover:scale-105">
+    {icon === 'trowel' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+    )}
+    {icon === 'roller' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+      </svg>
+    )}
+    {icon === 'floor' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" />
+      </svg>
+    )}
+    {icon === 'facade' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+      </svg>
+    )}
+    {icon === 'tiles' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6z" />
+      </svg>
+    )}
+    {icon === 'ceiling' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+      </svg>
+    )}
+    {icon === 'wrench' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.654 5.654a2.1 2.1 0 11-2.97-2.97l5.654-5.654m2.97 2.97l5.654-5.654a2.1 2.1 0 10-2.97-2.97l-5.654 5.654m2.97 2.97L7.5 21m4.5-18l3.75 3.75M21 3l-3.75 3.75M3 21l3.75-3.75" />
+      </svg>
+    )}
+    {icon === 'tools' && (
+      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" />
+      </svg>
+    )}
+  </div>
+
+  <!-- Title -->
+  <h3 class="relative text-white font-semibold text-lg mb-3 group-hover:text-accent-400 transition-colors duration-300 font-heading">{title}</h3>
+
+  <!-- Description -->
+  <p class="relative text-dark-400 text-sm leading-relaxed group-hover:text-dark-300 transition-colors duration-300">{description}</p>
+
+  <!-- Bottom arrow hint on hover -->
+  <div class="relative mt-5 flex items-center gap-2 text-accent-500/0 group-hover:text-accent-500 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+    <span class="text-sm font-medium">Mehr erfahren</span>
+    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+    </svg>
+  </div>
+</div>
