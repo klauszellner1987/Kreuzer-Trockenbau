@@ -67,7 +67,7 @@ const navLinks = [
       <!-- Mobile Hamburger -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 -mr-2 ml-auto"
+        class="md:hidden p-3 -mr-3 ml-auto"
         aria-label="Menü öffnen"
       >
         <div class="flex flex-col gap-1.5 w-5">
@@ -87,7 +87,7 @@ const navLinks = [
           <a
             href={link.href}
             class:list={[
-              'px-2 py-3.5 text-sm font-heading font-medium tracking-wide transition-colors duration-300 border-b border-white/5',
+              'px-3 py-4 text-base font-heading font-medium tracking-wide transition-colors duration-300 border-b border-white/5',
               currentPath === link.href
                 ? 'text-accent-500'
                 : 'text-white/40 hover:text-white',
