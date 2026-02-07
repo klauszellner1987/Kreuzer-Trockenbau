@@ -24,25 +24,15 @@ const remainingCount = iconServices.length;
   <!-- Intro + Services Section (one continuous block) -->
   <section class="pt-14 sm:pt-24 pb-14 sm:pb-24 bg-dark-950">
     <!-- Intro -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-20">
       <div class="max-w-3xl mx-auto text-center fade-in">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-snug font-heading">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-5 leading-snug font-heading">
           Ihr vertrauenswürdiger Partner im<br/>
           <span class="text-accent-500">Trockenbau und Malerhandwerk</span>
         </h2>
-        <p class="text-dark-300 text-base sm:text-lg leading-relaxed mb-10">
-          Als kompetentes Handwerkerteam garantieren wir höchste <strong class="text-white font-semibold">Qualität</strong>, <strong class="text-white font-semibold">Sauberkeit</strong> und <strong class="text-white font-semibold">Termintreue</strong> zu transparenten Preisen. Wir sind spezialisiert auf Trockenbau und Malerarbeiten und bieten Ihnen <strong class="text-white font-semibold">umfassende Lösungen</strong> für Ihr Bauvorhaben.
+        <p class="text-dark-300 text-base sm:text-lg leading-relaxed">
+          Höchste <strong class="text-white font-semibold">Qualität</strong>, <strong class="text-white font-semibold">Sauberkeit</strong> und <strong class="text-white font-semibold">Termintreue</strong> — Komplettlösungen aus einer Hand für Ihr Bauvorhaben.
         </p>
-
-        <!-- Regional tagline -->
-        <div class="flex items-center justify-center gap-4">
-          <div class="h-px w-12 bg-accent-500/30"></div>
-          <div class="text-center">
-            <span class="text-xs uppercase tracking-widest text-accent-500 font-medium">Regional und zuverlässig</span>
-            <p class="text-white text-sm sm:text-base font-medium mt-1"><span class="text-accent-500 font-bold">DER</span> Familienbetrieb in Ihrer Region</p>
-          </div>
-          <div class="h-px w-12 bg-accent-500/30"></div>
-        </div>
       </div>
     </div>
 
@@ -195,18 +185,6 @@ const remainingCount = iconServices.length;
     if (statsSection) statsObserver.observe(statsSection);
   </script>
 
-  <!-- Breaker: Nach Stats -->
-  <div class="py-8 sm:py-12 bg-dark-900/50 fade-in relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%221%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    <div class="relative max-w-4xl mx-auto px-6 sm:px-6 lg:px-8 flex items-center gap-4 sm:gap-8">
-      <div class="hidden sm:block flex-1 h-px bg-gradient-to-r from-transparent to-accent-500/30"></div>
-      <p class="text-lg sm:text-2xl lg:text-3xl font-heading text-center w-full sm:w-auto">
-        <span class="text-white/50">Aus Leidenschaft </span><span class="text-white font-bold">zum Detail.</span>
-      </p>
-      <div class="hidden sm:block flex-1 h-px bg-gradient-to-l from-transparent to-accent-500/30"></div>
-    </div>
-  </div>
-
   <!-- About Teaser Section (compact: text left, photo right) -->
   <section class="py-14 sm:py-24 bg-dark-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -258,18 +236,19 @@ const remainingCount = iconServices.length;
 
         <!-- Photo Side: 3 elegante gerahmte Bilder -->
         <div class="fade-in-right">
-          <div class="grid grid-cols-3 gap-4">
-            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group">
+          <!-- Mobile: horizontal scroll, Desktop: 3-column grid with stagger -->
+          <div class="flex gap-4 overflow-x-auto pb-4 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-3 snap-x snap-mandatory scrollbar-hide">
+            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group shrink-0 w-[70%] sm:w-auto snap-center">
               <img src="/images/1000228317.jpeg" alt="Laser-Nivellierung" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Präzision</span>
             </div>
-            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group mt-6">
+            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group sm:mt-6 shrink-0 w-[70%] sm:w-auto snap-center">
               <img src="/images/1000228314.jpeg" alt="Trockenbau-Montage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Montage</span>
             </div>
-            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group mt-12">
+            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group sm:mt-12 shrink-0 w-[70%] sm:w-auto snap-center">
               <img src="/images/1000228324.jpeg" alt="Exaktes Ausmessen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Handwerk</span>

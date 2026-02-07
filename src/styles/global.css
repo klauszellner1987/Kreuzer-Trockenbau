@@ -76,6 +76,15 @@ body {
   color: var(--color-dark-950);
 }
 
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Scroll animation classes */
 .fade-in {
   opacity: 0;
