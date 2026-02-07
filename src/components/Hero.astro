@@ -1,8 +1,9 @@
 ---
+const base = import.meta.env.BASE_URL;
 const heroImages = [
-  { src: '/images/team-hero.jpg', alt: 'Das Team von Kreuzer Trockenbau & Malerbetrieb', position: '-80% center' },
-  { src: '/images/hero-family.jpg', alt: 'Das gesamte Team mit Familie', position: '-60% center' },
-  { src: '/images/hero-duo.jpg', alt: 'Die Geschäftsführer vor dem Firmenfahrzeug', position: '-150% center' },
+  { src: `${base}/images/team-hero.jpg`, alt: 'Das Team von Kreuzer Trockenbau & Malerbetrieb', position: '-80% center' },
+  { src: `${base}/images/hero-family.jpg`, alt: 'Das gesamte Team mit Familie', position: '-60% center' },
+  { src: `${base}/images/hero-duo.jpg`, alt: 'Die Geschäftsführer vor dem Firmenfahrzeug', position: '-150% center' },
 ];
 ---
 

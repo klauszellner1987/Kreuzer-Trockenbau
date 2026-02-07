@@ -8,6 +8,7 @@ import TestimonialCard from '../components/TestimonialCard.astro';
 import { services } from '../data/services';
 import { testimonials } from '../data/testimonials';
 
+const base = import.meta.env.BASE_URL;
 const imageServices = services.filter(s => s.image);
 const iconServices = services.filter(s => !s.image);
 const remainingCount = iconServices.length;
@@ -239,17 +240,17 @@ const remainingCount = iconServices.length;
           <!-- Mobile: horizontal scroll, Desktop: 3-column grid with stagger -->
           <div class="flex gap-4 overflow-x-auto pb-4 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-3 snap-x snap-mandatory scrollbar-hide">
             <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group shrink-0 w-[70%] sm:w-auto snap-center">
-              <img src="/images/1000228317.jpeg" alt="Laser-Nivellierung" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={`${base}/images/1000228317.jpeg`} alt="Laser-Nivellierung" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Präzision</span>
             </div>
             <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group sm:mt-6 shrink-0 w-[70%] sm:w-auto snap-center">
-              <img src="/images/1000228314.jpeg" alt="Trockenbau-Montage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={`${base}/images/1000228314.jpeg`} alt="Trockenbau-Montage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Montage</span>
             </div>
             <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group sm:mt-12 shrink-0 w-[70%] sm:w-auto snap-center">
-              <img src="/images/1000228324.jpeg" alt="Exaktes Ausmessen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={`${base}/images/1000228324.jpeg`} alt="Exaktes Ausmessen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Handwerk</span>
             </div>

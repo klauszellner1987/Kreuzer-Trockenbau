@@ -6,7 +6,9 @@ interface Props {
   large?: boolean;
 }
 
+const base = import.meta.env.BASE_URL;
 const { title, description, image, large = false } = Astro.props;
+const imageSrc = image.startsWith('/') ? `${base}${image}` : image;
 ---
 
 <div class:list={[
@@ -15,7 +17,7 @@ const { title, description, image, large = false } = Astro.props;
 ]}>
   <!-- Background Image -->
   <img
-    src={image}
+    src={imageSrc}
     alt={title}
     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
   />
