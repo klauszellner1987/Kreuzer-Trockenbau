@@ -54,29 +54,29 @@ const remainingCount = iconServices.length;
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
         {/* Trockenbau: grosse Karte, 2 Spalten */}
         {imageServices[0] && (
-          <a href="/leistungen" class="block lg:col-span-2">
+          <a href={`${base}/leistungen`} class="block lg:col-span-2">
             <ServiceCardImage {...imageServices[0]} large={true} />
           </a>
         )}
         {/* Malerarbeiten: rechts daneben */}
         {imageServices[1] && (
-          <a href="/leistungen" class="block">
+          <a href={`${base}/leistungen`} class="block">
             <ServiceCardImage {...imageServices[1]} large={true} />
           </a>
         )}
         {/* Bodenbelaege + Fassade + Fliesen-Icon-Karte */}
         {imageServices[2] && (
-          <a href="/leistungen" class="block">
+          <a href={`${base}/leistungen`} class="block">
             <ServiceCardImage {...imageServices[2]} />
           </a>
         )}
         {imageServices[3] && (
-          <a href="/leistungen" class="block">
+          <a href={`${base}/leistungen`} class="block">
             <ServiceCardImage {...imageServices[3]} />
           </a>
         )}
         {/* Icon-only Karte fuer die restlichen Leistungen */}
-        <a href="/leistungen" class="block">
+        <a href={`${base}/leistungen`} class="block">
           <div class="group relative h-[220px] sm:h-[300px] rounded-2xl bg-gradient-to-b from-dark-800/80 to-dark-800/40 border border-white/[0.06] hover:border-accent-500/30 transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center p-8">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-accent-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/15 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 group-hover:border-accent-500/30 transition-all duration-500 group-hover:scale-105">
@@ -225,7 +225,7 @@ const remainingCount = iconServices.length;
           </div>
 
           <a
-            href="/team"
+            href={`${base}/team`}
             class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5"
           >
             Unser Team kennenlernen
@@ -296,7 +296,7 @@ const remainingCount = iconServices.length;
       <!-- CTA -->
       <div class="text-center mt-12 fade-in">
         <a
-          href="/referenzen"
+          href={`${base}/referenzen`}
           class="inline-flex items-center gap-2 text-accent-500 hover:text-accent-400 font-medium transition-colors group text-lg"
         >
           Alle Referenzen ansehen

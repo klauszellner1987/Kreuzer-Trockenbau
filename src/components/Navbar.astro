@@ -3,11 +3,11 @@ const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: 'Start' },
-  { href: '/leistungen', label: 'Leistungen' },
-  { href: '/team', label: 'Team' },
-  { href: '/referenzen', label: 'Referenzen' },
-  { href: '/kontakt', label: 'Kontakt' },
+  { href: `${base}/`, label: 'Start' },
+  { href: `${base}/leistungen`, label: 'Leistungen' },
+  { href: `${base}/team`, label: 'Team' },
+  { href: `${base}/referenzen`, label: 'Referenzen' },
+  { href: `${base}/kontakt`, label: 'Kontakt' },
 ];
 ---
 
@@ -21,7 +21,7 @@ const navLinks = [
     <div class="flex items-center h-14 sm:h-16 gap-8 lg:gap-10">
 
       <!-- Logo -->
-      <a href="/" class="shrink-0 logo-wrap relative" id="logo-link">
+      <a href={`${base}/`} class="shrink-0 logo-wrap relative" id="logo-link">
         <div class="relative h-7 sm:h-8 overflow-hidden" style="width: 100px;">
           <img
             src={`${base}/images/kreuzer-logo.png`}

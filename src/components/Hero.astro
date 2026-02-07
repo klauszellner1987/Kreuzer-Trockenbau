@@ -1,9 +1,9 @@
 ---
 const base = import.meta.env.BASE_URL;
 const heroImages = [
-  { src: `${base}/images/team-hero.jpg`, alt: 'Das Team von Kreuzer Trockenbau & Malerbetrieb', position: '-80% center' },
-  { src: `${base}/images/hero-family.jpg`, alt: 'Das gesamte Team mit Familie', position: '-60% center' },
-  { src: `${base}/images/hero-duo.jpg`, alt: 'Die Geschäftsführer vor dem Firmenfahrzeug', position: '-150% center' },
+  { src: `${base}/images/team-hero.jpg`, alt: 'Das Team von Kreuzer Trockenbau & Malerbetrieb' },
+  { src: `${base}/images/hero-family.jpg`, alt: 'Das gesamte Team mit Familie' },
+  { src: `${base}/images/hero-duo.jpg`, alt: 'Die Geschäftsführer vor dem Firmenfahrzeug' },
 ];
 ---
 
@@ -13,21 +13,18 @@ const heroImages = [
 
   <!-- Slideshow Images -->
   <div class="absolute inset-0 overflow-hidden">
-    {heroImages.map((image, i) => (
-      <div
-        class="hero-slide absolute inset-0"
-        data-slide={i}
-        style={`transform: translateX(${i === 0 ? '0' : '100%'}); z-index: ${i === 0 ? '2' : '1'};`}
-      >
-        <img
-          src={image.src}
-          alt={image.alt}
-          class="w-full h-full object-cover"
-          style={`object-position: ${image.position};`}
-          loading={i === 0 ? 'eager' : 'lazy'}
-        />
-      </div>
-    ))}
+    <!-- Slide 0 -->
+    <div class="hero-slide absolute inset-0" data-slide="0" style="transform: translateX(0); z-index: 2;">
+      <img src={heroImages[0].src} alt={heroImages[0].alt} class="hero-img w-full h-full object-cover" loading="eager" />
+    </div>
+    <!-- Slide 1 -->
+    <div class="hero-slide absolute inset-0" data-slide="1" style="transform: translateX(100%); z-index: 1;">
+      <img src={heroImages[1].src} alt={heroImages[1].alt} class="hero-img w-full h-full object-cover" loading="lazy" />
+    </div>
+    <!-- Slide 2 -->
+    <div class="hero-slide absolute inset-0" data-slide="2" style="transform: translateX(100%); z-index: 1;">
+      <img src={heroImages[2].src} alt={heroImages[2].alt} class="hero-img w-full h-full object-cover" loading="lazy" />
+    </div>
 
     <!-- Left: solid dark for text (staerker auf Mobile) -->
     <div class="absolute inset-0 z-10 bg-gradient-to-r from-dark-950 from-45% via-dark-950/85 via-65% to-dark-950/20 sm:from-35% sm:via-dark-950/80 sm:via-55% sm:to-transparent"></div>
@@ -81,7 +78,7 @@ const heroImages = [
       <!-- CTAs -->
       <div class="fade-in flex flex-col sm:flex-row items-start gap-3">
         <a
-          href="/kontakt"
+          href={`${base}/kontakt`}
           class="px-7 py-3.5 bg-accent-500 hover:bg-accent-400 text-dark-950 rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5"
         >
           Jetzt Angebot anfragen
@@ -99,6 +96,64 @@ const heroImages = [
     </div>
   </div>
 </section>
+
+<style is:global>
+  /* === MOBILE === */
+  .hero-img {
+    object-position: center center;
+  }
+  [data-slide="2"] .hero-img {
+    object-position: 35% center;
+  }
+
+  /* === HALF-SIZE / TABLET (>= 640px) === */
+  @media (min-width: 640px) {
+    .hero-img {
+      transform: scale(1.4);
+      transform-origin: 0% 50%;
+    }
+    [data-slide="1"] .hero-img {
+      transform: scale(1.3);
+      transform-origin: 0% 50%;
+    }
+    [data-slide="2"] .hero-img {
+      transform: scale(1.6);
+      transform-origin: 0% 50%;
+    }
+  }
+
+  /* === DESKTOP (>= 1024px) === */
+  @media (min-width: 1024px) {
+    .hero-img {
+      transform: scale(1.35);
+      transform-origin: 0% 30%;
+    }
+    [data-slide="1"] .hero-img {
+      transform: scale(1.25);
+      transform-origin: 0% 50%;
+    }
+    [data-slide="2"] .hero-img {
+      transform: scale(1.55);
+      transform-origin: 0% 50%;
+    }
+  }
+
+  /* === GROSSER DESKTOP (>= 1440px) === */
+  @media (min-width: 1440px) {
+    .hero-img {
+      transform: scale(1.3);
+      transform-origin: 0% 30%;
+    }
+    [data-slide="1"] .hero-img {
+      transform: scale(1.2);
+      transform-origin: 0% 50%;
+    }
+    [data-slide="2"] .hero-img {
+      transform: scale(1.5);
+      transform-origin: 0% 50%;
+    }
+  }
+</style>
 
 <script>
   const slides = document.querySelectorAll<HTMLElement>('.hero-slide');

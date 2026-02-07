@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="bg-dark-900 border-t border-white/5">
@@ -8,7 +9,7 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
       <!-- Brand -->
       <div class="lg:col-span-1">
-        <a href="/" class="flex items-center gap-3 mb-5">
+        <a href={`${base}/`} class="flex items-center gap-3 mb-5">
           <div class="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center">
             <span class="text-dark-950 font-bold text-xl font-heading">K</span>
           </div>
@@ -26,11 +27,11 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="text-white font-semibold mb-5 font-heading">Navigation</h3>
         <ul class="space-y-3">
-          <li><a href="/" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Startseite</a></li>
-          <li><a href="/leistungen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Leistungen</a></li>
-          <li><a href="/team" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Das Team</a></li>
-          <li><a href="/referenzen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Referenzen</a></li>
-          <li><a href="/kontakt" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Kontakt</a></li>
+          <li><a href={`${base}/`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Startseite</a></li>
+          <li><a href={`${base}/leistungen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Leistungen</a></li>
+          <li><a href={`${base}/team`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Das Team</a></li>
+          <li><a href={`${base}/referenzen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Referenzen</a></li>
+          <li><a href={`${base}/kontakt`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Kontakt</a></li>
         </ul>
       </div>
 
@@ -38,11 +39,11 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="text-white font-semibold mb-5 font-heading">Leistungen</h3>
         <ul class="space-y-3">
-          <li><a href="/leistungen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Trockenbau</a></li>
-          <li><a href="/leistungen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Malerarbeiten</a></li>
-          <li><a href="/leistungen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Bodenbeläge</a></li>
-          <li><a href="/leistungen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Fassadensanierung</a></li>
-          <li><a href="/leistungen" class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Fliesenarbeiten</a></li>
+          <li><a href={`${base}/leistungen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Trockenbau</a></li>
+          <li><a href={`${base}/leistungen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Malerarbeiten</a></li>
+          <li><a href={`${base}/leistungen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Bodenbeläge</a></li>
+          <li><a href={`${base}/leistungen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Fassadensanierung</a></li>
+          <li><a href={`${base}/leistungen`} class="text-dark-400 hover:text-accent-500 transition-colors text-sm">Fliesenarbeiten</a></li>
         </ul>
       </div>
 
@@ -82,8 +83,8 @@ const currentYear = new Date().getFullYear();
           &copy; {currentYear} Kreuzer Trockenbau & Malerbetrieb. Alle Rechte vorbehalten.
         </p>
         <div class="flex items-center gap-6">
-          <a href="/datenschutz" class="text-dark-500 hover:text-dark-300 transition-colors text-sm">Datenschutz</a>
-          <a href="/impressum" class="text-dark-500 hover:text-dark-300 transition-colors text-sm">Impressum</a>
+          <a href={`${base}/datenschutz`} class="text-dark-500 hover:text-dark-300 transition-colors text-sm">Datenschutz</a>
+          <a href={`${base}/impressum`} class="text-dark-500 hover:text-dark-300 transition-colors text-sm">Impressum</a>
         </div>
       </div>
     </div>
