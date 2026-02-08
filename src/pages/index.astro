@@ -101,7 +101,7 @@ const remainingCount = iconServices.length;
   <!-- Cinematic Video Breaker: 4 Phasen -->
   <div class="relative h-[45vh] sm:h-[55vh] overflow-hidden fade-in" id="video-breaker">
     <!-- 4 gestapelte Videos -->
-    <video class="vb-video absolute inset-0 w-full h-full object-cover" data-phase="0" src={`${base}/videos/hero-clip-fassade.mp4`} autoplay muted playsinline preload="auto"></video>
+    <video class="vb-video absolute inset-0 w-full h-full object-cover" data-phase="0" src={`${base}/videos/hero-clip-fassade.mp4`} muted playsinline preload="auto"></video>
     <video class="vb-video absolute inset-0 w-full h-full object-cover opacity-0" data-phase="1" src={`${base}/videos/hero-clip-planung.mp4`} muted playsinline preload="none"></video>
     <video class="vb-video absolute inset-0 w-full h-full object-cover opacity-0" data-phase="2" src={`${base}/videos/hero-clip-landschaft.mp4`} muted playsinline preload="none"></video>
     <video class="vb-video absolute inset-0 w-full h-full object-cover opacity-0" data-phase="3" src={`${base}/videos/hero-clip-teamfly.mp4`} muted playsinline preload="none"></video>
@@ -264,8 +264,31 @@ const remainingCount = iconServices.length;
       });
     });
 
-    // Start
-    vbVideos[0].play().catch(() => {});
+    // Erst starten wenn die Sektion sichtbar wird
+    let vbStarted = false;
+    let vbVisible = false;
+
+    const vbObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        vbVisible = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          if (!vbStarted) {
+            // Erstes Mal sichtbar: Video starten
+            vbVideos[0].play().catch(() => {});
+            vbStarted = true;
+          } else {
+            // Wieder sichtbar: aktuelles Video fortsetzen
+            vbVideos[vbCurrent].play().catch(() => {});
+          }
+        } else {
+          // Nicht sichtbar: pausieren
+          vbVideos[vbCurrent].pause();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const vbSection = document.getElementById('video-breaker');
+    if (vbSection) vbObserver.observe(vbSection);
 
     // Dot clicks
     vbDots.forEach((dot, i) => {
