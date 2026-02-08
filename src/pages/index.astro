@@ -98,17 +98,180 @@ const remainingCount = iconServices.length;
     </div>
   </section>
 
-  <!-- Breaker: Nach Leistungen -->
-  <div class="py-14 sm:py-20 lg:py-24 bg-dark-900/50 fade-in relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%221%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    <div class="relative max-w-4xl mx-auto px-6 sm:px-6 lg:px-8 flex items-center gap-4 sm:gap-8">
-      <div class="hidden sm:block flex-1 h-px bg-gradient-to-r from-transparent to-accent-500/30"></div>
-      <p class="text-xl sm:text-3xl lg:text-4xl font-heading text-center w-full sm:w-auto tracking-wide">
-        <span class="text-white/40 font-light">Präzision ist </span><span class="text-white font-medium">unser Handwerk.</span>
-      </p>
-      <div class="hidden sm:block flex-1 h-px bg-gradient-to-l from-transparent to-accent-500/30"></div>
+  <!-- Cinematic Video Breaker: 4 Phasen -->
+  <div class="relative h-[45vh] sm:h-[55vh] overflow-hidden fade-in" id="video-breaker">
+    <!-- 4 gestapelte Videos -->
+    <video class="vb-video absolute inset-0 w-full h-full object-cover" data-phase="0" src={`${base}/videos/hero-clip-fassade.mp4`} autoplay muted playsinline preload="auto"></video>
+    <video class="vb-video absolute inset-0 w-full h-full object-cover opacity-0" data-phase="1" src={`${base}/videos/hero-clip-planung.mp4`} muted playsinline preload="none"></video>
+    <video class="vb-video absolute inset-0 w-full h-full object-cover opacity-0" data-phase="2" src={`${base}/videos/hero-clip-landschaft.mp4`} muted playsinline preload="none"></video>
+    <video class="vb-video absolute inset-0 w-full h-full object-cover opacity-0" data-phase="3" src={`${base}/videos/hero-clip-teamfly.mp4`} muted playsinline preload="none"></video>
+
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-dark-950/55 z-10"></div>
+
+    <!-- Text-Overlays (wechseln mit Video) -->
+    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
+      <div class="max-w-4xl mx-auto flex items-center gap-4 sm:gap-8 w-full">
+        <div class="hidden sm:block flex-1 h-px bg-gradient-to-r from-transparent to-accent-500/30"></div>
+        <div class="relative w-full sm:w-auto">
+          <p class="vb-text text-xl sm:text-3xl lg:text-4xl font-heading tracking-wide transition-opacity duration-500" data-phase="0">
+            <span class="text-white/50 font-light">Präzision ist </span><span class="text-white font-medium">unser Handwerk.</span>
+          </p>
+          <p class="vb-text text-xl sm:text-3xl lg:text-4xl font-heading tracking-wide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500" data-phase="1">
+            <span><span class="text-white/50 font-light">Durchdacht geplant. </span><span class="text-white font-medium">Perfekt umgesetzt.</span></span>
+          </p>
+          <p class="vb-text text-xl sm:text-3xl lg:text-4xl font-heading tracking-wide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500" data-phase="2">
+            <span><span class="text-white/50 font-light">Verwurzelt </span><span class="text-white font-medium">in der Region.</span></span>
+          </p>
+          <p class="vb-text text-xl sm:text-3xl lg:text-4xl font-heading tracking-wide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500" data-phase="3">
+            <span><span class="text-white/50 font-light">Ein Team, </span><span class="text-white font-medium">das zusammenhält.</span></span>
+          </p>
+        </div>
+        <div class="hidden sm:block flex-1 h-px bg-gradient-to-l from-transparent to-accent-500/30"></div>
+      </div>
+    </div>
+
+    <!-- Phase indicators -->
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      {[0,1,2,3].map((i) => (
+        <button
+          class:list={[
+            'vb-dot w-8 h-1 sm:h-[2px] rounded-full transition-all duration-700 cursor-pointer py-2 bg-clip-content',
+            i === 0 ? 'bg-accent-500 w-12' : 'bg-white/25',
+          ]}
+          data-vb-dot={i}
+        />
+      ))}
     </div>
   </div>
+
+  <script>
+    // 4-Phase Video Breaker — kein Loop, Video laeuft durch und blendet zum naechsten ueber
+    const vbVideos = document.querySelectorAll<HTMLVideoElement>('.vb-video');
+    const vbTexts = document.querySelectorAll<HTMLElement>('.vb-text');
+    const vbDots = document.querySelectorAll<HTMLElement>('.vb-dot');
+    let vbCurrent = 0;
+    let vbTransitioning = false;
+    let vbTriggered = false;
+    const crossfadeSec = 2.5;
+    const startOffsets = [0, 0, 0, 0]; // Alle Clips starten bei 0
+
+    function vbGoTo(index: number) {
+      if (vbTransitioning || index === vbCurrent) return;
+      vbTransitioning = true;
+      vbTriggered = false;
+
+      // Fade out current video
+      vbVideos[vbCurrent].style.opacity = '0';
+      vbDots[vbCurrent]?.classList.remove('bg-accent-500', 'w-12');
+      vbDots[vbCurrent]?.classList.add('bg-white/25');
+
+      // Start new video at its offset
+      const newVideo = vbVideos[index];
+      newVideo.currentTime = startOffsets[index] || 0;
+      newVideo.play().catch(() => {});
+
+      // Fade in new video
+      newVideo.style.opacity = '1';
+      vbDots[index]?.classList.remove('bg-white/25');
+      vbDots[index]?.classList.add('bg-accent-500', 'w-12');
+
+      // Text wechselt SOFORT beim Video-Uebergang
+      const oldTextIdx = vbCurrent;
+      vbTexts[oldTextIdx].style.opacity = '0'; // alter Text sofort weg
+      setTimeout(() => {
+        vbTexts[index].style.opacity = '1'; // neuer Text nach 600ms (alter ist dann verschwunden)
+      }, 600);
+
+      const oldIdx = vbCurrent;
+      vbCurrent = index;
+
+      setTimeout(() => {
+        vbVideos[oldIdx].pause();
+        vbTransitioning = false;
+      }, crossfadeSec * 1000);
+    }
+
+    function vbNext() {
+      const nextIndex = (vbCurrent + 1) % vbVideos.length;
+
+      // Letztes Video: smooth ausblenden, Pause, dann von vorne
+      if (nextIndex === 0) {
+        if (vbTransitioning) return;
+        vbTransitioning = true;
+        vbTriggered = false;
+
+        // Alles ausblenden (Video + Text)
+        vbVideos[vbCurrent].style.opacity = '0';
+        vbTexts[vbCurrent].style.opacity = '0';
+        vbDots[vbCurrent]?.classList.remove('bg-accent-500', 'w-12');
+        vbDots[vbCurrent]?.classList.add('bg-white/25');
+
+        const oldIdx = vbCurrent;
+
+        // Nach Fade-Out: kurze Schwarzpause, dann Phase 0 starten
+        setTimeout(() => {
+          vbVideos[oldIdx].pause();
+
+          // Phase 0 vorbereiten (noch unsichtbar)
+          const firstVideo = vbVideos[0];
+          firstVideo.currentTime = 0;
+          firstVideo.play().catch(() => {});
+
+          // Kurze Pause im Schwarzen
+          setTimeout(() => {
+            firstVideo.style.opacity = '1';
+            vbDots[0]?.classList.remove('bg-white/25');
+            vbDots[0]?.classList.add('bg-accent-500', 'w-12');
+
+            setTimeout(() => {
+              vbTexts[0].style.opacity = '1';
+            }, 600);
+
+            vbCurrent = 0;
+            vbTransitioning = false;
+          }, 800); // 800ms Schwarzpause
+        }, crossfadeSec * 1000);
+
+        return;
+      }
+
+      vbGoTo(nextIndex);
+    }
+
+    // CSS transitions
+    vbVideos.forEach(v => {
+      v.style.transition = `opacity ${crossfadeSec}s ease-in-out`;
+    });
+
+    // Wenn ein Video endet: sofort zum naechsten (Fallback)
+    vbVideos.forEach((v, i) => {
+      v.addEventListener('ended', () => {
+        if (i === vbCurrent && !vbTransitioning) vbNext();
+      });
+    });
+
+    // Crossfade startet bevor das Video endet (breites Zeitfenster)
+    vbVideos.forEach((v, i) => {
+      v.addEventListener('timeupdate', () => {
+        if (i !== vbCurrent || vbTransitioning || vbTriggered) return;
+        if (!v.duration || isNaN(v.duration)) return;
+        const timeLeft = v.duration - v.currentTime;
+        if (timeLeft <= crossfadeSec) {
+          vbTriggered = true;
+          vbNext();
+        }
+      });
+    });
+
+    // Start
+    vbVideos[0].play().catch(() => {});
+
+    // Dot clicks
+    vbDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => vbGoTo(i));
+    });
+  </script>
 
   <!-- Stats Bar mit Count-Up -->
   <section class="bg-dark-900 border-y border-white/5" id="stats-section">
@@ -259,18 +422,6 @@ const remainingCount = iconServices.length;
       </div>
     </div>
   </section>
-
-  <!-- Breaker: Nach Über uns -->
-  <div class="py-14 sm:py-20 lg:py-24 bg-dark-900/50 fade-in relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%221%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    <div class="relative max-w-4xl mx-auto px-6 sm:px-6 lg:px-8 flex items-center gap-4 sm:gap-8">
-      <div class="hidden sm:block flex-1 h-px bg-gradient-to-r from-transparent to-accent-500/30"></div>
-      <p class="text-xl sm:text-3xl lg:text-4xl font-heading text-center w-full sm:w-auto tracking-wide">
-        <span class="text-white/40 font-light">Was zählt, ist </span><span class="text-white font-medium">das Ergebnis.</span>
-      </p>
-      <div class="hidden sm:block flex-1 h-px bg-gradient-to-l from-transparent to-accent-500/30"></div>
-    </div>
-  </div>
 
   <!-- Testimonials Section -->
   <section class="py-20 sm:py-32 lg:py-40 bg-dark-900">

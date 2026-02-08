@@ -18,14 +18,18 @@ const iconMap: Record<string, string> = {
 
 <Layout title="Leistungen – Kreuzer Trockenbau & Malerbetrieb" description="Unsere Leistungen: Trockenbau, Innenausbau, Malerarbeiten, Bodenbeläge, Fassadengestaltung, Fliesenarbeiten und mehr.">
 
-  <!-- Page Header -->
-  <section class="pt-36 pb-20 sm:pt-44 sm:pb-28 bg-dark-950 relative overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent-500/5 rounded-full blur-3xl"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <!-- Page Header with Video Background -->
+  <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
+    <div class="absolute inset-0">
+      <video class="w-full h-full object-cover" src={`${base}/videos/hero-clip-fassade.mp4`} autoplay muted loop playsinline preload="auto"></video>
+      <div class="absolute inset-0 bg-dark-950/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/40 via-30% to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-36 w-full text-center">
       <span class="text-accent-500 text-sm font-medium uppercase tracking-widest fade-in">Was wir bieten</span>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-5 fade-in font-heading tracking-tight">Unsere Leistungen</h1>
       <div class="h-0.5 w-16 bg-accent-500 rounded-full mx-auto mb-6 fade-in"></div>
-      <p class="text-dark-400 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
+      <p class="text-white/70 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
         Wir sind ein Handwerker-Team und legen sehr großen Wert auf Qualität, Sauberkeit und Zuverlässigkeit — und das alles zu erschwinglichen Preisen.
       </p>
     </div>
