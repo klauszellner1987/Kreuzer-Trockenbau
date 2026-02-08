@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ServiceCardImage from '../components/ServiceCardImage.astro';
+import ServiceCardSlider from '../components/ServiceCardSlider.astro';
 import { services } from '../data/services';
 
 const base = import.meta.env.BASE_URL;
-const imageServices = services.filter(s => s.image);
-const iconServices = services.filter(s => !s.image);
+const imageServices = services.filter(s => s.images && s.images.length > 0);
+const iconServices = services.filter(s => !(s.images && s.images.length > 0));
 
 // SVG icon map for icon-only services
 const iconMap: Record<string, string> = {
@@ -43,24 +43,19 @@ const iconMap: Record<string, string> = {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5 stagger-children">
         {imageServices[0] && (
           <div class="lg:col-span-2">
-            <ServiceCardImage {...imageServices[0]} large={true} />
+            <ServiceCardSlider title={imageServices[0].title} description={imageServices[0].description} images={imageServices[0].images!} large={true} />
           </div>
         )}
         {imageServices[1] && (
           <div>
-            <ServiceCardImage {...imageServices[1]} large={true} />
+            <ServiceCardSlider title={imageServices[1].title} description={imageServices[1].description} images={imageServices[1].images!} large={true} />
           </div>
         )}
-        {imageServices[2] && (
+        {imageServices.slice(2).map((service) => (
           <div>
-            <ServiceCardImage {...imageServices[2]} />
+            <ServiceCardSlider title={service.title} description={service.description} images={service.images!} />
           </div>
-        )}
-        {imageServices[3] && (
-          <div>
-            <ServiceCardImage {...imageServices[3]} />
-          </div>
-        )}
+        ))}
 
         {/* Icon-only Service Cards */}
         {iconServices.map((service) => (
