@@ -30,15 +30,22 @@ const base = import.meta.env.BASE_URL;
           <div class:list={[
             'relative p-8 sm:p-10 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group',
             index === 0 ? 'fade-in-left' : 'fade-in-right',
+            teamMembers.length % 2 === 1 && index === teamMembers.length - 1 ? 'lg:col-span-2 lg:max-w-[50%] lg:mx-auto' : '',
           ]}>
             <!-- Accent line top -->
             <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             <div class="flex items-center gap-5 mb-6">
               <!-- Avatar -->
-              <div class="w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center shrink-0">
-                <span class="text-accent-500 font-bold text-xl font-heading">{member.name.split(' ').map(n => n[0]).join('')}</span>
-              </div>
+              {member.photo ? (
+                <div class="w-16 h-16 rounded-2xl overflow-hidden border border-accent-500/20 shrink-0">
+                  <img src={`${base}${member.photo}`} alt={member.name} class="w-full h-full object-cover object-top" />
+                </div>
+              ) : (
+                <div class="w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center shrink-0">
+                  <span class="text-accent-500 font-bold text-xl font-heading">{member.name.split(' ').map(n => n[0]).join('')}</span>
+                </div>
+              )}
               <div>
                 <h2 class="text-xl sm:text-2xl font-bold text-white font-heading">{member.name}</h2>
                 <p class="text-accent-500 font-medium text-sm">{member.role}</p>
@@ -119,66 +126,6 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-
-  <!-- Video: Inhaber bei der Planung -->
-  <section class="py-20 sm:py-32 lg:py-40 bg-dark-900">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-12 sm:mb-16 fade-in text-center">
-        <span class="text-accent-500 text-sm font-medium uppercase tracking-widest">Hinter den Kulissen</span>
-        <h2 class="text-3xl sm:text-4xl font-light text-white mt-4 mb-5 font-heading tracking-tight">Planung & Vorbereitung</h2>
-        <div class="h-0.5 w-16 bg-accent-500 rounded-full mx-auto"></div>
-      </div>
-
-      <!-- Video Player with custom play button -->
-      <div class="fade-in relative rounded-2xl overflow-hidden border border-white/[0.03] aspect-video group cursor-pointer" id="team-video-container">
-        <video
-          id="team-video"
-          class="w-full h-full object-cover"
-          src={`${base}/videos/team-planung.mp4`}
-          poster={`${base}/images/team-hero.jpg`}
-          playsinline
-          preload="none"
-        ></video>
-        <!-- Gradient overlay (hides when playing) -->
-        <div id="team-video-overlay" class="absolute inset-0 bg-dark-950/40 transition-opacity duration-700">
-          <!-- Play button -->
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-accent-500/90 backdrop-blur-sm flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-accent-500">
-              <svg class="w-8 h-8 sm:w-10 sm:h-10 text-dark-950 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Click-to-Play for team video
-    const container = document.getElementById('team-video-container');
-    const video = document.getElementById('team-video') as HTMLVideoElement;
-    const overlay = document.getElementById('team-video-overlay');
-
-    if (container && video && overlay) {
-      container.addEventListener('click', () => {
-        if (video.paused) {
-          video.play();
-          overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';
-        } else {
-          video.pause();
-          overlay.style.opacity = '1';
-          overlay.style.pointerEvents = 'auto';
-        }
-      });
-
-      video.addEventListener('ended', () => {
-        overlay.style.opacity = '1';
-        overlay.style.pointerEvents = 'auto';
-      });
-    }
-  </script>
 
   <!-- Company Story + Values + Timeline -->
   <section class="py-20 sm:py-32 lg:py-40 bg-dark-950">
