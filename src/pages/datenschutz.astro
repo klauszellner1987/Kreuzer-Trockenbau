@@ -1,80 +1,169 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Datenschutz – Kreuzer Trockenbau & Malerbetrieb" description="Datenschutzerklärung der Kreuzer Trockenbau & Malerbetrieb Website.">
+<Layout title="Datenschutzerklärung – Kreuzer Trockenbau & Malerbetrieb" description="Datenschutzerklärung der Kreuzer Trockenbau & Malerbetrieb Website gemäß DSGVO.">
 
   <section class="pt-32 pb-16 sm:pt-40 sm:pb-20 bg-dark-950">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 fade-in font-heading">Datenschutz</h1>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 fade-in font-heading">Datenschutzerklärung</h1>
       <div class="h-1 w-16 bg-accent-500 rounded-full mb-12 fade-in"></div>
 
-      <div class="prose-dark space-y-8 fade-in">
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Allgemeiner Hinweis</h2>
+      <div class="prose-dark space-y-10 fade-in">
+
+        <!-- 1. Verantwortlicher -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">1. Verantwortlicher</h2>
+          <div class="text-dark-300 leading-relaxed space-y-1">
+            <p class="text-white font-medium">Kreuzer Trockenbau & Malerbetrieb</p>
+            <p>Markus Kreuzer</p>
+            <p>Tannenweg 2</p>
+            <p>93474 Haibühl / Arrach</p>
+            <p class="mt-3">Telefon: +49 (0) 9943 / 905270</p>
+            <p>E-Mail: <a href="mailto:kreuzer-trockenbau@gmx.de" class="text-accent-500 hover:text-accent-400 transition-colors">kreuzer-trockenbau@gmx.de</a></p>
+          </div>
+        </div>
+
+        <!-- 2. Übersicht -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">2. Übersicht der Verarbeitungen</h2>
           <p class="text-dark-300 leading-relaxed">
-            Alle Informationen und Erklärungen dieser Internetseiten sind unverbindlich. Wir (Kreuzer Trockenbau & Malerbetrieb) übernehmen für die Richtigkeit und Vollständigkeit der Inhalte keine Gewähr. Es werden keine Garantie übernommen und keine Zusicherung von Produkteigenschaften gemacht. Aus den Inhalten dieser Internetseiten ergeben sich keine Rechtsansprüche. Fehler im Inhalt werden bei Kenntnis darüber unverzüglich korrigiert.
+            Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.
+          </p>
+          <h3 class="text-white font-medium mt-5 mb-2">Arten der verarbeiteten Daten</h3>
+          <ul class="text-dark-300 list-disc list-inside space-y-1">
+            <li>Bestandsdaten (z.B. Namen, Adressen)</li>
+            <li>Kontaktdaten (z.B. E-Mail, Telefonnummern)</li>
+            <li>Inhaltsdaten (z.B. Eingaben in Kontaktformularen)</li>
+            <li>Nutzungsdaten (z.B. besuchte Seiten, Zugriffszeit)</li>
+            <li>Meta-/Kommunikationsdaten (z.B. IP-Adressen, Geräte-Informationen)</li>
+          </ul>
+          <h3 class="text-white font-medium mt-5 mb-2">Kategorien betroffener Personen</h3>
+          <ul class="text-dark-300 list-disc list-inside space-y-1">
+            <li>Kommunikationspartner</li>
+            <li>Nutzer (z.B. Webseitenbesucher)</li>
+          </ul>
+        </div>
+
+        <!-- 3. Rechtsgrundlagen -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">3. Maßgebliche Rechtsgrundlagen</h2>
+          <p class="text-dark-300 leading-relaxed mb-4">
+            Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten:
+          </p>
+          <ul class="text-dark-300 space-y-3">
+            <li><strong class="text-white">Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 lit. b DSGVO)</strong> — Die Verarbeitung ist für die Erfüllung eines Vertrags oder zur Durchführung vorvertraglicher Maßnahmen erforderlich.</li>
+            <li><strong class="text-white">Berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO)</strong> — Die Verarbeitung ist zur Wahrung unserer berechtigten Interessen erforderlich, sofern nicht die Interessen oder Grundrechte der betroffenen Person überwiegen.</li>
+          </ul>
+        </div>
+
+        <!-- 4. Hosting -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">4. Hosting</h2>
+          <p class="text-dark-300 leading-relaxed mb-3">
+            Unsere Website wird bei <strong class="text-white">GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Beim Aufruf unserer Website werden automatisch durch den Hosting-Anbieter Informationen in sogenannten Server-Log-Dateien erfasst, die Ihr Browser automatisch übermittelt:
+          </p>
+          <ul class="text-dark-300 list-disc list-inside space-y-1 mb-3">
+            <li>IP-Adresse des anfragenden Rechners</li>
+            <li>Datum und Uhrzeit der Anfrage</li>
+            <li>Zeitzonendifferenz zur Greenwich Mean Time (GMT)</li>
+            <li>Inhalt der Anforderung (konkrete Seite)</li>
+            <li>HTTP-Statuscode</li>
+            <li>Übertragene Datenmenge</li>
+            <li>Referrer-URL (zuvor besuchte Seite)</li>
+            <li>Browsertyp und -version</li>
+            <li>Betriebssystem</li>
+          </ul>
+          <p class="text-dark-300 leading-relaxed">
+            GitHub verfügt über Zertifizierungen nach dem EU-US Data Privacy Framework. Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-accent-500 hover:text-accent-400 transition-colors">Datenschutzerklärung von GitHub</a>.
+          </p>
+          <p class="text-dark-300 leading-relaxed mt-2">
+            <strong class="text-white">Rechtsgrundlage:</strong> Berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO).
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Schutz persönlicher Daten</h2>
-          <p class="text-dark-300 leading-relaxed">
-            Sie können im Regelfall alle Internetseiten von uns aufrufen, ohne Angaben über Ihre Person zu machen. Werden im Einzelfall Ihr Name, Ihre Anschrift oder sonstige persönliche Daten benötigt, so werden Sie zuvor darauf hingewiesen. Ihre personenbezogenen Nutzungsdaten werden verwendet, um den Service für Sie so angenehm wie möglich zu gestalten und zu verbessern.
+        <!-- 5. Google Fonts -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">5. Google Fonts</h2>
+          <p class="text-dark-300 leading-relaxed mb-3">
+            Wir nutzen zur einheitlichen Darstellung von Schriftarten sogenannte Google Fonts, die von Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) bereitgestellt werden. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten direkt von Google-Servern. Dabei wird Ihre IP-Adresse an Google übermittelt.
           </p>
-          <p class="text-dark-300 leading-relaxed mt-3">
-            Wenn Sie sich entschließen, uns persönliche Daten über das Internet zu überlassen, so wird mit diesen Daten nach den strengen Regelungen des Bundesdatenschutzgesetzes (BDSG) sorgfältig umgegangen.
+          <p class="text-dark-300 leading-relaxed mb-2">
+            Weitere Informationen finden Sie in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-accent-500 hover:text-accent-400 transition-colors">Datenschutzerklärung von Google</a> sowie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener noreferrer" class="text-accent-500 hover:text-accent-400 transition-colors">Google Fonts FAQ</a>.
+          </p>
+          <p class="text-dark-300 leading-relaxed">
+            <strong class="text-white">Rechtsgrundlage:</strong> Berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO) an einer einheitlichen Darstellung der Website.
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Nutzungsdaten</h2>
+        <!-- 6. Kontaktaufnahme -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">6. Kontaktaufnahme</h2>
+          <p class="text-dark-300 leading-relaxed mb-3">
+            Bei der Kontaktaufnahme mit uns (z.B. per Kontaktformular, E-Mail, Telefon) werden die Angaben des Anfragenden verarbeitet, soweit dies zur Beantwortung der Kontaktanfrage und etwaiger angefragter Maßnahmen erforderlich ist.
+          </p>
           <p class="text-dark-300 leading-relaxed">
-            Durch die Aufrufe der Internetseite erhalten wir Nutzungsdaten, die für Sicherungszwecke gespeichert werden und möglicherweise eine Identifizierung zulassen (zum Beispiel IP-Adresse, Datum, Uhrzeit und betrachtete Seiten). Diese Daten werden ausgewertet, um das Nutzerverhalten kennen zu lernen und Statistiken aufzustellen. Es findet keine personenbezogene Verwertung statt.
+            <strong class="text-white">Verarbeitete Daten:</strong> Name, E-Mail-Adresse, Telefonnummer (optional), Nachrichteninhalt.<br />
+            <strong class="text-white">Rechtsgrundlage:</strong> Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 lit. b DSGVO), berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO).<br />
+            <strong class="text-white">Löschung:</strong> Die Daten werden gelöscht, sobald sie für die Erreichung des Zwecks ihrer Erhebung nicht mehr erforderlich sind, spätestens nach Ablauf gesetzlicher Aufbewahrungspflichten.
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Weitergabe an Dritte</h2>
+        <!-- 7. Cookies -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">7. Cookies</h2>
           <p class="text-dark-300 leading-relaxed">
-            Sollten im Rahmen der Auftragsdatenverarbeitung Daten an Dienstleister weitergegeben werden, so sind diese an das BDSG, andere gesetzliche Vorschriften und vertraglich an die Privacy Policy von Kreuzer Trockenbau & Malerbetrieb gebunden. Für andere Zwecke geben wir Ihre Daten nicht ohne Ihr ausdrückliches Einverständnis an Dritte weiter.
+            Unsere Website verwendet derzeit <strong class="text-white">keine Cookies</strong> und setzt keine Tracking- oder Analyse-Tools ein. Es werden keine Cookies auf Ihrem Endgerät gespeichert.
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Cookies</h2>
+        <!-- 8. SSL/TLS-Verschlüsselung -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">8. SSL- bzw. TLS-Verschlüsselung</h2>
           <p class="text-dark-300 leading-relaxed">
-            Wir setzen Cookies nur dann ein, wenn sie für Benutzerfunktionen dringend erforderlich sind bzw. die Navigation der Websites erleichtern. Die Informationen werden keinen Dritten zur Verfügung gestellt. Die meisten Browser sind so eingestellt, dass sie Cookies automatisch akzeptieren. Diese Funktion kann jedoch jederzeit im Browser deaktiviert werden.
+            Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Urheberrechte</h2>
+        <!-- 9. Ihre Rechte -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">9. Ihre Rechte als betroffene Person</h2>
+          <p class="text-dark-300 leading-relaxed mb-4">
+            Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:
+          </p>
+          <ul class="text-dark-300 space-y-3">
+            <li><strong class="text-white">Auskunftsrecht (Art. 15 DSGVO):</strong> Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob Sie betreffende personenbezogene Daten verarbeitet werden. Ist dies der Fall, haben Sie ein Recht auf Auskunft über diese Daten und weitere Informationen gemäß Art. 15 DSGVO.</li>
+            <li><strong class="text-white">Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sie haben das Recht, die Berichtigung Sie betreffender unrichtiger personenbezogener Daten zu verlangen. Unter Berücksichtigung der Zwecke der Verarbeitung haben Sie das Recht, die Vervollständigung unvollständiger Daten zu verlangen.</li>
+            <li><strong class="text-white">Recht auf Löschung (Art. 17 DSGVO):</strong> Sie haben das Recht zu verlangen, dass Sie betreffende personenbezogene Daten unverzüglich gelöscht werden, sofern einer der in Art. 17 DSGVO genannten Gründe zutrifft.</li>
+            <li><strong class="text-white">Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie haben das Recht, die Einschränkung der Verarbeitung zu verlangen, wenn eine der in Art. 18 DSGVO genannten Voraussetzungen gegeben ist.</li>
+            <li><strong class="text-white">Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie haben das Recht, die Sie betreffenden personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li>
+            <li><strong class="text-white">Widerspruchsrecht (Art. 21 DSGVO):</strong> Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten Widerspruch einzulegen.</li>
+          </ul>
+        </div>
+
+        <!-- 10. Beschwerderecht -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">10. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+          <p class="text-dark-300 leading-relaxed mb-3">
+            Unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs steht Ihnen das Recht auf Beschwerde bei einer Aufsichtsbehörde zu, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt.
+          </p>
           <p class="text-dark-300 leading-relaxed">
-            Der Inhalt dieser Internetseiten ist urheberrechtlich geschützt. Grafiken, Texte, Logos, Bilder usw. dürfen nur nach schriftlicher Genehmigung durch uns heruntergeladen, vervielfältigt, kopiert, geändert, veröffentlicht, versendet, übertragen oder in sonstiger Form genutzt werden.
+            Zuständige Aufsichtsbehörde:<br />
+            Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)<br />
+            Promenade 18, 91522 Ansbach<br />
+            <a href="https://www.lda.bayern.de" target="_blank" rel="noopener noreferrer" class="text-accent-500 hover:text-accent-400 transition-colors">www.lda.bayern.de</a>
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Recht auf Widerruf</h2>
+        <!-- 11. Aktualität -->
+        <div class="p-8 rounded-2xl bg-dark-800/50 border border-white/5">
+          <h2 class="text-xl font-semibold text-white mb-4">11. Aktualität und Änderung dieser Datenschutzerklärung</h2>
           <p class="text-dark-300 leading-relaxed">
-            Wenn Sie uns auffordern, Ihre personenbezogenen Daten nicht für die weitere Kontaktaufnahme zu verwenden und/oder zu löschen, so wird entsprechend verfahren. Daten, die für eine Auftragsabwicklung bzw. zu kaufmännischen Zwecken zwingend erforderlich sind, sind von einer Löschung nicht berührt.
+            Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Februar 2026. Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher bzw. behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Version kann jederzeit auf dieser Seite abgerufen werden.
           </p>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Haftung</h2>
-          <p class="text-dark-300 leading-relaxed">
-            Wir haften nicht für Schäden, insbesondere nicht für unmittelbare oder mittelbare Folgeschäden, Datenverlust, entgangenen Gewinn, System- oder Produktionsausfälle, die durch die Nutzung dieser Internetseiten oder das Herunterladen von Daten entstehen. Die durch die Nutzung der Internetseiten entstandene Rechtsbeziehung zwischen Ihnen und uns unterliegt dem Recht der Bundesrepublik Deutschland.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-xl font-semibold text-white mb-3">Links zu anderen Websites</h2>
-          <p class="text-dark-300 leading-relaxed">
-            Unsere Webseiten enthalten gegebenenfalls Links zu anderen Websites. Wir haben keinen Einfluss auf den redaktionellen Inhalt fremder Webseiten und darauf, dass deren Betreiber die Datenschutzbestimmungen einhalten.
-          </p>
-        </div>
       </div>
     </div>
   </section>
