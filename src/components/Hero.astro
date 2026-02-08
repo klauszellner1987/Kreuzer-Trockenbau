@@ -7,7 +7,7 @@ const heroImages = [
 ];
 ---
 
-<section class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center overflow-hidden">
+<section class="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden">
   <!-- Left solid dark background -->
   <div class="absolute inset-0 bg-dark-950"></div>
 
@@ -27,9 +27,11 @@ const heroImages = [
     </div>
 
     <!-- Left: solid dark for text (staerker auf Mobile) -->
-    <div class="absolute inset-0 z-10 bg-gradient-to-r from-dark-950 from-45% via-dark-950/85 via-65% to-dark-950/20 sm:from-35% sm:via-dark-950/80 sm:via-55% sm:to-transparent"></div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-dark-950 from-40% via-dark-950/70 via-60% to-dark-950/10 sm:from-30% sm:via-dark-950/60 sm:via-55% sm:to-transparent"></div>
     <!-- Bottom: clean fade for section transition -->
-    <div class="absolute inset-0 z-10 bg-gradient-to-t from-dark-950 via-dark-950/20 via-30% to-transparent sm:via-transparent sm:via-25%"></div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-dark-950 via-dark-950/30 via-25% to-transparent"></div>
+    <!-- Top: subtle vignette -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-b from-dark-950/40 via-transparent via-30% to-transparent"></div>
   </div>
 
   <!-- Slide indicators -->
@@ -191,7 +193,7 @@ const heroImages = [
     // Use rAF to ensure the no-transition frame is painted before animating
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        const ease = 'transform 1.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        const ease = 'transform 2s cubic-bezier(0.22, 1, 0.36, 1)';
         outSlide.style.transition = ease;
         inSlide.style.transition = ease;
         outSlide.style.transform = 'translateX(-100%)';
@@ -214,7 +216,7 @@ const heroImages = [
       outSlide.style.zIndex = '1';
       inSlide.style.zIndex = '2';
       animating = false;
-    }, 1500);
+    }, 2200);
   }
 
   function next() {
@@ -222,7 +224,7 @@ const heroImages = [
   }
 
   function startAuto() {
-    interval = setInterval(next, 6000);
+    interval = setInterval(next, 7000);
   }
 
   startAuto();

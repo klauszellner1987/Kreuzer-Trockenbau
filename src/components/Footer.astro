@@ -3,10 +3,10 @@ const currentYear = new Date().getFullYear();
 const base = import.meta.env.BASE_URL;
 ---
 
-<footer class="bg-dark-900 border-t border-white/5">
+<footer class="bg-dark-900 border-t border-white/[0.03]">
   <!-- Main Footer -->
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 sm:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16">
       <!-- Brand -->
       <div class="lg:col-span-1">
         <a href={`${base}/`} class="flex items-center gap-3 mb-5">
@@ -76,8 +76,8 @@ const base = import.meta.env.BASE_URL;
   </div>
 
   <!-- Bottom Bar -->
-  <div class="border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <div class="border-t border-white/[0.03]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="text-dark-500 text-sm">
           &copy; {currentYear} Kreuzer Trockenbau & Malerbetrieb. Alle Rechte vorbehalten.
