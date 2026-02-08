@@ -4,6 +4,7 @@ const heroImages = [
   { src: `${base}/images/team-hero.jpg`, alt: 'Das Team von Kreuzer Trockenbau & Malerbetrieb' },
   { src: `${base}/images/hero-family.jpg`, alt: 'Das gesamte Team mit Familie' },
   { src: `${base}/images/hero-duo.jpg`, alt: 'Die Geschäftsführer vor dem Firmenfahrzeug' },
+  { src: `${base}/images/hero-paar.jpeg`, alt: 'Die Geschäftsführer' },
 ];
 ---
 
@@ -13,18 +14,20 @@ const heroImages = [
 
   <!-- Slideshow Images -->
   <div class="absolute inset-0 overflow-hidden">
-    <!-- Slide 0 -->
-    <div class="hero-slide absolute inset-0" data-slide="0" style="transform: translateX(0); z-index: 2;">
-      <img src={heroImages[0].src} alt={heroImages[0].alt} class="hero-img w-full h-full object-cover" loading="eager" />
-    </div>
-    <!-- Slide 1 -->
-    <div class="hero-slide absolute inset-0" data-slide="1" style="transform: translateX(100%); z-index: 1;">
-      <img src={heroImages[1].src} alt={heroImages[1].alt} class="hero-img w-full h-full object-cover" loading="lazy" />
-    </div>
-    <!-- Slide 2 -->
-    <div class="hero-slide absolute inset-0" data-slide="2" style="transform: translateX(100%); z-index: 1;">
-      <img src={heroImages[2].src} alt={heroImages[2].alt} class="hero-img w-full h-full object-cover" loading="lazy" />
-    </div>
+    {heroImages.map((img, i) => (
+      <div
+        class="hero-slide absolute inset-0"
+        data-slide={i}
+        style={`transform: translateX(${i === 0 ? '0' : '100%'}); z-index: ${i === 0 ? 2 : 1};`}
+      >
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="hero-img w-full h-full object-cover"
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+      </div>
+    ))}
 
     <!-- Left: solid dark for text (staerker auf Mobile) -->
     <div class="absolute inset-0 z-10 bg-gradient-to-r from-dark-950 from-40% via-dark-950/70 via-60% to-dark-950/10 sm:from-30% sm:via-dark-950/60 sm:via-55% sm:to-transparent"></div>
@@ -107,6 +110,9 @@ const heroImages = [
   [data-slide="2"] .hero-img {
     object-position: 35% center;
   }
+  [data-slide="3"] .hero-img {
+    object-position: 70% center;
+  }
 
   /* === HALF-SIZE / TABLET (>= 640px) === */
   @media (min-width: 640px) {
@@ -162,7 +168,7 @@ const heroImages = [
   const dots = document.querySelectorAll<HTMLElement>('.hero-dot');
   let current = 0;
   let animating = false;
-  let interval: ReturnType<typeof setInterval>;
+  let autoTimeout: ReturnType<typeof setTimeout>;
 
   function goTo(index: number) {
     if (animating || index === current) return;
@@ -186,11 +192,11 @@ const heroImages = [
     inSlide.style.zIndex = '3';
     outSlide.style.zIndex = '2';
 
-    // Force reflow -- wait for browser to paint the position
+    // Force reflow
     void inSlide.offsetHeight;
     void outSlide.offsetHeight;
 
-    // Use rAF to ensure the no-transition frame is painted before animating
+    // Animate
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const ease = 'transform 2s cubic-bezier(0.22, 1, 0.36, 1)';
@@ -223,17 +229,20 @@ const heroImages = [
     goTo((current + 1) % slides.length);
   }
 
-  function startAuto() {
-    interval = setInterval(next, 7000);
+  function scheduleNext() {
+    autoTimeout = setTimeout(() => {
+      next();
+      scheduleNext();
+    }, 7000);
   }
 
-  startAuto();
+  scheduleNext();
 
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
-      clearInterval(interval);
+      clearTimeout(autoTimeout);
       goTo(i);
-      startAuto();
+      scheduleNext();
     });
   });
 </script>

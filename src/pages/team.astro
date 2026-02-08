@@ -6,13 +6,17 @@ const base = import.meta.env.BASE_URL;
 
 <Layout title="Das Team – Kreuzer Trockenbau & Malerbetrieb" description="Lernen Sie das Team hinter Kreuzer Trockenbau kennen: Markus Kreuzer (Gründer) und Tobias Kreuzer (Malermeister).">
 
-  <!-- Page Header -->
-  <section class="pt-36 pb-20 sm:pt-44 sm:pb-28 bg-dark-950 relative overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent-500/5 rounded-full blur-3xl"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <!-- Page Header with Team Hero Image -->
+  <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={`${base}/images/team-hero.jpg`} alt="Das Team von Kreuzer Trockenbau" class="w-full h-full object-cover object-[center_30%]" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 via-40% to-dark-950/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-950/40 to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-36 w-full text-center">
       <span class="text-accent-500 text-sm font-medium uppercase tracking-widest fade-in">Wer wir sind</span>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-6 fade-in font-heading tracking-tight">Das Team</h1>
-      <p class="text-dark-400 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
+      <p class="text-white/70 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
         Bei Kreuzer Trockenbau & Malerbetrieb steht der Kunde immer an erster Stelle.
       </p>
     </div>
@@ -48,8 +52,38 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- Unsere Arbeit — Photo Gallery -->
+  <!-- Team-Fotos Gallery -->
   <section class="py-20 sm:py-32 lg:py-40 bg-dark-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 sm:mb-16 fade-in">
+        <span class="text-accent-500 text-sm font-medium uppercase tracking-widest">Unser Team</span>
+        <h2 class="text-3xl sm:text-4xl font-light text-white mt-4 mb-5 font-heading tracking-tight">Gemeinsam stark</h2>
+        <div class="h-0.5 w-16 bg-accent-500 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger-children">
+        <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
+          <img src={`${base}/images/hero-family.jpg`} alt="Das gesamte Team mit Familie" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Familienbetrieb</span>
+            <p class="text-white text-sm font-medium mt-1">Das Team mit Familie</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
+          <img src={`${base}/images/hero-duo.jpg`} alt="Die Geschäftsführer vor dem Firmenfahrzeug" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Geschäftsführung</span>
+            <p class="text-white text-sm font-medium mt-1">Markus & Tobias Kreuzer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unsere Arbeit — Photo Gallery -->
+  <section class="py-20 sm:py-32 lg:py-40 bg-dark-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12 sm:mb-16 fade-in">
         <span class="text-accent-500 text-sm font-medium uppercase tracking-widest">Einblicke</span>
