@@ -28,8 +28,8 @@ const remainingCount = iconServices.length;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-28">
       <div class="max-w-3xl mx-auto text-center fade-in">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6 leading-snug font-heading tracking-tight">
-          Ihr vertrauenswürdiger Partner im<br/>
-          <span class="text-accent-500 font-normal">Trockenbau und Malerhandwerk</span>
+          Ihr vertrauenswürdiger Partner im
+          <br class="hidden sm:block" /><span class="text-accent-500 font-normal">Trockenbau und Malerhandwerk</span>
         </h2>
         <p class="text-dark-400 text-base sm:text-lg leading-loose">
           Höchste <strong class="text-white font-semibold">Qualität</strong>, <strong class="text-white font-semibold">Sauberkeit</strong> und <strong class="text-white font-semibold">Termintreue</strong> — Komplettlösungen aus einer Hand für Ihr Bauvorhaben.
@@ -41,7 +41,7 @@ const remainingCount = iconServices.length;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header with gold underline -->
       <div class="mb-16 sm:mb-20 fade-in">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-5 font-heading tracking-tight">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-5 font-heading tracking-tight">
           Unsere Leistungen
         </h2>
         <div class="h-0.5 w-16 bg-accent-500 rounded-full mb-6"></div>
@@ -127,15 +127,20 @@ const remainingCount = iconServices.length;
     </div>
 
     <!-- Phase indicators -->
-    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1">
       {[0,1,2,3].map((i) => (
         <button
-          class:list={[
-            'vb-dot w-8 h-1 sm:h-[2px] rounded-full transition-all duration-700 cursor-pointer py-2 bg-clip-content',
-            i === 0 ? 'bg-accent-500 w-12' : 'bg-white/25',
-          ]}
+          class="vb-dot-btn flex items-center justify-center h-11 cursor-pointer"
           data-vb-dot={i}
-        />
+        >
+          <span
+            class:list={[
+              'vb-dot block h-1 sm:h-[2px] rounded-full transition-all duration-700',
+              i === 0 ? 'bg-accent-500 w-12' : 'bg-white/25 w-8',
+            ]}
+            data-vb-dot-inner={i}
+          />
+        </button>
       ))}
     </div>
   </div>
@@ -144,7 +149,7 @@ const remainingCount = iconServices.length;
     // 4-Phase Video Breaker — kein Loop, Video laeuft durch und blendet zum naechsten ueber
     const vbVideos = document.querySelectorAll<HTMLVideoElement>('.vb-video');
     const vbTexts = document.querySelectorAll<HTMLElement>('.vb-text');
-    const vbDots = document.querySelectorAll<HTMLElement>('.vb-dot');
+    const vbDots = document.querySelectorAll<HTMLElement>('[data-vb-dot-inner]');
     let vbCurrent = 0;
     let vbTransitioning = false;
     let vbTriggered = false;
@@ -159,7 +164,7 @@ const remainingCount = iconServices.length;
       // Fade out current video
       vbVideos[vbCurrent].style.opacity = '0';
       vbDots[vbCurrent]?.classList.remove('bg-accent-500', 'w-12');
-      vbDots[vbCurrent]?.classList.add('bg-white/25');
+      vbDots[vbCurrent]?.classList.add('bg-white/25', 'w-8');
 
       // Start new video at its offset
       const newVideo = vbVideos[index];
@@ -168,7 +173,7 @@ const remainingCount = iconServices.length;
 
       // Fade in new video
       newVideo.style.opacity = '1';
-      vbDots[index]?.classList.remove('bg-white/25');
+      vbDots[index]?.classList.remove('bg-white/25', 'w-8');
       vbDots[index]?.classList.add('bg-accent-500', 'w-12');
 
       // Text wechselt SOFORT beim Video-Uebergang
@@ -200,7 +205,7 @@ const remainingCount = iconServices.length;
         vbVideos[vbCurrent].style.opacity = '0';
         vbTexts[vbCurrent].style.opacity = '0';
         vbDots[vbCurrent]?.classList.remove('bg-accent-500', 'w-12');
-        vbDots[vbCurrent]?.classList.add('bg-white/25');
+        vbDots[vbCurrent]?.classList.add('bg-white/25', 'w-8');
 
         const oldIdx = vbCurrent;
 
@@ -216,7 +221,7 @@ const remainingCount = iconServices.length;
           // Kurze Pause im Schwarzen
           setTimeout(() => {
             firstVideo.style.opacity = '1';
-            vbDots[0]?.classList.remove('bg-white/25');
+            vbDots[0]?.classList.remove('bg-white/25', 'w-8');
             vbDots[0]?.classList.add('bg-accent-500', 'w-12');
 
             setTimeout(() => {
@@ -285,9 +290,9 @@ const remainingCount = iconServices.length;
     const vbSection = document.getElementById('video-breaker');
     if (vbSection) vbObserver.observe(vbSection);
 
-    // Dot clicks
-    vbDots.forEach((dot, i) => {
-      dot.addEventListener('click', () => vbGoTo(i));
+    // Dot clicks (on parent buttons)
+    document.querySelectorAll('[data-vb-dot]').forEach((btn, i) => {
+      btn.addEventListener('click', () => vbGoTo(i));
     });
   </script>
 
@@ -386,7 +391,7 @@ const remainingCount = iconServices.length;
           </p>
 
           <!-- Values -->
-          <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="grid grid-cols-1 min-[400px]:grid-cols-2 gap-3 mb-8">
             <div class="flex items-center gap-3">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
               <span class="text-dark-200 text-sm">Qualität & Zuverlässigkeit</span>

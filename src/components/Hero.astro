@@ -38,16 +38,23 @@ const heroImages = [
   </div>
 
   <!-- Slide indicators -->
-  <div class="absolute bottom-6 left-4 sm:bottom-8 sm:right-8 sm:left-auto z-20 flex items-center gap-2">
+  <div class="absolute bottom-4 left-4 sm:bottom-8 sm:right-8 sm:left-auto z-20 flex items-center gap-1">
     {heroImages.map((_, i) => (
       <button
         class:list={[
-          'hero-dot w-8 h-1 sm:h-[2px] rounded-full transition-all duration-500 cursor-pointer py-2 bg-clip-content',
-          i === 0 ? 'bg-accent-500 w-12' : 'bg-white/25',
+          'hero-dot flex items-center justify-center h-11 cursor-pointer',
         ]}
         data-dot={i}
         aria-label={`Bild ${i + 1}`}
-      />
+      >
+        <span
+          class:list={[
+            'block h-1 sm:h-[2px] rounded-full transition-all duration-500',
+            i === 0 ? 'bg-accent-500 w-12' : 'bg-white/25 w-8',
+          ]}
+          data-dot-inner={i}
+        />
+      </button>
     ))}
   </div>
 
@@ -165,7 +172,8 @@ const heroImages = [
 
 <script>
   const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
-  const dots = document.querySelectorAll<HTMLElement>('.hero-dot');
+  const dotBtns = document.querySelectorAll<HTMLElement>('.hero-dot');
+  const dots = document.querySelectorAll<HTMLElement>('[data-dot-inner]');
   let current = 0;
   let animating = false;
   let autoTimeout: ReturnType<typeof setTimeout>;
@@ -209,8 +217,8 @@ const heroImages = [
 
     // Update dots
     dots[current]?.classList.remove('bg-accent-500', 'w-12');
-    dots[current]?.classList.add('bg-white/25');
-    dots[index]?.classList.remove('bg-white/25');
+    dots[current]?.classList.add('bg-white/25', 'w-8');
+    dots[index]?.classList.remove('bg-white/25', 'w-8');
     dots[index]?.classList.add('bg-accent-500', 'w-12');
 
     current = index;
@@ -238,8 +246,8 @@ const heroImages = [
 
   scheduleNext();
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
+  dotBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
       clearTimeout(autoTimeout);
       goTo(i);
       scheduleNext();

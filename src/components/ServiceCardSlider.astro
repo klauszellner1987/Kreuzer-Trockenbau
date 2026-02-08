@@ -43,16 +43,21 @@ const hasMultiple = imageSrcs.length > 1;
 
   <!-- Dot indicators (only when multiple images) -->
   {hasMultiple && (
-    <div class="absolute top-4 right-4 flex gap-1.5 z-20">
+    <div class="absolute top-2 right-2 flex gap-0 z-20">
       {imageSrcs.map((_, i) => (
         <button
-          class:list={[
-            'w-1.5 h-1.5 rounded-full transition-all duration-700',
-            i === 0 ? 'bg-white/90 scale-110' : 'bg-white/30',
-          ]}
+          class="flex items-center justify-center w-7 h-7"
           data-slider-dot={i}
           aria-label={`Bild ${i + 1}`}
-        />
+        >
+          <span
+            class:list={[
+              'block w-1.5 h-1.5 rounded-full transition-all duration-700',
+              i === 0 ? 'bg-white/90 scale-125' : 'bg-white/30',
+            ]}
+            data-slider-dot-inner={i}
+          />
+        </button>
       ))}
     </div>
   )}
@@ -89,7 +94,7 @@ const hasMultiple = imageSrcs.length > 1;
       if (count <= 1) return; // Single image — no slider needed
 
       const imgs = container.querySelectorAll('[data-slider-img]');
-      const dots = container.querySelectorAll('[data-slider-dot]');
+      const dots = container.querySelectorAll('[data-slider-dot-inner]');
       let current = 0;
       let interval;
 
@@ -129,9 +134,9 @@ const hasMultiple = imageSrcs.length > 1;
       container.addEventListener('mouseenter', () => clearInterval(interval));
       container.addEventListener('mouseleave', startAutoplay);
 
-      // Click dots to jump
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', (e) => {
+      // Click dots to jump (listen on parent button)
+      container.querySelectorAll('[data-slider-dot]').forEach((btn, i) => {
+        btn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
           clearInterval(interval);
