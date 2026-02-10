@@ -39,96 +39,15 @@ const base = import.meta.env.BASE_URL;
     }
   </style>
 
-  <!-- Contact Info + Form -->
-  <section class="py-20 sm:py-32 lg:py-40 bg-dark-950">
+  <!-- Wizard Section — First thing after hero -->
+  <section class="py-20 sm:py-28 lg:py-32 bg-dark-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Top Row: 3 Info Cards + Erreichbarkeit -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <!-- Phone Card -->
-        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
-          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
-            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold mb-3 font-heading">Telefon</h3>
-          <div class="space-y-1">
-            <div>
-              <a href="tel:+4909943905270" class="text-dark-300 hover:text-accent-500 transition-colors text-sm py-1.5 inline-block">+49 (0) 9943 / 905270</a>
-              <p class="text-dark-500 text-xs">Festnetz</p>
-            </div>
-            <div>
-              <a href="tel:+4915154920918" class="text-dark-300 hover:text-accent-500 transition-colors text-sm py-1.5 inline-block">+49 (0) 151 / 549 209 18</a>
-              <p class="text-dark-500 text-xs">Mobil — Trockenbau</p>
-            </div>
-            <div>
-              <a href="tel:+491702924011" class="text-dark-300 hover:text-accent-500 transition-colors text-sm py-1.5 inline-block">+49 (0) 170 / 292 40 11</a>
-              <p class="text-dark-500 text-xs">Mobil — Malerarbeiten</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Email Card -->
-        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
-          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
-            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold mb-3 font-heading">E-Mail</h3>
-          <a href="mailto:kreuzer-trockenbau@gmx.de" class="text-dark-300 hover:text-accent-500 transition-colors text-sm break-all">
-            kreuzer-trockenbau@gmx.de
-          </a>
-          <p class="text-dark-500 text-xs mt-2">Antwort in der Regel innerhalb von 24 Stunden.</p>
-        </div>
-
-        <!-- Address Card -->
-        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
-          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
-            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold mb-3 font-heading">Adresse</h3>
-          <p class="text-dark-300 text-sm">
-            Tannenweg 2<br/>
-            93474 Haibühl / Arrach
-          </p>
-          <p class="text-dark-500 text-xs mt-2">Im Bayerischen Wald, Bayern</p>
-        </div>
-
-        <!-- Erreichbarkeit Card -->
-        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
-          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
-            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold mb-3 font-heading">Erreichbarkeit</h3>
-          <div class="space-y-2 text-sm">
-            <div class="flex justify-between">
-              <span class="text-dark-400">Mo — Fr</span>
-              <span class="text-dark-200">07:00 — 17:00</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-dark-400">Samstag</span>
-              <span class="text-dark-200">nach Absprache</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-dark-400">Sonntag</span>
-              <span class="text-dark-500">geschlossen</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Wizard + Map Side by Side -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div id="wiz-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all duration-700">
 
         <!-- Anfrage-Wizard — Premium Card -->
-        <div class="fade-in-left">
+        <div id="wiz-wrapper" class="fade-in-left transition-all duration-700">
           <div class="wiz-card relative rounded-3xl overflow-hidden">
             <!-- Animated gradient border -->
             <div class="wiz-border-glow absolute inset-0 rounded-3xl pointer-events-none"></div>
@@ -331,7 +250,7 @@ const base = import.meta.env.BASE_URL;
         </div>
 
         <!-- Google Maps Embed -->
-        <div class="fade-in-right">
+        <div id="wiz-map" class="fade-in-right transition-all duration-700">
           <h2 class="text-2xl font-bold text-white mb-2 font-heading">Standort</h2>
           <p class="text-dark-400 text-sm mb-6">Haibühl, Gemeinde Arrach im Bayerischen Wald.</p>
 
@@ -360,9 +279,94 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Contact Info Cards -->
+  <section class="py-20 sm:py-28 lg:py-32 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <!-- Phone Card -->
+        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
+          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+          </div>
+          <h3 class="text-white font-semibold mb-3 font-heading">Telefon</h3>
+          <div class="space-y-1">
+            <div>
+              <a href="tel:+4909943905270" class="text-dark-300 hover:text-accent-500 transition-colors text-sm py-1.5 inline-block">+49 (0) 9943 / 905270</a>
+              <p class="text-dark-500 text-xs">Festnetz</p>
+            </div>
+            <div>
+              <a href="tel:+4915154920918" class="text-dark-300 hover:text-accent-500 transition-colors text-sm py-1.5 inline-block">+49 (0) 151 / 549 209 18</a>
+              <p class="text-dark-500 text-xs">Mobil — Trockenbau</p>
+            </div>
+            <div>
+              <a href="tel:+491702924011" class="text-dark-300 hover:text-accent-500 transition-colors text-sm py-1.5 inline-block">+49 (0) 170 / 292 40 11</a>
+              <p class="text-dark-500 text-xs">Mobil — Malerarbeiten</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Card -->
+        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
+          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <h3 class="text-white font-semibold mb-3 font-heading">E-Mail</h3>
+          <a href="mailto:kreuzer-trockenbau@gmx.de" class="text-dark-300 hover:text-accent-500 transition-colors text-sm break-all">
+            kreuzer-trockenbau@gmx.de
+          </a>
+          <p class="text-dark-500 text-xs mt-2">Antwort in der Regel innerhalb von 24 Stunden.</p>
+        </div>
+
+        <!-- Address Card -->
+        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
+          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+          </div>
+          <h3 class="text-white font-semibold mb-3 font-heading">Adresse</h3>
+          <p class="text-dark-300 text-sm">
+            Tannenweg 2<br/>
+            93474 Haibühl / Arrach
+          </p>
+          <p class="text-dark-500 text-xs mt-2">Im Bayerischen Wald, Bayern</p>
+        </div>
+
+        <!-- Erreichbarkeit Card -->
+        <div class="fade-in p-6 sm:p-8 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group">
+          <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5 group-hover:bg-accent-500/20 transition-colors">
+            <svg class="w-6 h-6 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-white font-semibold mb-3 font-heading">Erreichbarkeit</h3>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-dark-400">Mo — Fr</span>
+              <span class="text-dark-200">07:00 — 17:00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-dark-400">Samstag</span>
+              <span class="text-dark-200">nach Absprache</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-dark-400">Sonntag</span>
+              <span class="text-dark-500">geschlossen</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Directions -->
-      <div class="mt-16 fade-in">
+      <div class="fade-in">
         <h2 class="text-2xl font-bold text-white mb-6 font-heading">Anfahrt von Regensburg</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <div class="flex items-start gap-3 p-4 rounded-xl bg-dark-800/30 border border-white/5">
@@ -598,6 +602,9 @@ const base = import.meta.env.BASE_URL;
       const progressBar = document.getElementById('wiz-progress') as HTMLElement;
       const stepLabel = document.getElementById('wiz-step-label') as HTMLElement;
       const stepTitle = document.getElementById('wiz-step-title') as HTMLElement;
+      const wizWrapper = document.getElementById('wiz-wrapper') as HTMLElement;
+      const wizMap = document.getElementById('wiz-map') as HTMLElement;
+      let expanded = false;
 
       const stepTitles: Record<number, string> = {
         1: 'Leistung wählen',
@@ -606,6 +613,73 @@ const base = import.meta.env.BASE_URL;
         4: 'Kontaktdaten eingeben',
         5: 'Fertig!'
       };
+
+      const wizCard = document.querySelector('.wiz-card') as HTMLElement;
+      let mapHeight = 0;
+
+      /* -- Expand wizard: pop out + take map space -- */
+      function expandWizard() {
+        if (expanded) return;
+        expanded = true;
+
+        /* Capture map height before collapsing */
+        if (wizMap) mapHeight = wizMap.scrollHeight;
+
+        /* Wizard pops forward */
+        if (wizCard) {
+          wizCard.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1), box-shadow 0.6s ease';
+          wizCard.style.transform = 'scale(1.03)';
+          wizCard.style.boxShadow = '0 20px 60px rgba(201,122,66,0.12), 0 0 80px rgba(201,122,66,0.06)';
+        }
+
+        /* Wizard takes full width */
+        if (wizWrapper) wizWrapper.classList.add('lg:col-span-2');
+
+        /* Map collapses away */
+        if (wizMap) {
+          wizMap.style.maxHeight = mapHeight + 'px';
+          wizMap.style.overflow = 'hidden';
+          requestAnimationFrame(() => {
+            wizMap.style.transition = 'max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease, transform 0.4s ease';
+            wizMap.style.maxHeight = '0px';
+            wizMap.style.opacity = '0';
+            wizMap.style.transform = 'scale(0.95)';
+            wizMap.style.pointerEvents = 'none';
+          });
+        }
+      }
+
+      /* -- Collapse wizard: shrink back, map returns -- */
+      function collapseWizard() {
+        if (!expanded) return;
+        expanded = false;
+
+        /* Wizard back to normal */
+        if (wizCard) {
+          wizCard.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s ease';
+          wizCard.style.transform = 'scale(1)';
+          wizCard.style.boxShadow = 'none';
+        }
+
+        /* Back to single column */
+        if (wizWrapper) wizWrapper.classList.remove('lg:col-span-2');
+
+        /* Map comes back */
+        if (wizMap) {
+          wizMap.style.transition = 'max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s';
+          wizMap.style.maxHeight = (mapHeight + 200) + 'px';
+          wizMap.style.opacity = '1';
+          wizMap.style.transform = 'scale(1)';
+          wizMap.style.pointerEvents = '';
+          /* Clean up after transition */
+          setTimeout(() => {
+            if (!expanded && wizMap) {
+              wizMap.style.maxHeight = '';
+              wizMap.style.overflow = '';
+            }
+          }, 700);
+        }
+      }
 
       /* -- show step -- */
       function showStep(n: number) {
@@ -629,6 +703,13 @@ const base = import.meta.env.BASE_URL;
         /* Step labels */
         if (stepLabel) stepLabel.textContent = n >= 5 ? 'Abgeschlossen' : `Schritt ${n} von 4`;
         if (stepTitle) stepTitle.textContent = stepTitles[n] || '';
+
+        /* Expand/Collapse logic */
+        if (n >= 2 && n <= 4) {
+          expandWizard();
+        } else if (n === 1 || n === 5) {
+          collapseWizard();
+        }
 
         /* Enable/disable Next button on step 2 */
         const nextBtn = form.querySelector('.wiz-panel:not(.hidden) .wiz-next') as HTMLButtonElement;
@@ -674,11 +755,6 @@ const base = import.meta.env.BASE_URL;
           `<button type="button" class="wiz-chip" data-field="groesse" data-value="${o.value}">${o.label}</button>`
         ).join('');
 
-        /* Re-bind click listeners on new chips */
-        grid.querySelectorAll<HTMLElement>('.wiz-chip').forEach(btn => {
-          btn.addEventListener('click', handleChipClick);
-        });
-
         /* Clear size selection */
         delete state['groesse'];
         (document.getElementById('wiz-groesse') as HTMLInputElement).value = '';
@@ -698,12 +774,17 @@ const base = import.meta.env.BASE_URL;
         });
       });
 
-      /* -- Chip click handler (reusable) -- */
-      function handleChipClick(this: HTMLElement) {
-        const btn = this;
-        const field = btn.dataset.field!;
-        const value = btn.dataset.value!;
-        btn.closest('.grid')!.querySelectorAll('.wiz-chip').forEach(b => b.classList.remove('selected'));
+      /* -- Chip clicks via Event Delegation (works for dynamic chips too) -- */
+      form.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.wiz-chip') as HTMLElement;
+        if (!btn) return;
+        const field = btn.dataset.field;
+        const value = btn.dataset.value;
+        if (!field || !value) return;
+
+        /* Toggle selection within same grid */
+        const grid = btn.closest('.grid') || btn.parentElement;
+        if (grid) grid.querySelectorAll('.wiz-chip').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
         state[field] = value;
 
@@ -714,15 +795,11 @@ const base = import.meta.env.BASE_URL;
           setTimeout(() => showStep(4), 400);
           return;
         }
+        /* Enable Next on step 2 when both selected */
         if (step === 2) {
           const nextBtn = form.querySelector('.wiz-panel:not(.hidden) .wiz-next') as HTMLButtonElement;
           if (nextBtn) nextBtn.disabled = !(state['projektart'] && state['groesse']);
         }
-      }
-
-      /* -- Step 2 & 3: Chip buttons -- */
-      form.querySelectorAll<HTMLElement>('.wiz-chip').forEach(btn => {
-        btn.addEventListener('click', handleChipClick);
       });
 
       /* -- Next / Back -- */
