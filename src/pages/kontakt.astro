@@ -133,6 +133,12 @@ const base = import.meta.env.BASE_URL;
           <p class="text-dark-400 text-sm mb-6">Beschreiben Sie kurz Ihr Vorhaben — wir melden uns schnellstmöglich.</p>
 
           <form id="contact-form" class="space-y-5">
+            <!-- Web3Forms -->
+            <input type="hidden" name="access_key" value="e3b02111-91ad-440e-80f7-cae1f05299be" />
+            <input type="hidden" name="subject" value="Neue Anfrage über kreuzer-trockenbau.de" />
+            <input type="hidden" name="from_name" value="Kreuzer Trockenbau Website" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label for="name" class="block text-dark-300 text-sm mb-2">Name *</label>
@@ -262,28 +268,53 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <script>
-    // Mailto-Fallback Contact Form
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const status = document.getElementById('form-status');
+    const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const btnText = submitBtn?.textContent || 'Nachricht absenden';
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = (document.getElementById('name') as HTMLInputElement).value;
-      const email = (document.getElementById('email') as HTMLInputElement).value;
-      const phone = (document.getElementById('phone') as HTMLInputElement).value;
-      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
-
-      const subject = encodeURIComponent(`Anfrage von ${name} über die Website`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nE-Mail: ${email}\nTelefon: ${phone || 'nicht angegeben'}\n\nNachricht:\n${message}`
-      );
-
-      window.location.href = `mailto:kreuzer-trockenbau@gmx.de?subject=${subject}&body=${body}`;
+      // Loading State
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet...';
+      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
 
       if (status) {
-        status.textContent = 'Ihr E-Mail-Programm wird geöffnet...';
-        status.className = 'text-sm text-accent-500 mt-2';
+        status.classList.add('hidden');
+      }
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          // Erfolg
+          if (status) {
+            status.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns schnellstmöglich bei Ihnen.';
+            status.className = 'text-sm text-green-400 mt-2';
+          }
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Unbekannter Fehler');
+        }
+      } catch (err) {
+        // Fehler
+        if (status) {
+          status.textContent = 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.';
+          status.className = 'text-sm text-red-400 mt-2';
+        }
+      } finally {
+        // Button zurücksetzen
+        submitBtn.disabled = false;
+        submitBtn.textContent = btnText;
+        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
       }
     });
   </script>
