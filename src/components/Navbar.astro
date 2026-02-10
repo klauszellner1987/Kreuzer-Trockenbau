@@ -1,6 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL;
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const navLinks = [
   { href: `${base}/`, label: 'Start' },
@@ -9,6 +9,11 @@ const navLinks = [
   { href: `${base}/referenzen`, label: 'Referenzen' },
   { href: `${base}/kontakt`, label: 'Kontakt' },
 ];
+
+function isActive(linkHref: string) {
+  const normalizedLink = linkHref.replace(/\/$/, '') || '/';
+  return currentPath === normalizedLink;
+}
 ---
 
 <!-- Top accent line -->
@@ -42,7 +47,7 @@ const navLinks = [
               href={link.href}
               class:list={[
                 'nav-link relative text-[13px] font-heading font-medium tracking-wide transition-colors duration-300 py-1',
-                currentPath === link.href
+                isActive(link.href)
                   ? 'text-accent-500'
                   : 'text-white/50 hover:text-white/90',
               ]}
@@ -89,7 +94,7 @@ const navLinks = [
             href={link.href}
             class:list={[
               'px-3 py-4 text-base font-heading font-medium tracking-wide transition-colors duration-300 border-b border-white/5',
-              currentPath === link.href
+              isActive(link.href)
                 ? 'text-accent-500'
                 : 'text-white/40 hover:text-white',
             ]}

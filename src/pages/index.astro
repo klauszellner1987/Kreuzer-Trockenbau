@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
-import ServiceCard from '../components/ServiceCard.astro';
 import ServiceCardSlider from '../components/ServiceCardSlider.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import { services } from '../data/services';
@@ -132,6 +131,7 @@ const remainingCount = iconServices.length;
         <button
           class="vb-dot-btn flex items-center justify-center h-11 cursor-pointer"
           data-vb-dot={i}
+          aria-label={`Phase ${i + 1}`}
         >
           <span
             class:list={[

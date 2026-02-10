@@ -1,7 +1,7 @@
 export const projectCategories = [
   'Komplettsanierung Anwaltskanzlei',
   'Dachgeschossausbau in Trockenbauweise',
-  'Badsanierung mit RESOPAL "SpastylingR"',
+  'Badsanierung mit RESOPAL „SpaStyling®"',
   'Treppensanierung',
   'Badsanierung & Fliesenarbeiten',
   'Fußbodenverlegung',
@@ -15,7 +15,7 @@ export const referenceClients = [
   'Schmid Sepp (Bürgermeister), Arrach-Ottenzell',
   'Haus Gunda, Arrach',
   'Gästehaus Weber, Haibühl',
-  'Adina Koepelle Rechtsanwältin, Bad Kötzting',
+  'Adina Koeppelle Rechtsanwältin, Bad Kötzting',
   'Dr. Emil Ondr, Bad Kötzting',
   'Hemdenmeister – Textilkaufhaus Peter Schödlbauer, Bad Kötzting',
   'Hotel Waidler Hof, Lam',

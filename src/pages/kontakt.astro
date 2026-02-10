@@ -178,6 +178,9 @@ const base = import.meta.env.BASE_URL;
                 placeholder="Beschreiben Sie kurz Ihr Projekt..."
               ></textarea>
             </div>
+            <p class="text-dark-500 text-xs leading-relaxed">
+              Mit dem Absenden stimmen Sie unserer <a href={`${base}/datenschutz`} class="text-accent-500/70 hover:text-accent-400 transition-colors underline">Datenschutzerklärung</a> zu.
+            </p>
             <button
               type="submit"
               class="w-full sm:w-auto px-8 py-3.5 bg-accent-500 hover:bg-accent-400 text-dark-950 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5 text-sm"
