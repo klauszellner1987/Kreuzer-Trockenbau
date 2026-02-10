@@ -1,15 +1,17 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  showWhatsApp?: boolean;
 }
 
-const { title, description = 'Kreuzer Trockenbau & Malerbetrieb – Ihr Spezialist für Trockenbau, Innenausbau und Malerarbeiten im Bayerischen Wald. Qualität aus Meisterhand seit 2010.', ogImage = '/images/team-hero.jpg' } = Astro.props;
+const { title, description = 'Kreuzer Trockenbau & Malerbetrieb – Ihr Spezialist für Trockenbau, Innenausbau und Malerarbeiten im Bayerischen Wald. Qualität aus Meisterhand seit 2010.', ogImage = '/images/team-hero.jpg', showWhatsApp = false } = Astro.props;
 
 const siteURL = Astro.site!;
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
@@ -109,6 +111,7 @@ const ogImageURL = new URL(import.meta.env.BASE_URL + ogImage, siteURL);
       <slot />
     </main>
     <Footer />
+    {showWhatsApp && <WhatsAppButton />}
 
     <script>
       // Intersection Observer for scroll animations
