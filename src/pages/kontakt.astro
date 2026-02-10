@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Kontakt – Kreuzer Trockenbau & Malerbetrieb" description="Kontaktieren Sie Kreuzer Trockenbau & Malerbetrieb in Haibühl. Telefon, E-Mail und Anfahrt." showWhatsApp={true}>
+<Layout title="Kontakt – Kreuzer Trockenbau & Malerbetrieb" description="Kontaktieren Sie Kreuzer Trockenbau & Malerbetrieb in Haibühl. Telefon, E-Mail und Anfahrt.">
 
   <!-- Page Header — Graphic / No Photo -->
   <section class="relative min-h-[50vh] sm:min-h-[55vh] flex items-end overflow-hidden bg-dark-950">
@@ -124,77 +124,210 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      <!-- Contact Form + Map Side by Side -->
+      <!-- Wizard + Map Side by Side -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <!-- Contact Form -->
+        <!-- Anfrage-Wizard — Premium Card -->
         <div class="fade-in-left">
-          <h2 class="text-2xl font-bold text-white mb-2 font-heading">Nachricht senden</h2>
-          <p class="text-dark-400 text-sm mb-6">Beschreiben Sie kurz Ihr Vorhaben — wir melden uns schnellstmöglich.</p>
-
-          <form id="contact-form" class="space-y-5">
-            <!-- Web3Forms -->
-            <input type="hidden" name="access_key" value="e3b02111-91ad-440e-80f7-cae1f05299be" />
-            <input type="hidden" name="subject" value="Neue Anfrage über kreuzer-trockenbau.de" />
-            <input type="hidden" name="from_name" value="Kreuzer Trockenbau Website" />
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label for="name" class="block text-dark-300 text-sm mb-2">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors"
-                  placeholder="Ihr Name"
-                />
+          <div class="wiz-card relative rounded-3xl overflow-hidden">
+            <!-- Animated gradient border -->
+            <div class="wiz-border-glow absolute inset-0 rounded-3xl pointer-events-none"></div>
+            <!-- Inner content -->
+            <div class="relative bg-dark-900/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8">
+              <!-- Header -->
+              <div class="mb-7">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="wiz-icon-pulse w-10 h-10 rounded-xl bg-accent-500/15 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" /></svg>
+                  </div>
+                  <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white font-heading">Kostenlose Anfrage</h2>
+                    <p class="text-dark-400 text-xs sm:text-sm">In 30 Sekunden — unverbindlich & kostenfrei</p>
+                  </div>
+                </div>
+                <!-- Progress Bar -->
+                <div class="relative h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                  <div id="wiz-progress" class="absolute left-0 top-0 h-full bg-gradient-to-r from-accent-500 to-accent-400 rounded-full transition-all duration-700 ease-out" style="width: 25%"></div>
+                </div>
+                <div class="flex justify-between mt-2">
+                  <span id="wiz-step-label" class="text-accent-500 text-xs font-semibold">Schritt 1 von 4</span>
+                  <span id="wiz-step-title" class="text-dark-500 text-xs">Leistung wählen</span>
+                </div>
               </div>
-              <div>
-                <label for="email" class="block text-dark-300 text-sm mb-2">E-Mail *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors"
-                  placeholder="ihre@email.de"
-                />
-              </div>
+
+              <form id="contact-form" class="relative" style="min-height: 260px;">
+                <!-- Web3Forms -->
+                <input type="hidden" name="access_key" value="e3b02111-91ad-440e-80f7-cae1f05299be" />
+                <input type="hidden" name="subject" value="Neue Anfrage über kreuzer-trockenbau.de" />
+                <input type="hidden" name="from_name" value="Kreuzer Trockenbau Website" />
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+                <input type="hidden" name="leistung" id="wiz-leistung" />
+                <input type="hidden" name="projektart" id="wiz-projektart" />
+                <input type="hidden" name="projektgroesse" id="wiz-groesse" />
+                <input type="hidden" name="zeitrahmen" id="wiz-zeit" />
+
+                <!-- Step 1: Leistung -->
+                <div class="wiz-panel" data-wiz-step="1">
+                  <p class="text-white text-sm mb-5 font-medium">Was dürfen wir für Sie tun?</p>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <button type="button" class="wiz-option group" data-field="leistung" data-value="Trockenbau" style="animation-delay: 0.05s">
+                      <div class="wiz-option-icon">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+                      </div>
+                      <span class="wiz-option-label">Trockenbau</span>
+                    </button>
+                    <button type="button" class="wiz-option group" data-field="leistung" data-value="Malerarbeiten" style="animation-delay: 0.1s">
+                      <div class="wiz-option-icon">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" /></svg>
+                      </div>
+                      <span class="wiz-option-label">Maler</span>
+                    </button>
+                    <button type="button" class="wiz-option group" data-field="leistung" data-value="Bäderrenovierung" style="animation-delay: 0.15s">
+                      <div class="wiz-option-icon">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+                      </div>
+                      <span class="wiz-option-label">Bäder</span>
+                    </button>
+                    <button type="button" class="wiz-option group" data-field="leistung" data-value="Bodenbeläge" style="animation-delay: 0.2s">
+                      <div class="wiz-option-icon">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zm0 9.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zm9.75-9.75A2.25 2.25 0 0115.75 3.75H18a2.25 2.25 0 012.25 2.25v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zm0 9.75a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 15.75V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                      </div>
+                      <span class="wiz-option-label">Böden</span>
+                    </button>
+                    <button type="button" class="wiz-option group" data-field="leistung" data-value="Fassade" style="animation-delay: 0.25s">
+                      <div class="wiz-option-icon">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
+                      </div>
+                      <span class="wiz-option-label">Fassade</span>
+                    </button>
+                    <button type="button" class="wiz-option group" data-field="leistung" data-value="Sonstiges" style="animation-delay: 0.3s">
+                      <div class="wiz-option-icon">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      </div>
+                      <span class="wiz-option-label">Sonstiges</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2: Projektart + Größe -->
+                <div class="wiz-panel hidden" data-wiz-step="2">
+                  <p class="text-white text-sm mb-4 font-medium">Um was für ein Projekt geht es?</p>
+                  <div class="grid grid-cols-3 gap-3 mb-6">
+                    <button type="button" class="wiz-chip" data-field="projektart" data-value="Neubau">
+                      <svg class="w-5 h-5 mx-auto mb-1.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                      Neubau
+                    </button>
+                    <button type="button" class="wiz-chip" data-field="projektart" data-value="Renovierung">
+                      <svg class="w-5 h-5 mx-auto mb-1.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
+                      Renovierung
+                    </button>
+                    <button type="button" class="wiz-chip" data-field="projektart" data-value="Sanierung">
+                      <svg class="w-5 h-5 mx-auto mb-1.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1-5.1a2.12 2.12 0 113-3l5.1 5.1m0 0l5.1 5.1a2.12 2.12 0 01-3 3l-5.1-5.1z" /></svg>
+                      Sanierung
+                    </button>
+                  </div>
+                  <p id="wiz-groesse-label" class="text-white text-sm mb-4 font-medium">Wie groß ist das Vorhaben?</p>
+                  <div id="wiz-groesse-grid" class="grid grid-cols-3 gap-3">
+                    <button type="button" class="wiz-chip" data-field="groesse" data-value="Klein (1-2 Räume)">1–2 Räume</button>
+                    <button type="button" class="wiz-chip" data-field="groesse" data-value="Mittel (Wohnung)">Wohnung</button>
+                    <button type="button" class="wiz-chip" data-field="groesse" data-value="Groß (Haus/Gewerbe)">Haus / Gewerbe</button>
+                  </div>
+                  <div class="flex items-center justify-between mt-6">
+                    <button type="button" class="wiz-back">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                      Zurück
+                    </button>
+                    <button type="button" class="wiz-next" disabled>
+                      Weiter
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Zeitrahmen -->
+                <div class="wiz-panel hidden" data-wiz-step="3">
+                  <p class="text-white text-sm mb-5 font-medium">Wann soll es losgehen?</p>
+                  <div class="grid grid-cols-2 gap-3">
+                    <button type="button" class="wiz-chip wiz-chip-lg" data-field="zeit" data-value="So bald wie möglich">
+                      <svg class="w-5 h-5 mb-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                      So bald wie möglich
+                    </button>
+                    <button type="button" class="wiz-chip wiz-chip-lg" data-field="zeit" data-value="In 1-3 Monaten">
+                      <svg class="w-5 h-5 mb-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
+                      In 1–3 Monaten
+                    </button>
+                    <button type="button" class="wiz-chip wiz-chip-lg" data-field="zeit" data-value="In 3-6 Monaten">
+                      <svg class="w-5 h-5 mb-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      In 3–6 Monaten
+                    </button>
+                    <button type="button" class="wiz-chip wiz-chip-lg" data-field="zeit" data-value="Nur Beratung gewünscht">
+                      <svg class="w-5 h-5 mb-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+                      Nur Beratung
+                    </button>
+                  </div>
+                  <div class="flex items-center justify-between mt-6">
+                    <button type="button" class="wiz-back">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                      Zurück
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 4: Kontaktdaten -->
+                <div class="wiz-panel hidden" data-wiz-step="4">
+                  <p class="text-white text-sm mb-4 font-medium">Fast geschafft — wie erreichen wir Sie?</p>
+                  <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label for="name" class="block text-dark-400 text-xs mb-1.5">Name *</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors" placeholder="Ihr Name" />
+                      </div>
+                      <div>
+                        <label for="phone" class="block text-dark-400 text-xs mb-1.5">Telefon *</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors" placeholder="Ihre Telefonnummer" />
+                      </div>
+                    </div>
+                    <div>
+                      <label for="email" class="block text-dark-400 text-xs mb-1.5">E-Mail *</label>
+                      <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors" placeholder="ihre@email.de" />
+                    </div>
+                    <div>
+                      <label for="message" class="block text-dark-400 text-xs mb-1.5">Nachricht <span class="text-dark-500">(optional)</span></label>
+                      <textarea id="message" name="message" rows="3" class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors resize-none" placeholder="Weitere Details zu Ihrem Projekt..."></textarea>
+                    </div>
+                    <p class="text-dark-500 text-xs leading-relaxed">
+                      Mit dem Absenden stimmen Sie unserer <a href={`${base}/datenschutz`} class="text-accent-500/70 hover:text-accent-400 transition-colors underline">Datenschutzerklärung</a> zu.
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <button type="button" class="wiz-back">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                        Zurück
+                      </button>
+                      <button type="submit" id="wiz-submit" class="px-8 py-3.5 bg-accent-500 hover:bg-accent-400 text-dark-950 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5 text-sm">
+                        Anfrage absenden
+                      </button>
+                    </div>
+                    <p id="form-status" class="text-sm hidden"></p>
+                  </div>
+                </div>
+
+                <!-- Success Screen -->
+                <div class="wiz-panel hidden" data-wiz-step="5">
+                  <div class="text-center py-6">
+                    <div class="wiz-success-check w-20 h-20 rounded-full bg-green-500/10 border-2 border-green-500/30 flex items-center justify-center mx-auto mb-6">
+                      <svg class="w-10 h-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Anfrage gesendet!</h3>
+                    <p class="text-dark-400 text-sm leading-relaxed max-w-sm mx-auto mb-4">Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                    <div class="inline-flex items-center gap-2 text-xs text-dark-500 bg-dark-800/50 px-4 py-2 rounded-full">
+                      <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      Kostenlos & unverbindlich
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div>
-              <label for="phone" class="block text-dark-300 text-sm mb-2">Telefon <span class="text-dark-500">(optional)</span></label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors"
-                placeholder="Ihre Telefonnummer"
-              />
-            </div>
-            <div>
-              <label for="message" class="block text-dark-300 text-sm mb-2">Nachricht *</label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows="5"
-                class="w-full px-4 py-3 rounded-xl bg-dark-800/50 border border-white/10 text-white placeholder-dark-500 text-sm focus:outline-none focus:border-accent-500/50 focus:ring-1 focus:ring-accent-500/25 transition-colors resize-none"
-                placeholder="Beschreiben Sie kurz Ihr Projekt..."
-              ></textarea>
-            </div>
-            <p class="text-dark-500 text-xs leading-relaxed">
-              Mit dem Absenden stimmen Sie unserer <a href={`${base}/datenschutz`} class="text-accent-500/70 hover:text-accent-400 transition-colors underline">Datenschutzerklärung</a> zu.
-            </p>
-            <button
-              type="submit"
-              class="w-full sm:w-auto px-8 py-3.5 bg-accent-500 hover:bg-accent-400 text-dark-950 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5 text-sm"
-            >
-              Nachricht absenden
-            </button>
-            <p id="form-status" class="text-sm hidden"></p>
-          </form>
+          </div>
         </div>
 
         <!-- Google Maps Embed -->
@@ -267,56 +400,374 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <style is:global>
+    /* === Wizard Card Container === */
+    .wiz-card {
+      position: relative;
+    }
+    .wiz-border-glow {
+      background: linear-gradient(135deg, transparent 30%, var(--color-accent-500) 50%, transparent 70%);
+      opacity: 0.15;
+      animation: wizBorderRotate 6s linear infinite;
+      background-size: 300% 300%;
+    }
+    @keyframes wizBorderRotate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* === Sparkle icon pulse === */
+    .wiz-icon-pulse {
+      animation: wizIconPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes wizIconPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 122, 66, 0.2); }
+      50% { box-shadow: 0 0 20px 4px rgba(201, 122, 66, 0.15); }
+    }
+
+    /* === Option Cards (Step 1) === */
+    .wiz-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem 0.75rem;
+      border-radius: 1rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      animation: wizCardIn 0.5s ease-out both;
+    }
+    .wiz-option:hover {
+      border-color: rgba(201, 122, 66, 0.35);
+      background: rgba(201, 122, 66, 0.06);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(201, 122, 66, 0.08);
+    }
+    .wiz-option.selected {
+      border-color: rgba(201, 122, 66, 0.6);
+      background: rgba(201, 122, 66, 0.12);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 30px rgba(201, 122, 66, 0.15);
+    }
+    .wiz-option.selected .wiz-option-icon {
+      background: rgba(201, 122, 66, 0.2);
+      color: var(--color-accent-500);
+    }
+    .wiz-option.selected .wiz-option-label { color: #fff; }
+
+    .wiz-option-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      color: rgba(201, 122, 66, 0.6);
+      transition: all 0.3s;
+    }
+    .wiz-option:hover .wiz-option-icon {
+      background: rgba(201, 122, 66, 0.1);
+      color: var(--color-accent-500);
+    }
+    .wiz-option-label {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .wiz-option:hover .wiz-option-label { color: rgba(255,255,255,0.8); }
+
+    @keyframes wizCardIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.95); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* === Chips (Steps 2-3) === */
+    .wiz-chip {
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+    .wiz-chip:hover {
+      border-color: rgba(201, 122, 66, 0.3);
+      color: #fff;
+      background: rgba(201, 122, 66, 0.06);
+      transform: translateY(-2px);
+    }
+    .wiz-chip.selected {
+      border-color: rgba(201, 122, 66, 0.6);
+      background: rgba(201, 122, 66, 0.12);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(201, 122, 66, 0.12);
+    }
+    .wiz-chip.selected svg { opacity: 1; color: var(--color-accent-500); }
+    .wiz-chip-lg {
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* === Back / Next Buttons === */
+    .wiz-back {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.875rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.5rem 0;
+    }
+    .wiz-back:hover { color: #fff; }
+
+    .wiz-next {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.625rem 1.5rem;
+      background: rgba(201, 122, 66, 0.15);
+      color: var(--color-accent-500);
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid rgba(201, 122, 66, 0.2);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .wiz-next:hover:not(:disabled) {
+      background: rgba(201, 122, 66, 0.25);
+      transform: translateX(2px);
+    }
+    .wiz-next:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    /* === Panel Transitions === */
+    .wiz-panel {
+      animation: wizPanelIn 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .wiz-panel.hidden { display: none; }
+
+    @keyframes wizPanelIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* === Success Checkmark === */
+    .wiz-success-check {
+      animation: wizCheckPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+    .wiz-success-check svg {
+      animation: wizCheckDraw 0.5s ease-out 0.3s both;
+    }
+    @keyframes wizCheckPop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    @keyframes wizCheckDraw {
+      from { stroke-dashoffset: 50; opacity: 0; }
+      to   { stroke-dashoffset: 0; opacity: 1; }
+    }
+  </style>
+
   <script>
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const status = document.getElementById('form-status');
-    const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const btnText = submitBtn?.textContent || 'Nachricht absenden';
+    (() => {
+      const form = document.getElementById('contact-form') as HTMLFormElement;
+      if (!form) return;
 
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      let step = 1;
+      const state: Record<string, string> = {};
+      const panels = form.querySelectorAll<HTMLElement>('.wiz-panel');
+      const progressBar = document.getElementById('wiz-progress') as HTMLElement;
+      const stepLabel = document.getElementById('wiz-step-label') as HTMLElement;
+      const stepTitle = document.getElementById('wiz-step-title') as HTMLElement;
 
-      // Loading State
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Wird gesendet...';
-      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      const stepTitles: Record<number, string> = {
+        1: 'Leistung wählen',
+        2: 'Projekt beschreiben',
+        3: 'Zeitrahmen festlegen',
+        4: 'Kontaktdaten eingeben',
+        5: 'Fertig!'
+      };
 
-      if (status) {
-        status.classList.add('hidden');
-      }
-
-      try {
-        const formData = new FormData(form);
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData,
+      /* -- show step -- */
+      function showStep(n: number) {
+        step = n;
+        panels.forEach(p => {
+          const s = Number(p.dataset.wizStep);
+          if (s === n) {
+            p.classList.remove('hidden');
+            p.style.animation = 'none';
+            p.offsetHeight;
+            p.style.animation = '';
+          } else {
+            p.classList.add('hidden');
+          }
         });
 
-        const data = await res.json();
+        /* Progress bar */
+        const pct = n >= 5 ? 100 : (n / 4) * 100;
+        if (progressBar) progressBar.style.width = pct + '%';
 
-        if (data.success) {
-          // Erfolg
-          if (status) {
-            status.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns schnellstmöglich bei Ihnen.';
-            status.className = 'text-sm text-green-400 mt-2';
-          }
-          form.reset();
-        } else {
-          throw new Error(data.message || 'Unbekannter Fehler');
+        /* Step labels */
+        if (stepLabel) stepLabel.textContent = n >= 5 ? 'Abgeschlossen' : `Schritt ${n} von 4`;
+        if (stepTitle) stepTitle.textContent = stepTitles[n] || '';
+
+        /* Enable/disable Next button on step 2 */
+        const nextBtn = form.querySelector('.wiz-panel:not(.hidden) .wiz-next') as HTMLButtonElement;
+        if (nextBtn && n === 2) {
+          nextBtn.disabled = !(state['projektart'] && state['groesse']);
         }
-      } catch (err) {
-        // Fehler
-        if (status) {
-          status.textContent = 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.';
-          status.className = 'text-sm text-red-400 mt-2';
-        }
-      } finally {
-        // Button zurücksetzen
-        submitBtn.disabled = false;
-        submitBtn.textContent = btnText;
-        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
       }
-    });
+
+      /* -- Context-dependent size options -- */
+      const sizeDefaults = [
+        { value: 'Klein (1-2 Räume)', label: '1–2 Räume' },
+        { value: 'Mittel (Wohnung)', label: 'Wohnung' },
+        { value: 'Groß (Haus/Gewerbe)', label: 'Haus / Gewerbe' },
+      ];
+      const sizeBath = [
+        { value: '1 Bad', label: '1 Bad' },
+        { value: '2 Bäder', label: '2 Bäder' },
+        { value: '3+ Bäder / Komplett', label: '3+ Bäder' },
+      ];
+      const sizeFassade = [
+        { value: 'Einfamilienhaus', label: 'Einfamilienhaus' },
+        { value: 'Mehrfamilienhaus', label: 'Mehrfamilienhaus' },
+        { value: 'Gewerbe / Großprojekt', label: 'Gewerbe' },
+      ];
+
+      function updateSizeOptions(leistung: string) {
+        const grid = document.getElementById('wiz-groesse-grid');
+        const label = document.getElementById('wiz-groesse-label');
+        if (!grid || !label) return;
+
+        let options = sizeDefaults;
+        if (leistung === 'Bäderrenovierung') {
+          options = sizeBath;
+          label.textContent = 'Wie viele Bäder?';
+        } else if (leistung === 'Fassade') {
+          options = sizeFassade;
+          label.textContent = 'Um welches Gebäude geht es?';
+        } else {
+          label.textContent = 'Wie groß ist das Vorhaben?';
+        }
+
+        grid.innerHTML = options.map(o =>
+          `<button type="button" class="wiz-chip" data-field="groesse" data-value="${o.value}">${o.label}</button>`
+        ).join('');
+
+        /* Re-bind click listeners on new chips */
+        grid.querySelectorAll<HTMLElement>('.wiz-chip').forEach(btn => {
+          btn.addEventListener('click', handleChipClick);
+        });
+
+        /* Clear size selection */
+        delete state['groesse'];
+        (document.getElementById('wiz-groesse') as HTMLInputElement).value = '';
+      }
+
+      /* -- Step 1: Service option cards -> auto-advance -- */
+      form.querySelectorAll<HTMLElement>('.wiz-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const field = btn.dataset.field!;
+          const value = btn.dataset.value!;
+          btn.closest('.grid')!.querySelectorAll('.wiz-option').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          state[field] = value;
+          (document.getElementById('wiz-leistung') as HTMLInputElement).value = value;
+          updateSizeOptions(value);
+          setTimeout(() => showStep(2), 400);
+        });
+      });
+
+      /* -- Chip click handler (reusable) -- */
+      function handleChipClick(this: HTMLElement) {
+        const btn = this;
+        const field = btn.dataset.field!;
+        const value = btn.dataset.value!;
+        btn.closest('.grid')!.querySelectorAll('.wiz-chip').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        state[field] = value;
+
+        if (field === 'projektart') (document.getElementById('wiz-projektart') as HTMLInputElement).value = value;
+        if (field === 'groesse') (document.getElementById('wiz-groesse') as HTMLInputElement).value = value;
+        if (field === 'zeit') {
+          (document.getElementById('wiz-zeit') as HTMLInputElement).value = value;
+          setTimeout(() => showStep(4), 400);
+          return;
+        }
+        if (step === 2) {
+          const nextBtn = form.querySelector('.wiz-panel:not(.hidden) .wiz-next') as HTMLButtonElement;
+          if (nextBtn) nextBtn.disabled = !(state['projektart'] && state['groesse']);
+        }
+      }
+
+      /* -- Step 2 & 3: Chip buttons -- */
+      form.querySelectorAll<HTMLElement>('.wiz-chip').forEach(btn => {
+        btn.addEventListener('click', handleChipClick);
+      });
+
+      /* -- Next / Back -- */
+      form.querySelectorAll<HTMLElement>('.wiz-next').forEach(btn => {
+        btn.addEventListener('click', () => showStep(step + 1));
+      });
+      form.querySelectorAll<HTMLElement>('.wiz-back').forEach(btn => {
+        btn.addEventListener('click', () => showStep(step - 1));
+      });
+
+      /* -- Submit -- */
+      const status = document.getElementById('form-status');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('wiz-submit') as HTMLButtonElement;
+        const btnText = submitBtn.textContent || 'Anfrage absenden';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet...';
+        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+        if (status) status.classList.add('hidden');
+
+        try {
+          const fd = new FormData(form);
+          const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+          const data = await res.json();
+          if (data.success) {
+            showStep(5);
+          } else {
+            throw new Error(data.message || 'Unbekannter Fehler');
+          }
+        } catch {
+          if (status) {
+            status.textContent = 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.';
+            status.className = 'text-sm text-red-400 mt-2';
+          }
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = btnText;
+          submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+        }
+      });
+
+      /* Init */
+      showStep(1);
+    })();
   </script>
 
 </Layout>
