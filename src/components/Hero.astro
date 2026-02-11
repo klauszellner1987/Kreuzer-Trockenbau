@@ -8,7 +8,7 @@ const heroImages = [
 ];
 ---
 
-<section class="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden">
+<section class="relative min-h-[42vh] sm:min-h-screen flex items-center overflow-hidden">
   <!-- Left solid dark background -->
   <div class="absolute inset-0 bg-dark-950"></div>
 
@@ -23,14 +23,14 @@ const heroImages = [
         <img
           src={img.src}
           alt={img.alt}
-          class="hero-img w-full h-full object-cover"
+          class="hero-img w-full h-full"
           loading={i === 0 ? 'eager' : 'lazy'}
         />
       </div>
     ))}
 
-    <!-- Left: solid dark for text (staerker auf Mobile) -->
-    <div class="absolute inset-0 z-10 bg-gradient-to-r from-dark-950 from-40% via-dark-950/70 via-60% to-dark-950/10 sm:from-30% sm:via-dark-950/60 sm:via-55% sm:to-transparent"></div>
+    <!-- Left: solid dark for text (schmaler auf Mobile damit Bild sichtbar) -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-dark-950 from-20% via-dark-950/70 via-40% to-dark-950/10 sm:from-30% sm:via-dark-950/60 sm:via-55% sm:to-transparent"></div>
     <!-- Bottom: clean fade for section transition -->
     <div class="absolute inset-0 z-10 bg-gradient-to-t from-dark-950 via-dark-950/30 via-25% to-transparent"></div>
     <!-- Top: subtle vignette -->
@@ -38,7 +38,7 @@ const heroImages = [
   </div>
 
   <!-- Slide indicators -->
-  <div class="absolute bottom-4 left-4 sm:bottom-8 sm:right-8 sm:left-auto z-20 flex items-center gap-1">
+  <div class="absolute bottom-1 left-5 sm:bottom-8 sm:right-8 sm:left-auto z-20 flex items-center gap-1">
     {heroImages.map((_, i) => (
       <button
         class:list={[
@@ -59,7 +59,7 @@ const heroImages = [
   </div>
 
   <!-- Content (left side, narrow) -->
-  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-40 sm:pb-28 w-full">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-18 pb-12 sm:pt-40 sm:pb-28 w-full">
     <div class="max-w-lg">
       <!-- Regional Badge -->
       <div class="fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
@@ -110,15 +110,42 @@ const heroImages = [
 </section>
 
 <style is:global>
-  /* === MOBILE === */
+  /* === MOBILE: volles Bild anzeigen, kein Beschnitt === */
   .hero-img {
-    object-position: center center;
+    object-fit: contain !important;
+    object-position: 15% top;
   }
-  [data-slide="2"] .hero-img {
-    object-position: 35% center;
+  @media (max-width: 639px) {
+    [data-slide="0"] .hero-img {
+      transform: translateX(30%);
+    }
+    [data-slide="1"] .hero-img {
+      transform: translateX(20%);
+    }
+    [data-slide="2"] .hero-img {
+      transform: translateX(30%);
+    }
+    [data-slide="3"] .hero-img {
+      transform: translateX(30%) scale(1.3);
+      transform-origin: center top;
+    }
   }
-  [data-slide="3"] .hero-img {
-    object-position: 70% center;
+
+  /* === TABLET+ === */
+  @media (min-width: 640px) {
+    .hero-img {
+      object-fit: cover !important;
+      object-position: 30% center;
+    }
+    [data-slide="1"] .hero-img {
+      object-position: center center;
+    }
+    [data-slide="2"] .hero-img {
+      object-position: 35% center;
+    }
+    [data-slide="3"] .hero-img {
+      object-position: 70% center;
+    }
   }
 
   /* === HALF-SIZE / TABLET (>= 640px) === */
