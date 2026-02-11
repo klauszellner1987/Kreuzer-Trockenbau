@@ -8,107 +8,151 @@ interface Props {
 const { title, description, icon } = Astro.props;
 ---
 
-<div class="group relative p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-dark-800/80 to-dark-800/40 border border-white/[0.06] hover:border-accent-500/30 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent-500/10 overflow-hidden">
+<div
+  class="group relative p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-dark-800/80 to-dark-800/40 border border-white/[0.06] hover:border-accent-500/30 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent-500/10 overflow-hidden"
+>
   <!-- Subtle top accent line -->
-  <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+  <div
+    class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  >
+  </div>
 
   <!-- Background glow on hover -->
-  <div class="absolute -top-12 -right-12 w-32 h-32 bg-accent-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+  <div
+    class="absolute -top-12 -right-12 w-32 h-32 bg-accent-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  >
+  </div>
 
   <!-- Icon -->
-  <div class="relative w-14 h-14 rounded-2xl bg-accent-500/10 border border-accent-500/15 flex items-center justify-center mb-6 group-hover:bg-accent-500/20 group-hover:border-accent-500/30 transition-all duration-500 group-hover:scale-105">
+  <div
+    class="relative w-14 h-14 rounded-2xl bg-accent-500/10 border border-accent-500/15 flex items-center justify-center mb-6 group-hover:bg-accent-500/20 group-hover:border-accent-500/30 transition-all duration-500 group-hover:scale-105"
+  >
     {/* Trockenbau: Spachtel / Glättkelle */}
-    {icon === 'trowel' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18v3H3z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6v2a3 3 0 01-3 3 3 3 0 01-3-3v-2z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 17v3" />
-      </svg>
-    )}
+    {
+      icon === 'trowel' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18v3H3z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6v2a3 3 0 01-3 3 3 3 0 01-3-3v-2z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 17v3" />
+        </svg>
+      )
+    }
     {/* Malerarbeiten: Farbroller */}
-    {icon === 'roller' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <rect x="4" y="3" width="14" height="5" rx="1" stroke-linecap="round" stroke-linejoin="round" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M18 5.5h2v3h-8v2" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v3" />
-        <rect x="10" y="13.5" width="4" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    )}
+    {
+      icon === 'roller' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <rect x="4" y="3" width="14" height="5" rx="1" stroke-linecap="round" stroke-linejoin="round" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 5.5h2v3h-8v2" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v3" />
+          <rect x="10" y="13.5" width="4" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      )
+    }
     {/* Bodenbeläge: Parkettmuster */}
-    {icon === 'floor' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8v4l9 5 9-5V8" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12v4l9 5 9-5v-4" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5m0 4v5" />
-      </svg>
-    )}
+    {
+      icon === 'floor' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8v4l9 5 9-5V8" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12v4l9 5 9-5v-4" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5m0 4v5" />
+        </svg>
+      )
+    }
     {/* Fassade: Hausfassade mit Dämmung */}
-    {icon === 'facade' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 6v12H3V9l9-6z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 21v-6h6v6" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 10h1.5m3 0H15" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h1.5m3 0H15" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 9v12m12-12v12" />
-      </svg>
-    )}
+    {
+      icon === 'facade' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 6v12H3V9l9-6z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 21v-6h6v6" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 10h1.5m3 0H15" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h1.5m3 0H15" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 9v12m12-12v12" />
+        </svg>
+      )
+    }
     {/* Fliesen: Fliesenmuster */}
-    {icon === 'tiles' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <rect x="3" y="3" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
-        <rect x="13" y="3" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
-        <rect x="3" y="13" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
-        <rect x="13" y="13" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
-        <circle cx="7" cy="7" r="1" fill="currentColor" stroke="none" />
-        <circle cx="17" cy="7" r="1" fill="currentColor" stroke="none" />
-        <circle cx="7" cy="17" r="1" fill="currentColor" stroke="none" />
-        <circle cx="17" cy="17" r="1" fill="currentColor" stroke="none" />
-      </svg>
-    )}
+    {
+      icon === 'tiles' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="13" y="3" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="3" y="13" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="13" y="13" width="8" height="8" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="7" cy="7" r="1" fill="currentColor" stroke="none" />
+          <circle cx="17" cy="7" r="1" fill="currentColor" stroke="none" />
+          <circle cx="7" cy="17" r="1" fill="currentColor" stroke="none" />
+          <circle cx="17" cy="17" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    }
     {/* Deckensysteme: Abgehängte Decke mit Profilen */}
-    {icon === 'ceiling' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h18" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 4v4m4-4v4m4-4v4m4-4v4" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h18" />
-        <rect x="4" y="8" width="7" height="5" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
-        <rect x="13" y="8" width="7" height="5" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 15v3m0 0l-2 2m2-2l2 2" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 15v3m0 0l-2 2m2-2l2 2" />
-      </svg>
-    )}
+    {
+      icon === 'ceiling' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h18" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 4v4m4-4v4m4-4v4m4-4v4" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h18" />
+          <rect x="4" y="8" width="7" height="5" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
+          <rect x="13" y="8" width="7" height="5" rx="0.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 15v3m0 0l-2 2m2-2l2 2" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 15v3m0 0l-2 2m2-2l2 2" />
+        </svg>
+      )
+    }
     {/* Montage: Akkuschrauber */}
-    {icon === 'wrench' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 3l-1 3h-3l-1-3h5z" />
-        <rect x="9.5" y="6" width="5" height="10" rx="1" stroke-linecap="round" stroke-linejoin="round" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M11 16h2v5h-2z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M11.5 9h1m-1 2.5h1" />
-        <circle cx="12" cy="21" r="0.5" fill="currentColor" stroke="none" />
-      </svg>
-    )}
+    {
+      icon === 'wrench' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 3l-1 3h-3l-1-3h5z" />
+          <rect x="9.5" y="6" width="5" height="10" rx="1" stroke-linecap="round" stroke-linejoin="round" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11 16h2v5h-2z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11.5 9h1m-1 2.5h1" />
+          <circle cx="12" cy="21" r="0.5" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    }
     {/* Reparatur: Hammer */}
-    {icon === 'tools' && (
-      <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M14 3c2 0 4 1 5 3l-4.5 4.5L17 13l4.5-4.5c.5 1.5.3 3.5-1 5-1.5 1.5-3.5 2-5.2 1.5l-7.3 7.3a2 2 0 01-2.8 0l-.2-.2a2 2 0 010-2.8l7.3-7.3C11.8 10.5 12 8.5 13.5 7c.5-.5 1-1 1.5-1.2" />
-        <circle cx="6.5" cy="19.5" r="0.75" fill="currentColor" stroke="none" />
-      </svg>
-    )}
+    {
+      icon === 'tools' && (
+        <svg class="w-7 h-7 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M14 3c2 0 4 1 5 3l-4.5 4.5L17 13l4.5-4.5c.5 1.5.3 3.5-1 5-1.5 1.5-3.5 2-5.2 1.5l-7.3 7.3a2 2 0 01-2.8 0l-.2-.2a2 2 0 010-2.8l7.3-7.3C11.8 10.5 12 8.5 13.5 7c.5-.5 1-1 1.5-1.2"
+          />
+          <circle cx="6.5" cy="19.5" r="0.75" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    }
   </div>
 
   <!-- Title -->
-  <h3 class="relative text-white font-semibold text-lg mb-3 group-hover:text-accent-400 transition-colors duration-300 font-heading">{title}</h3>
+  <h3
+    class="relative text-white font-semibold text-lg mb-3 group-hover:text-accent-400 transition-colors duration-300 font-heading"
+  >
+    {title}
+  </h3>
 
   <!-- Description -->
-  <p class="relative text-dark-400 text-sm leading-relaxed group-hover:text-dark-300 transition-colors duration-300">{description}</p>
+  <p class="relative text-dark-400 text-sm leading-relaxed group-hover:text-dark-300 transition-colors duration-300">
+    {description}
+  </p>
 
   <!-- Bottom arrow hint on hover -->
-  <div class="relative mt-5 flex items-center gap-2 text-accent-500/0 group-hover:text-accent-500 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+  <div
+    class="relative mt-5 flex items-center gap-2 text-accent-500/0 group-hover:text-accent-500 transition-all duration-500 translate-y-2 group-hover:translate-y-0"
+  >
     <span class="text-sm font-medium">Mehr erfahren</span>
-    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+    <svg
+      class="w-4 h-4 transition-transform group-hover:translate-x-1"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
     </svg>
   </div>
 </div>

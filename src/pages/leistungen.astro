@@ -6,50 +6,69 @@ import { services } from '../data/services';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Leistungen – Kreuzer Trockenbau & Malerbetrieb" description="Unsere Leistungen: Trockenbau, Innenausbau, Malerarbeiten, Bodenbeläge, Fassadengestaltung, Fliesenarbeiten und mehr.">
-
+<Layout
+  title="Leistungen – Kreuzer Trockenbau & Malerbetrieb"
+  description="Unsere Leistungen: Trockenbau, Innenausbau, Malerarbeiten, Bodenbeläge, Fassadengestaltung, Fliesenarbeiten und mehr."
+>
   <!-- Page Header with Video Background -->
   <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
     <div class="absolute inset-0">
-      <video class="w-full h-full object-cover" src={`${base}/videos/leistungen-header-v3.mp4`} autoplay muted loop playsinline preload="auto" poster={`${base}/images/service-fassade.jpg`}></video>
+      <video
+        class="w-full h-full object-cover"
+        src={`${base}/videos/leistungen-header-v3.mp4`}
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster={`${base}/images/service-fassade.jpg`}></video>
       <div class="absolute inset-0 bg-dark-950/60"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/40 via-30% to-transparent"></div>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-36 w-full text-center">
       <span class="text-accent-500 text-sm font-medium uppercase tracking-widest fade-in">Was wir bieten</span>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-5 fade-in font-heading tracking-tight">Unsere Leistungen</h1>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-5 fade-in font-heading tracking-tight">
+        Unsere Leistungen
+      </h1>
       <div class="h-0.5 w-16 bg-accent-500 rounded-full mx-auto mb-6 fade-in"></div>
       <p class="text-white/70 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
-        Wir sind ein Handwerker-Team und legen sehr großen Wert auf Qualität, Sauberkeit und Zuverlässigkeit — und das alles zu erschwinglichen Preisen.
+        Wir sind ein Handwerker-Team und legen sehr großen Wert auf Qualität, Sauberkeit und Zuverlässigkeit — und das
+        alles zu erschwinglichen Preisen.
       </p>
     </div>
   </section>
 
   <!-- Sticky Service Navigation -->
-  <nav id="service-nav" class="sticky top-[57px] sm:top-[65px] z-30 bg-dark-950/90 backdrop-blur-md border-b border-white/[0.04] transition-all duration-300">
+  <nav
+    id="service-nav"
+    class="sticky top-[57px] sm:top-[65px] z-30 bg-dark-950/90 backdrop-blur-md border-b border-white/[0.04] transition-all duration-300"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center gap-1 overflow-x-auto no-scrollbar py-3" id="service-nav-scroll">
-        {services.map((service, i) => {
-          const id = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
-          return (
-            <a
-              href={`#${id}`}
-              class="service-nav-link shrink-0 px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-dark-400 hover:text-white hover:bg-white/5 transition-all duration-300 whitespace-nowrap"
-              data-nav-target={id}
-            >
-              {service.title.split(' ')[0]}
-            </a>
-          );
-        })}
+        {
+          services.map((service, i) => {
+            const id = service.title
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/-+$/, '');
+            return (
+              <a
+                href={`#${id}`}
+                class="service-nav-link shrink-0 px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-dark-400 hover:text-white hover:bg-white/5 transition-all duration-300 whitespace-nowrap"
+                data-nav-target={id}
+              >
+                {service.title.split(' ')[0]}
+              </a>
+            );
+          })
+        }
       </div>
     </div>
   </nav>
 
   <!-- Service Sections -->
   <div class="bg-dark-950">
-    {services.map((service, i) => (
-      <ServiceSection service={service} index={i} total={services.length} />
-    ))}
+    {services.map((service, i) => <ServiceSection service={service} index={i} total={services.length} />)}
   </div>
 
   <!-- Bottom CTA -->
@@ -59,7 +78,8 @@ const base = import.meta.env.BASE_URL;
         Wir können noch viel mehr!
       </h2>
       <p class="text-dark-300 text-lg leading-relaxed mb-10">
-        Unsere Stärken sind in erster Linie der Trockenbau und das Malerhandwerk. Aber wir sind sehr flexibel! Fragen Sie uns einfach — wir finden eine Lösung für Ihr Projekt.
+        Unsere Stärken sind in erster Linie der Trockenbau und das Malerhandwerk. Aber wir sind sehr flexibel! Fragen
+        Sie uns einfach — wir finden eine Lösung für Ihr Projekt.
       </p>
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
         <a
@@ -67,7 +87,11 @@ const base = import.meta.env.BASE_URL;
           class="px-8 py-4 bg-accent-500 hover:bg-accent-400 text-dark-950 rounded-xl text-base font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5 flex items-center justify-center gap-2"
         >
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+            ></path>
           </svg>
           Jetzt anrufen
         </a>
@@ -80,13 +104,17 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-
 </Layout>
 
 <style is:global>
   /* Hide scrollbar for service nav */
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
   /* Active nav link */
   .service-nav-link.active {

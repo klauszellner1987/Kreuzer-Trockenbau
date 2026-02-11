@@ -4,18 +4,27 @@ import { teamMembers, companyValues } from '../data/team';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Das Team – Kreuzer Trockenbau & Malerbetrieb" description="Lernen Sie das Team hinter Kreuzer Trockenbau kennen: Markus Kreuzer (Gründer) und Tobias Kreuzer (Malermeister).">
-
+<Layout
+  title="Das Team – Kreuzer Trockenbau & Malerbetrieb"
+  description="Lernen Sie das Team hinter Kreuzer Trockenbau kennen: Markus Kreuzer (Gründer) und Tobias Kreuzer (Malermeister)."
+>
   <!-- Page Header with Team Hero Image -->
   <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
     <div class="absolute inset-0">
-      <img src={`${base}/images/team-hero.jpg`} alt="Das Team von Kreuzer Trockenbau" class="w-full h-full object-cover object-[center_30%]" loading="eager" />
+      <img
+        src={`${base}/images/team-hero.jpg`}
+        alt="Das Team von Kreuzer Trockenbau"
+        class="w-full h-full object-cover object-[center_30%]"
+        loading="eager"
+      />
       <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 via-40% to-dark-950/20"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-dark-950/40 to-transparent"></div>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-36 w-full text-center">
       <span class="text-accent-500 text-sm font-medium uppercase tracking-widest fade-in">Wer wir sind</span>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-6 fade-in font-heading tracking-tight">Das Team</h1>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-6 fade-in font-heading tracking-tight">
+        Das Team
+      </h1>
       <p class="text-white/70 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
         Bei Kreuzer Trockenbau & Malerbetrieb steht der Kunde immer an erster Stelle.
       </p>
@@ -26,35 +35,50 @@ const base = import.meta.env.BASE_URL;
   <section class="py-20 sm:py-32 lg:py-40 bg-dark-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {teamMembers.map((member, index) => (
-          <div class:list={[
-            'relative p-8 sm:p-10 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group',
-            index === 0 ? 'fade-in-left' : 'fade-in-right',
-            teamMembers.length % 2 === 1 && index === teamMembers.length - 1 ? 'lg:col-span-2 lg:max-w-[50%] lg:mx-auto' : '',
-          ]}>
-            <!-- Accent line top -->
-            <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {
+          teamMembers.map((member, index) => (
+            <div
+              class:list={[
+                'relative p-8 sm:p-10 rounded-2xl bg-dark-800/30 border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group',
+                index === 0 ? 'fade-in-left' : 'fade-in-right',
+                teamMembers.length % 2 === 1 && index === teamMembers.length - 1
+                  ? 'lg:col-span-2 lg:max-w-[50%] lg:mx-auto'
+                  : '',
+              ]}
+            >
+              {/* Accent line top */}
+              <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div class="flex items-center gap-5 mb-6">
-              <!-- Avatar -->
-              {member.photo ? (
-                <div class="w-16 h-16 rounded-2xl overflow-hidden border border-accent-500/20 shrink-0">
-                  <img src={`${base}${member.photo}`} alt={member.name} class="w-full h-full object-cover object-top" />
+              <div class="flex items-center gap-5 mb-6">
+                {/* Avatar */}
+                {member.photo ? (
+                  <div class="w-16 h-16 rounded-2xl overflow-hidden border border-accent-500/20 shrink-0">
+                    <img
+                      src={`${base}${member.photo}`}
+                      alt={member.name}
+                      class="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                ) : (
+                  <div class="w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center shrink-0">
+                    <span class="text-accent-500 font-bold text-xl font-heading">
+                      {member.name
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')}
+                    </span>
+                  </div>
+                )}
+                <div>
+                  <h2 class="text-xl sm:text-2xl font-bold text-white font-heading">{member.name}</h2>
+                  <p class="text-accent-500 font-medium text-sm">{member.role}</p>
                 </div>
-              ) : (
-                <div class="w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center shrink-0">
-                  <span class="text-accent-500 font-bold text-xl font-heading">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                </div>
-              )}
-              <div>
-                <h2 class="text-xl sm:text-2xl font-bold text-white font-heading">{member.name}</h2>
-                <p class="text-accent-500 font-medium text-sm">{member.role}</p>
               </div>
-            </div>
 
-            <p class="text-dark-300 leading-relaxed">{member.description}</p>
-          </div>
-        ))}
+              <p class="text-dark-300 leading-relaxed">{member.description}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -64,24 +88,39 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12 sm:mb-16 fade-in">
         <span class="text-accent-500 text-sm font-medium uppercase tracking-widest">Unser Team</span>
-        <h2 class="text-3xl sm:text-4xl font-light text-white mt-4 mb-5 font-heading tracking-tight">Gemeinsam stark</h2>
+        <h2 class="text-3xl sm:text-4xl font-light text-white mt-4 mb-5 font-heading tracking-tight">
+          Gemeinsam stark
+        </h2>
         <div class="h-0.5 w-16 bg-accent-500 rounded-full"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger-children">
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/hero-family.jpg`} alt="Das gesamte Team mit Familie" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/hero-family.jpg`}
+            alt="Das gesamte Team mit Familie"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
-            <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Familienbetrieb</span>
+            <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Familienbetrieb</span
+            >
             <p class="text-white text-sm font-medium mt-1">Das Team mit Familie</p>
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/hero-duo.jpg`} alt="Die Geschäftsführer vor dem Firmenfahrzeug" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/hero-duo.jpg`}
+            alt="Die Geschäftsführer vor dem Firmenfahrzeug"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
-            <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Geschäftsführung</span>
+            <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70"
+              >Geschäftsführung</span
+            >
             <p class="text-white text-sm font-medium mt-1">Markus & Tobias Kreuzer</p>
           </div>
         </div>
@@ -100,7 +139,12 @@ const base = import.meta.env.BASE_URL;
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/1000228317.jpeg`} alt="Laser-Nivellierung bei Trockenbauarbeiten" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/1000228317.jpeg`}
+            alt="Laser-Nivellierung bei Trockenbauarbeiten"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
             <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Präzision</span>
@@ -108,7 +152,12 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/1000228314.jpeg`} alt="Trockenbau-Montage" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/1000228314.jpeg`}
+            alt="Trockenbau-Montage"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
             <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Montage</span>
@@ -116,7 +165,12 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/1000228324.jpeg`} alt="Exaktes Ausmessen" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/1000228324.jpeg`}
+            alt="Exaktes Ausmessen"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
             <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Handwerk</span>
@@ -124,7 +178,12 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/Unsere_Arbeit1.jpg`} alt="Unsere Arbeit" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/Unsere_Arbeit1.jpg`}
+            alt="Unsere Arbeit"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
             <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Vorbereitung</span>
@@ -132,7 +191,12 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
-          <img src={`${base}/images/Unsere_arbeit_qualitaet_sauberkeit.jpg`} alt="Qualität & Sauberkeit" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" loading="lazy" />
+          <img
+            src={`${base}/images/Unsere_arbeit_qualitaet_sauberkeit.jpg`}
+            alt="Qualität & Sauberkeit"
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4">
             <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Qualität</span>
@@ -156,24 +220,29 @@ const base = import.meta.env.BASE_URL;
           <div class="h-1 w-16 bg-accent-500 rounded-full mb-8"></div>
           <div class="space-y-4 text-dark-300 leading-relaxed">
             <p>
-              Kreuzer Trockenbau wurde 2010 gegründet und ist auf Trockenbau und Innenausbau spezialisiert. 2017 konnten wir unsere Firma mit einem Malermeisterbetrieb erweitern.
+              Kreuzer Trockenbau wurde 2010 gegründet und ist auf Trockenbau und Innenausbau spezialisiert. 2017 konnten
+              wir unsere Firma mit einem Malermeisterbetrieb erweitern.
             </p>
             <p>
-              Höchste Priorität ist die Zufriedenheit unserer Kunden. Sie können sich jederzeit darauf verlassen, dass wir keine Anstrengungen scheuen, wenn es um Ihre Baumaßnahme geht.
+              Höchste Priorität ist die Zufriedenheit unserer Kunden. Sie können sich jederzeit darauf verlassen, dass
+              wir keine Anstrengungen scheuen, wenn es um Ihre Baumaßnahme geht.
             </p>
             <p>
-              Eine erstklassige Kundenbetreuung ist unser Kennzeichen. Wir bieten Ihnen Komplettlösungen aus einer Hand für Ihr Bauprojekt — ob klein oder groß.
+              Eine erstklassige Kundenbetreuung ist unser Kennzeichen. Wir bieten Ihnen Komplettlösungen aus einer Hand
+              für Ihr Bauprojekt — ob klein oder groß.
             </p>
           </div>
 
           <!-- Values inline -->
           <div class="mt-8 grid grid-cols-1 min-[400px]:grid-cols-2 gap-3">
-            {companyValues.map((value) => (
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-accent-500 shrink-0"></div>
-                <span class="text-dark-200 text-sm">{value}</span>
-              </div>
-            ))}
+            {
+              companyValues.map((value) => (
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-accent-500 shrink-0" />
+                  <span class="text-dark-200 text-sm">{value}</span>
+                </div>
+              ))
+            }
           </div>
         </div>
 
@@ -185,26 +254,35 @@ const base = import.meta.env.BASE_URL;
               <div class="absolute -left-[calc(2rem+5px)] w-2.5 h-2.5 rounded-full bg-accent-500 mt-1.5"></div>
               <span class="text-accent-500 text-sm font-bold font-heading">2010</span>
               <h3 class="text-white font-semibold text-lg mt-1 mb-2">Firmengründung</h3>
-              <p class="text-dark-400 text-sm leading-relaxed">Gründung durch Markus Kreuzer mit Spezialisierung auf Trockenbau und Innenausbau im Bayerischen Wald.</p>
+              <p class="text-dark-400 text-sm leading-relaxed">
+                Gründung durch Markus Kreuzer mit Spezialisierung auf Trockenbau und Innenausbau im Bayerischen Wald.
+              </p>
             </div>
             <!-- 2017 -->
             <div class="relative mb-10">
               <div class="absolute -left-[calc(2rem+5px)] w-2.5 h-2.5 rounded-full bg-accent-500 mt-1.5"></div>
               <span class="text-accent-500 text-sm font-bold font-heading">2017</span>
               <h3 class="text-white font-semibold text-lg mt-1 mb-2">Erweiterung</h3>
-              <p class="text-dark-400 text-sm leading-relaxed">Tobias Kreuzer erweitert den Betrieb um den Malermeisterbetrieb — damit bieten wir alles aus einer Hand.</p>
+              <p class="text-dark-400 text-sm leading-relaxed">
+                Tobias Kreuzer erweitert den Betrieb um den Malermeisterbetrieb — damit bieten wir alles aus einer Hand.
+              </p>
             </div>
             <!-- Heute -->
             <div class="relative">
-              <div class="absolute -left-[calc(2rem+5px)] w-2.5 h-2.5 rounded-full bg-accent-500/40 border-2 border-accent-500 mt-1.5"></div>
+              <div
+                class="absolute -left-[calc(2rem+5px)] w-2.5 h-2.5 rounded-full bg-accent-500/40 border-2 border-accent-500 mt-1.5"
+              >
+              </div>
               <span class="text-accent-500 text-sm font-bold font-heading">Heute</span>
               <h3 class="text-white font-semibold text-lg mt-1 mb-2">Komplettanbieter</h3>
-              <p class="text-dark-400 text-sm leading-relaxed">15+ Jahre Erfahrung, 500+ abgeschlossene Projekte und ein wachsendes Team für Ihre Bauprojekte in der Region.</p>
+              <p class="text-dark-400 text-sm leading-relaxed">
+                15+ Jahre Erfahrung, 500+ abgeschlossene Projekte und ein wachsendes Team für Ihre Bauprojekte in der
+                Region.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
 </Layout>

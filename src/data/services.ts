@@ -12,8 +12,10 @@ export interface Service {
 export const services: Service[] = [
   {
     title: 'Trockenbau & Innenausbau',
-    description: 'Komplettlösungen für Wand, Decke und Boden in Trockenbauweise. Dachgeschossausbau, Raumtrennung und mehr.',
-    longDescription: 'Ob Dachgeschossausbau, Raumtrennung oder komplett neuer Innenausbau — wir realisieren Ihre Vorstellungen in Trockenbauweise. Sauber, schnell und mit höchster Präzision. Von der Unterkonstruktion bis zur fertigen Oberfläche bekommen Sie bei uns alles aus einer Hand.',
+    description:
+      'Komplettlösungen für Wand, Decke und Boden in Trockenbauweise. Dachgeschossausbau, Raumtrennung und mehr.',
+    longDescription:
+      'Ob Dachgeschossausbau, Raumtrennung oder komplett neuer Innenausbau — wir realisieren Ihre Vorstellungen in Trockenbauweise. Sauber, schnell und mit höchster Präzision. Von der Unterkonstruktion bis zur fertigen Oberfläche bekommen Sie bei uns alles aus einer Hand.',
     icon: 'trowel',
     features: [
       'Dachgeschossausbau',
@@ -22,7 +24,12 @@ export const services: Service[] = [
       'Abgehängte Decken',
       'Trockenestrich & Bodensysteme',
     ],
-    images: ['/images/service-trockenbau.jpg', '/images/Trockenbau_innenausbau_technik.jpg', '/images/Trockenbau_innenausbau_aufbau.jpg', '/images/Trockenbau_innenausbau_tueren.jpg'],
+    images: [
+      '/images/service-trockenbau.jpg',
+      '/images/Trockenbau_innenausbau_technik.jpg',
+      '/images/Trockenbau_innenausbau_aufbau.jpg',
+      '/images/Trockenbau_innenausbau_tueren.jpg',
+    ],
     gallery: [
       '/images/service-trockenbau.jpg',
       '/images/Trockenbau_innenausbau_technik.jpg',
@@ -32,8 +39,10 @@ export const services: Service[] = [
   },
   {
     title: 'Malerarbeiten',
-    description: 'Meisterhaft, dekorativ und umweltbewusst. Von einfachen Anstrichen bis hin zu umfassendem Raumdesign.',
-    longDescription: 'Als Malermeisterbetrieb liegt uns die Qualität besonders am Herzen. Wir bieten Ihnen alles vom klassischen Wandanstrich über Tapezierarbeiten bis hin zu dekorativen Techniken und Farbkonzepten. Jeder Raum bekommt seinen individuellen Charakter. Dabei legen wir größten Wert auf Sauberkeit — vor, während und nach der Arbeit. Ihre Räume werden von uns so hinterlassen, wie Sie es erwarten: makellos.',
+    description:
+      'Meisterhaft, dekorativ und umweltbewusst. Von einfachen Anstrichen bis hin zu umfassendem Raumdesign.',
+    longDescription:
+      'Als Malermeisterbetrieb liegt uns die Qualität besonders am Herzen. Wir bieten Ihnen alles vom klassischen Wandanstrich über Tapezierarbeiten bis hin zu dekorativen Techniken und Farbkonzepten. Jeder Raum bekommt seinen individuellen Charakter. Dabei legen wir größten Wert auf Sauberkeit — vor, während und nach der Arbeit. Ihre Räume werden von uns so hinterlassen, wie Sie es erwarten: makellos.',
     icon: 'roller',
     features: [
       'Innenanstriche & Wandgestaltung',
@@ -42,7 +51,12 @@ export const services: Service[] = [
       'Lackierarbeiten',
       'Farbberatung & Raumkonzepte',
     ],
-    images: ['/images/maler_tobias_streichen.jpg', '/images/Maler_Tobias_Leibung.jpg', '/images/Maler_tobias_streichen_1.jpg', '/images/Maler_Tobias_abkleben.jpg'],
+    images: [
+      '/images/maler_tobias_streichen.jpg',
+      '/images/Maler_Tobias_Leibung.jpg',
+      '/images/Maler_tobias_streichen_1.jpg',
+      '/images/Maler_Tobias_abkleben.jpg',
+    ],
     gallery: [
       '/images/maler_tobias_streichen.jpg',
       '/images/Maler_Tobias_Airflow_System.jpg',
@@ -54,8 +68,10 @@ export const services: Service[] = [
   },
   {
     title: 'Bodenbeläge',
-    description: 'Verlegen von Parkett-, Vinyl-, Laminat-, Holz- und Teppichböden, inklusive Vorbereitung des Unterbodens.',
-    longDescription: 'Der Boden ist das Fundament jedes Raumes. Wir verlegen sämtliche Bodenbeläge fachgerecht und sorgen dafür, dass Ihr neuer Boden nicht nur gut aussieht, sondern auch langlebig ist. Vom Unterboden bis zur fertigen Oberfläche — alles aus einer Hand.',
+    description:
+      'Verlegen von Parkett-, Vinyl-, Laminat-, Holz- und Teppichböden, inklusive Vorbereitung des Unterbodens.',
+    longDescription:
+      'Der Boden ist das Fundament jedes Raumes. Wir verlegen sämtliche Bodenbeläge fachgerecht und sorgen dafür, dass Ihr neuer Boden nicht nur gut aussieht, sondern auch langlebig ist. Vom Unterboden bis zur fertigen Oberfläche — alles aus einer Hand.',
     icon: 'floor',
     features: [
       'Parkett & Holzböden',
@@ -69,7 +85,8 @@ export const services: Service[] = [
   {
     title: 'Fassadengestaltung',
     description: 'Fassadengestaltung und -sanierung sowie professionelle Wärmedämmung für Ihr Gebäude.',
-    longDescription: 'Die Fassade ist die Visitenkarte Ihres Hauses. Wir gestalten und sanieren Ihre Fassade professionell — inklusive Wärmedämmverbundsysteme (WDVS) für maximale Energieeffizienz. So sparen Sie Heizkosten und Ihr Haus erstrahlt in neuem Glanz.',
+    longDescription:
+      'Die Fassade ist die Visitenkarte Ihres Hauses. Wir gestalten und sanieren Ihre Fassade professionell — inklusive Wärmedämmverbundsysteme (WDVS) für maximale Energieeffizienz. So sparen Sie Heizkosten und Ihr Haus erstrahlt in neuem Glanz.',
     icon: 'facade',
     features: [
       'Fassadenanstrich & Sanierung',
@@ -79,16 +96,13 @@ export const services: Service[] = [
       'Energetische Beratung',
     ],
     images: ['/images/service-fassade.jpg', '/images/Fassade_1.jpg', '/images/Fassade_2.jpg'],
-    gallery: [
-      '/images/service-fassade.jpg',
-      '/images/Fassade_1.jpg',
-      '/images/Fassade_2.jpg',
-    ],
+    gallery: ['/images/service-fassade.jpg', '/images/Fassade_1.jpg', '/images/Fassade_2.jpg'],
   },
   {
     title: 'Bäderrenovierung',
     description: 'Komplettsanierung von Bädern — von der Planung bis zur schlüsselfertigen Übergabe.',
-    longDescription: 'Ihr Traumbad — wir machen es möglich. Von der ersten Idee über die Planung bis zur schlüsselfertigen Übergabe kümmern wir uns um alles. Fliesen, Sanitär, Trockenbau und Malerarbeiten — bei uns bekommen Sie die komplette Badsanierung ohne Koordinationsstress.',
+    longDescription:
+      'Ihr Traumbad — wir machen es möglich. Von der ersten Idee über die Planung bis zur schlüsselfertigen Übergabe kümmern wir uns um alles. Fliesen, Sanitär, Trockenbau und Malerarbeiten — bei uns bekommen Sie die komplette Badsanierung ohne Koordinationsstress.',
     icon: 'bath',
     features: [
       'Komplettbadsanierung',
@@ -102,7 +116,8 @@ export const services: Service[] = [
   {
     title: 'Fliesenarbeiten',
     description: 'Fachgerechte Verlegung von Fliesen, Platten, Mosaik und Naturstein in Bad, Küche und mehr.',
-    longDescription: 'Fliesen sind zeitlos und vielseitig. Wir verlegen alle Arten von Fliesen, Platten und Naturstein — ob im Bad, in der Küche oder im Eingangsbereich. Mit Präzision und Liebe zum Detail sorgen wir für ein perfektes Ergebnis.',
+    longDescription:
+      'Fliesen sind zeitlos und vielseitig. Wir verlegen alle Arten von Fliesen, Platten und Naturstein — ob im Bad, in der Küche oder im Eingangsbereich. Mit Präzision und Liebe zum Detail sorgen wir für ein perfektes Ergebnis.',
     icon: 'tiles',
     features: [
       'Wand- & Bodenfliesen',
@@ -111,11 +126,15 @@ export const services: Service[] = [
       'Abdichtung im Nassbereich',
       'Fugenarbeiten & Sanierung',
     ],
+    images: ['/images/Fliesenarbeiten1.jpg', '/images/Fliesenarbeiten_markus.jpg'],
+    gallery: ['/images/Fliesenarbeiten1.jpg', '/images/Fliesenarbeiten_markus.jpg'],
   },
   {
     title: 'Deckensysteme',
-    description: 'Originelle und differenzierte Gestaltung von Decken — abgehängte Decken, Lichtvouten und Akustiklösungen.',
-    longDescription: 'Decken können mehr als nur den Raum nach oben abschließen. Wir gestalten abgehängte Decken mit integrierten Lichtkonzepten, Lichtvouten für indirektes Licht und Akustikdecken für optimalen Schallschutz. Ob modern oder klassisch — wir finden die richtige Lösung.',
+    description:
+      'Originelle und differenzierte Gestaltung von Decken — abgehängte Decken, Lichtvouten und Akustiklösungen.',
+    longDescription:
+      'Decken können mehr als nur den Raum nach oben abschließen. Wir gestalten abgehängte Decken mit integrierten Lichtkonzepten, Lichtvouten für indirektes Licht und Akustikdecken für optimalen Schallschutz. Ob modern oder klassisch — wir finden die richtige Lösung.',
     icon: 'ceiling',
     features: [
       'Abgehängte Decken',
@@ -124,7 +143,11 @@ export const services: Service[] = [
       'Designdecken & Sonderlösungen',
       'Deckenverkleidungen',
     ],
-    images: ['/images/Deckensysteme_abgehaengt.jpg', '/images/Deckensysteme_Trockenbau.jpg', '/images/Deckensysteme_Trockenbau1.jpg'],
+    images: [
+      '/images/Deckensysteme_abgehaengt.jpg',
+      '/images/Deckensysteme_Trockenbau.jpg',
+      '/images/Deckensysteme_Trockenbau1.jpg',
+    ],
     gallery: [
       '/images/Deckensysteme_abgehaengt.jpg',
       '/images/Deckensysteme_Trockenbau.jpg',
@@ -134,7 +157,8 @@ export const services: Service[] = [
   {
     title: 'Montage & Demontage',
     description: 'Professionelle Montage und Demontage von Türen, Möbeln, Fenstern und vielem mehr.',
-    longDescription: 'Manchmal braucht es einfach einen Profi, der anpackt. Wir übernehmen die Montage und Demontage von Türen, Fenstern, Einbauschränken und vielem mehr. Schnell, sauber und zuverlässig — damit Sie sich auf die schönen Dinge konzentrieren können.',
+    longDescription:
+      'Manchmal braucht es einfach einen Profi, der anpackt. Wir übernehmen die Montage und Demontage von Türen, Fenstern, Einbauschränken und vielem mehr. Schnell, sauber und zuverlässig — damit Sie sich auf die schönen Dinge konzentrieren können.',
     icon: 'wrench',
     features: [
       'Türenmontage & -austausch',
@@ -143,11 +167,14 @@ export const services: Service[] = [
       'Demontage & Entsorgung',
       'Kleinmontagen aller Art',
     ],
+    images: ['/images/Montage_ludwig.jpg'],
+    gallery: ['/images/Montage_ludwig.jpg'],
   },
   {
     title: 'Reparaturarbeiten',
     description: 'Reparaturarbeiten diverser Art am Haus, um größere Schäden rechtzeitig zu vermeiden.',
-    longDescription: 'Kleine Schäden werden schnell zu großen Problemen, wenn man sie ignoriert. Wir reparieren Löcher in Wänden, beschädigte Böden, defekte Fliesen und vieles mehr — schnell und unkompliziert. Lieber heute reparieren als morgen sanieren.',
+    longDescription:
+      'Kleine Schäden werden schnell zu großen Problemen, wenn man sie ignoriert. Wir reparieren Löcher in Wänden, beschädigte Böden, defekte Fliesen und vieles mehr — schnell und unkompliziert. Lieber heute reparieren als morgen sanieren.',
     icon: 'tools',
     features: [
       'Wand- & Deckenreparaturen',

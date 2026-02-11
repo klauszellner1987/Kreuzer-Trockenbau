@@ -1,0 +1,44 @@
+---
+description: Git-Workflow - Niemals direkt auf main pushen, immer Feature-Branches verwenden
+alwaysApply: true
+---
+
+# Git-Workflow
+
+## Grundregel
+
+**Niemals direkt auf `main` committen oder pushen.** Alle Änderungen gehen über Feature-Branches.
+
+## Workflow
+
+1. **Neuen Branch erstellen** vor jeder Änderung:
+   ```bash
+   git checkout -b feature/<beschreibung>
+   # oder: fix/<beschreibung>, chore/<beschreibung>
+   ```
+
+2. **Auf dem Feature-Branch arbeiten** — alle Commits dort machen
+
+3. **Pushen** auf den Feature-Branch:
+   ```bash
+   git push -u origin feature/<beschreibung>
+   ```
+
+4. **Erst nach expliziter Freigabe** des Users auf `main` mergen:
+   ```bash
+   git checkout main
+   git merge feature/<beschreibung>
+   git push
+   ```
+
+## Branch-Naming
+
+- `feature/` — Neue Features (z.B. `feature/gallery-lightbox`)
+- `fix/` — Bugfixes (z.B. `fix/mobile-hero-images`)
+- `chore/` — Aufräumarbeiten, Config-Änderungen
+
+## Wichtig
+
+- Vor dem Merge auf `main` immer den User fragen: "Soll ich auf main mergen und pushen?"
+- Keine Force-Pushes auf `main`
+- Commits mit aussagekräftigen deutschen Commit-Messages

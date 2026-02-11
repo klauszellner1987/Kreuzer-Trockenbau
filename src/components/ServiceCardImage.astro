@@ -11,10 +11,12 @@ const { title, description, image, large = false } = Astro.props;
 const imageSrc = image.startsWith('/') ? `${base}${image}` : image;
 ---
 
-<div class:list={[
-  'group relative rounded-2xl overflow-hidden border border-white/[0.03] hover:border-white/[0.08] transition-all duration-700',
-  large ? 'h-[260px] sm:h-[380px]' : 'h-[220px] sm:h-[300px]',
-]}>
+<div
+  class:list={[
+    'group relative rounded-2xl overflow-hidden border border-white/[0.03] hover:border-white/[0.08] transition-all duration-700',
+    large ? 'h-[260px] sm:h-[380px]' : 'h-[220px] sm:h-[300px]',
+  ]}
+>
   <!-- Background Image -->
   <img
     src={imageSrc}
@@ -23,31 +25,49 @@ const imageSrc = image.startsWith('/') ? `${base}${image}` : image;
   />
 
   <!-- Dark gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 via-40% to-dark-950/10 transition-opacity duration-500"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 via-40% to-dark-950/10 transition-opacity duration-500"
+  >
+  </div>
 
   <!-- Subtle top accent line on hover -->
-  <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
+  <div
+    class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"
+  >
+  </div>
 
   <!-- Content -->
   <div class="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 z-10">
-    <h3 class:list={[
-      'text-white font-bold font-heading mb-2 group-hover:text-accent-400 transition-colors duration-300',
-      large ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl',
-    ]}>
+    <h3
+      class:list={[
+        'text-white font-bold font-heading mb-2 group-hover:text-accent-400 transition-colors duration-300',
+        large ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl',
+      ]}
+    >
       {title}
     </h3>
-    <p class:list={[
-      'text-dark-300 leading-relaxed group-hover:text-dark-200 transition-colors duration-300',
-      large ? 'text-sm sm:text-base max-w-md' : 'text-sm',
-    ]}>
+    <p
+      class:list={[
+        'text-dark-300 leading-relaxed group-hover:text-dark-200 transition-colors duration-300',
+        large ? 'text-sm sm:text-base max-w-md' : 'text-sm',
+      ]}
+    >
       {description}
     </p>
 
     <!-- Arrow hint on hover -->
-    <div class="mt-4 flex items-center gap-2 text-accent-500/0 group-hover:text-accent-500 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
+    <div
+      class="mt-4 flex items-center gap-2 text-accent-500/0 group-hover:text-accent-500 transition-all duration-700 translate-y-2 group-hover:translate-y-0"
+    >
       <span class="text-sm font-medium">Mehr erfahren</span>
-      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      <svg
+        class="w-4 h-4 transition-transform group-hover:translate-x-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
       </svg>
     </div>
   </div>
