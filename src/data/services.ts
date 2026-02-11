@@ -6,6 +6,7 @@ export interface Service {
   features: string[];
   image?: string;
   images?: string[];
+  gallery?: string[];
 }
 
 export const services: Service[] = [
@@ -35,7 +36,15 @@ export const services: Service[] = [
       'Lackierarbeiten',
       'Farbberatung & Raumkonzepte',
     ],
-    images: ['/images/service-maler.jpg'],
+    images: ['/images/maler_tobias_streichen.jpg', '/images/Maler_Tobias_Airflow_System.jpg', '/images/Maler_tobias_streichen_1.jpg'],
+    gallery: [
+      '/images/maler_tobias_streichen.jpg',
+      '/images/Maler_Tobias_Airflow_System.jpg',
+      '/images/Maler_tobias_streichen_1.jpg',
+      '/images/Maler_Tobias_abkleben.jpg',
+      '/images/Maler_Tobias_Leibung.jpg',
+      '/images/Maler_tobias_Airflow_system_2.jpg',
+    ],
   },
   {
     title: 'Bodenbeläge',
