@@ -22,12 +22,18 @@ export const services: Service[] = [
       'Abgehängte Decken',
       'Trockenestrich & Bodensysteme',
     ],
-    images: ['/images/service-trockenbau.jpg'],
+    images: ['/images/service-trockenbau.jpg', '/images/Trockenbau_innenausbau_technik.jpg', '/images/Trockenbau_innenausbau_aufbau.jpg', '/images/Trockenbau_innenausbau_tueren.jpg'],
+    gallery: [
+      '/images/service-trockenbau.jpg',
+      '/images/Trockenbau_innenausbau_technik.jpg',
+      '/images/Trockenbau_innenausbau_aufbau.jpg',
+      '/images/Trockenbau_innenausbau_tueren.jpg',
+    ],
   },
   {
     title: 'Malerarbeiten',
     description: 'Meisterhaft, dekorativ und umweltbewusst. Von einfachen Anstrichen bis hin zu umfassendem Raumdesign.',
-    longDescription: 'Als Malermeisterbetrieb liegt uns die Qualität besonders am Herzen. Wir bieten Ihnen alles vom klassischen Wandanstrich über Tapezierarbeiten bis hin zu dekorativen Techniken und Farbkonzepten. Jeder Raum bekommt seinen individuellen Charakter.',
+    longDescription: 'Als Malermeisterbetrieb liegt uns die Qualität besonders am Herzen. Wir bieten Ihnen alles vom klassischen Wandanstrich über Tapezierarbeiten bis hin zu dekorativen Techniken und Farbkonzepten. Jeder Raum bekommt seinen individuellen Charakter. Dabei legen wir größten Wert auf Sauberkeit — vor, während und nach der Arbeit. Ihre Räume werden von uns so hinterlassen, wie Sie es erwarten: makellos.',
     icon: 'roller',
     features: [
       'Innenanstriche & Wandgestaltung',
@@ -36,7 +42,7 @@ export const services: Service[] = [
       'Lackierarbeiten',
       'Farbberatung & Raumkonzepte',
     ],
-    images: ['/images/maler_tobias_streichen.jpg', '/images/Maler_Tobias_Airflow_System.jpg', '/images/Maler_tobias_streichen_1.jpg'],
+    images: ['/images/maler_tobias_streichen.jpg', '/images/Maler_Tobias_Leibung.jpg', '/images/Maler_tobias_streichen_1.jpg', '/images/Maler_Tobias_abkleben.jpg'],
     gallery: [
       '/images/maler_tobias_streichen.jpg',
       '/images/Maler_Tobias_Airflow_System.jpg',
@@ -72,7 +78,12 @@ export const services: Service[] = [
       'Sockelabdichtung',
       'Energetische Beratung',
     ],
-    images: ['/images/service-fassade.jpg'],
+    images: ['/images/service-fassade.jpg', '/images/Fassade_1.jpg', '/images/Fassade_2.jpg'],
+    gallery: [
+      '/images/service-fassade.jpg',
+      '/images/Fassade_1.jpg',
+      '/images/Fassade_2.jpg',
+    ],
   },
   {
     title: 'Bäderrenovierung',
@@ -112,6 +123,12 @@ export const services: Service[] = [
       'Akustikdecken',
       'Designdecken & Sonderlösungen',
       'Deckenverkleidungen',
+    ],
+    images: ['/images/Deckensysteme_abgehaengt.jpg', '/images/Deckensysteme_Trockenbau.jpg', '/images/Deckensysteme_Trockenbau1.jpg'],
+    gallery: [
+      '/images/Deckensysteme_abgehaengt.jpg',
+      '/images/Deckensysteme_Trockenbau.jpg',
+      '/images/Deckensysteme_Trockenbau1.jpg',
     ],
   },
   {

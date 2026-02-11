@@ -424,21 +424,42 @@ const remainingCount = iconServices.length;
         <!-- Photo Side: 3 elegante gerahmte Bilder -->
         <div class="fade-in-right">
           <!-- Mobile: horizontal scroll, Desktop: 3-column grid with stagger -->
-          <div class="flex gap-4 overflow-x-auto pb-4 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-3 snap-x snap-mandatory scrollbar-hide">
-            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group shrink-0 w-[70%] sm:w-auto snap-center">
+          <div class="flex gap-4 overflow-x-auto pb-4 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-2 sm:grid-rows-[auto_auto] snap-x snap-mandatory scrollbar-hide">
+            {/* Grosses Hauptbild — links, spannt 2 Reihen */}
+            <div class="rounded-xl overflow-hidden border border-white/10 relative group shrink-0 w-[75%] sm:w-auto snap-center sm:row-span-2 aspect-[3/4]">
               <img src={`${base}/images/1000228317.jpeg`} alt="Laser-Nivellierung" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Präzision</span>
             </div>
-            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group sm:mt-6 shrink-0 w-[70%] sm:w-auto snap-center">
+            {/* Rechts oben */}
+            <div class="rounded-xl overflow-hidden border border-white/10 relative group shrink-0 w-[75%] sm:w-auto snap-center aspect-[4/3]">
               <img src={`${base}/images/1000228314.jpeg`} alt="Trockenbau-Montage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Montage</span>
             </div>
-            <div class="rounded-xl overflow-hidden border border-white/10 aspect-[3/4] relative group sm:mt-12 shrink-0 w-[70%] sm:w-auto snap-center">
+            {/* Rechts unten — 2er Grid */}
+            <div class="hidden sm:grid grid-cols-2 gap-4">
+              <div class="rounded-xl overflow-hidden border border-white/10 relative group aspect-square">
+                <img src={`${base}/images/1000228324.jpeg`} alt="Exaktes Ausmessen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Handwerk</span>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-white/10 relative group aspect-square">
+                <img src={`${base}/images/Maler_Tobias_Airflow_System.jpg`} alt="Airflow System" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Schnelligkeit</span>
+              </div>
+            </div>
+            {/* Mobile: restliche Bilder als Scroll-Items */}
+            <div class="rounded-xl overflow-hidden border border-white/10 relative group shrink-0 w-[75%] sm:hidden snap-center aspect-[3/4]">
               <img src={`${base}/images/1000228324.jpeg`} alt="Exaktes Ausmessen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Handwerk</span>
+            </div>
+            <div class="rounded-xl overflow-hidden border border-white/10 relative group shrink-0 w-[75%] sm:hidden snap-center aspect-[3/4]">
+              <img src={`${base}/images/Maler_Tobias_Airflow_System.jpg`} alt="Airflow System" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 text-[10px] font-heading font-medium uppercase tracking-widest text-white/70">Schnelligkeit</span>
             </div>
           </div>
         </div>

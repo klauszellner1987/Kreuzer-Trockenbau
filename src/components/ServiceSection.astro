@@ -91,48 +91,115 @@ const iconSvgMap: Record<string, string> = {
       {/* --- Visual side (image gallery or large icon) --- */}
       <div class="w-full lg:w-1/2 service-reveal">
         {hasImages ? (
-          <div class="relative">
-            {/* Image count badge */}
-            {imageSrcs.length > 1 && (
-              <div class="absolute top-4 right-4 z-20 flex gap-1.5">
-                {imageSrcs.map((_, i) => (
-                  <button
+          <div class="cinema-gallery relative">
+            {/* Corner accent marks — top-left and bottom-right */}
+            <div class="absolute -top-2 -left-2 w-8 h-8 z-20 pointer-events-none">
+              <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-500 to-transparent" />
+              <div class="absolute top-0 left-0 h-full w-[2px] bg-gradient-to-b from-accent-500 to-transparent" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 z-20 pointer-events-none">
+              <div class="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-accent-500 to-transparent" />
+              <div class="absolute bottom-0 right-0 h-full w-[2px] bg-gradient-to-t from-accent-500 to-transparent" />
+            </div>
+
+            {/* Animated gradient border */}
+            <div class="absolute -inset-[1px] rounded-2xl cinema-border-glow z-10 pointer-events-none" />
+
+            {/* Frame */}
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-dark-900 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+
+              {/* Images with Ken Burns */}
+              {imageSrcs.map((src, i) => {
+                // Each image gets a unique Ken Burns direction
+                const kenBurns = [
+                  'kb-zoom-left',
+                  'kb-zoom-right',
+                  'kb-zoom-center',
+                  'kb-zoom-left',
+                ][i % 4];
+
+                return (
+                  <div
                     class:list={[
-                      'service-gallery-dot w-2 h-2 rounded-full transition-all duration-500',
-                      i === 0 ? 'bg-accent-500 scale-125' : 'bg-white/30',
+                      'cinema-slide absolute inset-0',
+                      i === 0 ? 'is-active' : '',
                     ]}
-                    data-gallery-dot={i}
-                  />
-                ))}
+                    data-slide={i}
+                  >
+                    <img
+                      src={src}
+                      alt={`${service.title} ${i + 1}`}
+                      class:list={['w-full h-full object-cover', kenBurns]}
+                      data-gallery-img={i}
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
+
+              {/* Vignette + accent edge glow */}
+              <div class="absolute inset-0 pointer-events-none z-10" style="box-shadow: inset 0 0 80px rgba(0,0,0,0.3), inset 0 0 1px rgba(212,175,55,0.15);" />
+            </div>
+
+            {/* Controls below */}
+            {imageSrcs.length > 1 && (
+              <div class="flex items-center gap-5 mt-5 px-1">
+                {/* Thin progress lines */}
+                <div class="flex gap-2 flex-1">
+                  {imageSrcs.map((_, i) => (
+                    <button
+                      class:list={[
+                        'service-gallery-dot relative h-[3px] flex-1 rounded-full cursor-pointer overflow-hidden transition-colors duration-300',
+                        i === 0 ? 'bg-white/15' : 'bg-white/[0.06] hover:bg-white/10',
+                      ]}
+                      data-gallery-dot={i}
+                    >
+                      {i === 0 && (
+                        <div class="slider-progress absolute inset-y-0 left-0 bg-accent-500 rounded-full" style="width: 0%" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+                {/* Counter */}
+                <span class="text-white/30 text-xs font-mono tracking-wider slider-counter" data-slider-counter>01 / {String(imageSrcs.length).padStart(2, '0')}</span>
               </div>
             )}
-            {/* Gallery images */}
-            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/30 border border-white/[0.06]">
-              {imageSrcs.map((src, i) => (
-                <img
-                  src={src}
-                  alt={`${service.title} ${i + 1}`}
-                  class:list={[
-                    'service-gallery-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000',
-                    i === 0 ? 'opacity-100' : 'opacity-0',
-                  ]}
-                  data-gallery-img={i}
-                  loading="lazy"
-                />
-              ))}
-            </div>
           </div>
         ) : (
-          <div class="flex items-center justify-center">
-            <div class="relative">
-              {/* Glowing ring behind icon */}
-              <div class="absolute inset-0 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-accent-500/10 blur-xl animate-pulse" />
-              {/* Icon container */}
-              <div class="relative w-40 h-40 sm:w-52 sm:h-52 rounded-3xl bg-gradient-to-br from-dark-800/80 to-dark-800/40 border border-accent-500/20 flex items-center justify-center backdrop-blur-sm">
-                <svg class="w-20 h-20 sm:w-28 sm:h-28 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                  <Fragment set:html={iconSvgMap[service.icon] || iconSvgMap.tools} />
-                </svg>
+          <div class="cinema-gallery relative">
+            {/* Corner accent marks */}
+            <div class="absolute -top-2 -left-2 w-8 h-8 z-20 pointer-events-none">
+              <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-500 to-transparent" />
+              <div class="absolute top-0 left-0 h-full w-[2px] bg-gradient-to-b from-accent-500 to-transparent" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 z-20 pointer-events-none">
+              <div class="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-accent-500 to-transparent" />
+              <div class="absolute bottom-0 right-0 h-full w-[2px] bg-gradient-to-t from-accent-500 to-transparent" />
+            </div>
+
+            {/* Animated gradient border */}
+            <div class="absolute -inset-[1px] rounded-2xl cinema-border-glow z-10 pointer-events-none" />
+
+            {/* Icon frame — same aspect ratio and shadow as image gallery */}
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-dark-900 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] flex items-center justify-center">
+              {/* Animated background pattern */}
+              <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;" />
+
+              {/* Radial glow behind icon */}
+              <div class="absolute inset-0 bg-radial-gradient pointer-events-none" style="background: radial-gradient(circle at center, rgba(212,175,55,0.08) 0%, transparent 60%);" />
+
+              {/* Large icon */}
+              <div class="relative">
+                <div class="absolute -inset-8 rounded-full bg-accent-500/5 blur-2xl" />
+                <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-gradient-to-br from-dark-800/60 to-dark-800/20 border border-accent-500/15 flex items-center justify-center">
+                  <svg class="w-16 h-16 sm:w-20 sm:h-20 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <Fragment set:html={iconSvgMap[service.icon] || iconSvgMap.tools} />
+                  </svg>
+                </div>
               </div>
+
+              {/* Vignette */}
+              <div class="absolute inset-0 pointer-events-none" style="box-shadow: inset 0 0 80px rgba(0,0,0,0.3), inset 0 0 1px rgba(212,175,55,0.15);" />
             </div>
           </div>
         )}
@@ -289,13 +356,90 @@ const iconSvgMap: Record<string, string> = {
     transition-delay: 0.15s;
   }
 
-  /* === Sanfter Zoom-Effekt statt Parallax === */
+  /* === Kein Zoom-Effekt auf Hintergrundbilder === */
   .service-parallax-img {
-    transform: scale(1.08);
-    transition: transform 6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .service-section.in-view .service-parallax-img {
     transform: scale(1);
+  }
+
+  /* === Cinema gallery: clip-path reveal === */
+  .cinema-slide {
+    clip-path: inset(0 0 0 100%);
+    z-index: 1;
+    transition: none;
+  }
+  .cinema-slide.is-active {
+    clip-path: inset(0 0 0 0%);
+    z-index: 2;
+  }
+  .cinema-slide.is-revealing {
+    clip-path: inset(0 0 0 0%);
+    z-index: 3;
+    transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .cinema-slide.is-leaving {
+    clip-path: inset(0 0 0 0%);
+    z-index: 2;
+  }
+
+  /* === Ken Burns: slow zoom + pan per image === */
+  .cinema-slide.is-active img,
+  .cinema-slide.is-revealing img {
+    animation-duration: 8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  .kb-zoom-left {
+    animation-name: kbZoomLeft;
+  }
+  .kb-zoom-right {
+    animation-name: kbZoomRight;
+  }
+  .kb-zoom-center {
+    animation-name: kbZoomCenter;
+  }
+
+  @keyframes kbZoomLeft {
+    from { transform: scale(1.12) translateX(2%); }
+    to   { transform: scale(1.0) translateX(-1%); }
+  }
+  @keyframes kbZoomRight {
+    from { transform: scale(1.12) translateX(-2%); }
+    to   { transform: scale(1.0) translateX(1%); }
+  }
+  @keyframes kbZoomCenter {
+    from { transform: scale(1.15); }
+    to   { transform: scale(1.0); }
+  }
+
+  /* === Animated gradient border around image === */
+  .cinema-border-glow {
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
+      transparent 0%,
+      rgba(212, 175, 55, 0.25) 10%,
+      transparent 20%,
+      transparent 80%,
+      rgba(212, 175, 55, 0.15) 90%,
+      transparent 100%
+    );
+    animation: rotateBorder 8s linear infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    padding: 1px;
+  }
+  @property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes rotateBorder {
+    to { --border-angle: 360deg; }
+  }
+
+  /* === Slider progress bar === */
+  .slider-progress {
+    transition: width 30ms linear;
   }
 
   /* === Mobile: no parallax, smaller spacing === */
@@ -345,40 +489,119 @@ const iconSvgMap: Record<string, string> = {
   );
   document.querySelectorAll('.service-section').forEach((el) => zoomObserver.observe(el));
 
-  // === Gallery auto-advance for multi-image services ===
+  // === Cinema gallery with clip-path reveal + Ken Burns ===
+  const SLIDE_DURATION = 6000;
+
   document.querySelectorAll('.service-section').forEach((section) => {
-    const imgs = section.querySelectorAll<HTMLElement>('[data-gallery-img]');
+    const slides = section.querySelectorAll<HTMLElement>('.cinema-slide');
     const dots = section.querySelectorAll<HTMLElement>('.service-gallery-dot');
-    if (imgs.length <= 1) return;
+    const counter = section.querySelector<HTMLElement>('[data-slider-counter]');
+    if (slides.length <= 1) return;
 
     let current = 0;
     let interval: ReturnType<typeof setInterval>;
+    let progressInterval: ReturnType<typeof setInterval>;
+    let isAnimating = false;
 
     function goTo(idx: number) {
-      imgs.forEach((img, i) => {
-        img.style.opacity = i === idx ? '1' : '0';
-      });
+      if (isAnimating || idx === current) return;
+      isAnimating = true;
+
+      const incoming = slides[idx];
+      const outgoing = slides[current];
+
+      // Reset incoming: prepare off-screen (clipped)
+      incoming.classList.remove('is-active', 'is-leaving');
+      incoming.classList.add('is-revealing');
+
+      // Outgoing stays visible behind the reveal
+      outgoing.classList.remove('is-active');
+      outgoing.classList.add('is-leaving');
+
+      // Restart Ken Burns animation on incoming image
+      const inImg = incoming.querySelector('img');
+      if (inImg) {
+        const cls = inImg.className;
+        inImg.className = '';
+        void inImg.offsetWidth; // force reflow
+        inImg.className = cls;
+      }
+
+      // After transition completes
+      const onDone = () => {
+        incoming.removeEventListener('transitionend', onDone);
+        outgoing.classList.remove('is-leaving');
+        incoming.classList.remove('is-revealing');
+        incoming.classList.add('is-active');
+        current = idx;
+        isAnimating = false;
+      };
+      incoming.addEventListener('transitionend', onDone, { once: true });
+
+      // Fallback in case transitionend doesn't fire
+      setTimeout(() => {
+        if (isAnimating) {
+          onDone();
+        }
+      }, 1200);
+
+      // Update progress dots
       dots.forEach((dot, i) => {
+        const prog = dot.querySelector<HTMLElement>('.slider-progress');
+        if (prog) prog.remove();
+
         if (i === idx) {
-          dot.classList.add('bg-accent-500', 'scale-125');
-          dot.classList.remove('bg-white/30');
+          dot.classList.add('bg-white/15');
+          dot.classList.remove('bg-white/[0.06]', 'hover:bg-white/10');
+          const bar = document.createElement('div');
+          bar.className = 'slider-progress absolute inset-y-0 left-0 bg-accent-500 rounded-full';
+          bar.style.width = '0%';
+          dot.appendChild(bar);
         } else {
-          dot.classList.remove('bg-accent-500', 'scale-125');
-          dot.classList.add('bg-white/30');
+          dot.classList.remove('bg-white/15');
+          dot.classList.add('bg-white/[0.06]', 'hover:bg-white/10');
         }
       });
-      current = idx;
+
+      if (counter) {
+        counter.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+      }
+
+      startProgress(idx);
+    }
+
+    function startProgress(idx: number) {
+      clearInterval(progressInterval);
+      const dot = dots[idx];
+      const bar = dot?.querySelector<HTMLElement>('.slider-progress');
+      if (!bar) return;
+      bar.style.width = '0%';
+      let elapsed = 0;
+      const step = 30;
+      progressInterval = setInterval(() => {
+        elapsed += step;
+        bar.style.width = `${Math.min((elapsed / SLIDE_DURATION) * 100, 100)}%`;
+      }, step);
     }
 
     function startAutoplay() {
-      interval = setInterval(() => goTo((current + 1) % imgs.length), 4000);
+      clearInterval(interval);
+      interval = setInterval(() => {
+        goTo((current + 1) % slides.length);
+      }, SLIDE_DURATION);
+      startProgress(current);
+    }
+
+    function resetAutoplay() {
+      clearInterval(interval);
+      clearInterval(progressInterval);
+      startAutoplay();
     }
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        clearInterval(interval);
         goTo(i);
-        startAutoplay();
+        resetAutoplay();
       });
     });
 
