@@ -7,9 +7,10 @@ const navLinks = [
   { href: `${base}/leistungen`, label: 'Leistungen' },
   { href: `${base}/team`, label: 'Team' },
   { href: `${base}/referenzen`, label: 'Referenzen' },
-  { href: `${base}/ferienwohnung`, label: 'Ferienwohnung' },
   { href: `${base}/kontakt`, label: 'Kontakt' },
 ];
+
+const fewoLink = { href: `${base}/ferienwohnung`, label: 'Ferienwohnung' };
 
 function isActive(linkHref: string) {
   const normalizedLink = linkHref.replace(/\/$/, '') || '/';
@@ -72,6 +73,23 @@ function isActive(linkHref: string) {
           </svg>
           <span class="text-[13px] font-heading font-medium tracking-wide">0151 / 54920918</span>
         </a>
+
+        <!-- Fewo-Link mit Trenner -->
+        <div class="w-px h-4 bg-accent-500/25"></div>
+        <a
+          href={fewoLink.href}
+          class:list={[
+            'fewo-nav-link relative flex items-center gap-1.5 text-[13px] font-heading font-medium tracking-wide transition-all duration-300 py-1 px-2.5 rounded-lg border',
+            isActive(fewoLink.href)
+              ? 'text-accent-500 border-accent-500/30 bg-accent-500/10'
+              : 'text-accent-500/70 border-accent-500/15 hover:text-accent-500 hover:border-accent-500/30 hover:bg-accent-500/5',
+          ]}
+        >
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+          {fewoLink.label}
+        </a>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -106,9 +124,26 @@ function isActive(linkHref: string) {
             </a>
           ))
         }
+        <!-- Fewo-Link abgetrennt -->
+        <div class="mt-4 mb-2 mx-3 h-px bg-gradient-to-r from-accent-500/30 via-accent-500/15 to-transparent"></div>
+        <a
+          href={fewoLink.href}
+          class:list={[
+            'mx-3 px-3 py-3 flex items-center gap-2 text-base font-heading font-medium tracking-wide transition-colors duration-300 rounded-xl',
+            isActive(fewoLink.href)
+              ? 'text-accent-500 bg-accent-500/10'
+              : 'text-accent-500/60 hover:text-accent-500 hover:bg-accent-500/5',
+          ]}
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+          {fewoLink.label}
+        </a>
+
         <a
           href="tel:+4915154920918"
-          class="mt-5 flex items-center gap-2 text-white/40 hover:text-accent-500 transition-colors px-3 py-3"
+          class="mt-4 flex items-center gap-2 text-white/40 hover:text-accent-500 transition-colors px-3 py-3"
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path
