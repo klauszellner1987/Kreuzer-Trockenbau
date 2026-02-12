@@ -52,7 +52,12 @@ const base = import.meta.env.BASE_URL;
               <div class="flex items-center gap-5 mb-6">
                 {/* Avatar */}
                 {member.photo ? (
-                  <div class="w-16 h-16 rounded-2xl overflow-hidden border border-accent-500/20 shrink-0">
+                  <div
+                    class="w-20 h-20 rounded-2xl overflow-hidden border border-accent-500/20 shrink-0"
+                    style={member.photo.endsWith('.png')
+                      ? 'background: white;'
+                      : ''}
+                  >
                     <img
                       src={`${base}${member.photo}`}
                       alt={member.name}
@@ -60,7 +65,7 @@ const base = import.meta.env.BASE_URL;
                     />
                   </div>
                 ) : (
-                  <div class="w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center shrink-0">
+                  <div class="w-20 h-20 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center shrink-0">
                     <span class="text-accent-500 font-bold text-xl font-heading">
                       {member.name
                         .split(' ')
@@ -97,8 +102,8 @@ const base = import.meta.env.BASE_URL;
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger-children">
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
           <img
-            src={`${base}/images/hero-family.jpg`}
-            alt="Das gesamte Team mit Familie"
+            src={`${base}/images/Familie.jpg`}
+            alt="Das Team von Kreuzer Trockenbau"
             class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
             loading="lazy"
           />
@@ -106,7 +111,7 @@ const base = import.meta.env.BASE_URL;
           <div class="absolute bottom-4 left-4">
             <span class="text-xs font-heading font-medium uppercase tracking-widest text-white/70">Familienbetrieb</span
             >
-            <p class="text-white text-sm font-medium mt-1">Das Team mit Familie</p>
+            <p class="text-white text-sm font-medium mt-1">Das Team</p>
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden border border-white/[0.03] aspect-[4/3] relative group">
