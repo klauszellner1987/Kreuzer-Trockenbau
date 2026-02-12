@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://klauszellner1987.github.io/Kreuzer-Trockenbau/sitemap-index.xml

@@ -1,0 +1,294 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { guestReviews, faqItems } from '../data/ferienwohnung';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'Ferienwohnung Arrach / Haibühl im Bayerischen Wald – Haibühler Spitz. Liebevoll saniertes ehem. Rathaus, 65 m², Balkon mit Bergblick, WLAN, Parkplatz. Ideal für Wanderurlaub im Lamer Winkel nahe Großer Arber.',
+  ogImage = '/images/fewo/hero.jpg',
+} = Astro.props;
+
+// Bewertungen für Structured Data aufbereiten
+const avgRating = guestReviews.reduce((sum, r) => sum + r.rating, 0) / guestReviews.length;
+
+const siteURL = Astro.site!;
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+const ogImageURL = new URL(import.meta.env.BASE_URL + ogImage, siteURL);
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F5F0EB" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Haibühler Spitz – Ferienwohnung" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+
+    <link
+      rel="preload"
+      href={`${import.meta.env.BASE_URL}/fonts/dm-sans-latin.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={`${import.meta.env.BASE_URL}/fonts/space-grotesk-latin.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Structured Data: VacationRental -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'VacationRental',
+        name: 'Haibühler Spitz – Ferienwohnung Arrach / Bayerischer Wald',
+        description: 'Liebevoll sanierte Ferienwohnung im ehemaligen Rathaus von Haibühl, Gemeinde Arrach. 65 m², 2 Schlafzimmer, Balkon mit Bergblick. Idealer Ausgangspunkt für Wanderungen im Lamer Winkel.',
+        url: canonicalURL.href,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Tannenweg 2',
+          addressLocality: 'Haibühl',
+          postalCode: '93474',
+          addressRegion: 'Bayern',
+          addressCountry: 'DE',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: '49.19',
+          longitude: '13.00',
+        },
+        image: ogImageURL.href,
+        priceRange: '€€',
+        numberOfRooms: 3,
+        floorSize: {
+          '@type': 'QuantitativeValue',
+          value: 65,
+          unitCode: 'MTK',
+        },
+        occupancy: {
+          '@type': 'QuantitativeValue',
+          maxValue: 4,
+        },
+        checkinTime: '15:00',
+        checkoutTime: '10:00',
+        amenityFeature: [
+          { '@type': 'LocationFeatureSpecification', name: 'WLAN', value: true },
+          { '@type': 'LocationFeatureSpecification', name: 'Parkplatz', value: true },
+          { '@type': 'LocationFeatureSpecification', name: 'Küche', value: true },
+          { '@type': 'LocationFeatureSpecification', name: 'Balkon', value: true },
+          { '@type': 'LocationFeatureSpecification', name: 'Smart-TV', value: true },
+          { '@type': 'LocationFeatureSpecification', name: 'Bergblick', value: true },
+        ],
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: avgRating.toFixed(1),
+          bestRating: '5',
+          ratingCount: guestReviews.length.toString(),
+        },
+        review: guestReviews.map((r) => ({
+          '@type': 'Review',
+          author: { '@type': 'Person', name: r.name },
+          datePublished: r.date,
+          reviewBody: r.text,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: r.rating.toString(),
+            bestRating: '5',
+          },
+        })),
+        offers: {
+          '@type': 'AggregateOffer',
+          lowPrice: '70',
+          highPrice: '85',
+          priceCurrency: 'EUR',
+          offerCount: '2',
+        },
+      })}
+    />
+
+    <!-- Structured Data: FAQ -->
+    {faqItems.length > 0 && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqItems.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        })}
+      />
+    )}
+
+    <title>{title}</title>
+  </head>
+  <body class="fewo-theme font-sans antialiased">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .stagger-children')
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    </script>
+
+    <style is:global>
+      /* Warmes Ferienwohnung-Theme */
+      .fewo-theme {
+        --fewo-bg: #F5F0EB;
+        --fewo-bg-alt: #EDE5DB;
+        --fewo-bg-card: #FFFFFF;
+        --fewo-text: #3A2E25;
+        --fewo-text-muted: #7A6B5D;
+        --fewo-text-light: #A69888;
+        --fewo-accent: #C97A42;
+        --fewo-accent-light: #D99260;
+        --fewo-border: rgba(58, 46, 37, 0.08);
+        --fewo-border-hover: rgba(58, 46, 37, 0.15);
+
+        background-color: var(--fewo-bg);
+        color: var(--fewo-text);
+      }
+
+      /* Navbar Override für warmes Theme */
+      .fewo-theme #navbar {
+        background-color: rgba(245, 240, 235, 0.85) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+      }
+
+      .fewo-theme #navbar.scrolled {
+        background-color: rgba(245, 240, 235, 0.95) !important;
+        border-bottom-color: rgba(58, 46, 37, 0.08) !important;
+      }
+
+      .fewo-theme .nav-link {
+        color: rgba(58, 46, 37, 0.5) !important;
+      }
+
+      .fewo-theme .nav-link:hover {
+        color: var(--fewo-text) !important;
+      }
+
+      .fewo-theme .hamburger-line {
+        background-color: rgba(58, 46, 37, 0.7) !important;
+      }
+
+      .fewo-theme .logo-img {
+        filter: brightness(0.3);
+      }
+
+      .fewo-theme .navbar-black-fade {
+        background: linear-gradient(to right, #F5F0EB 0%, #F5F0EB 22%, transparent 38%) !important;
+      }
+
+      /* Top accent line warm */
+      .fewo-theme > div:first-child {
+        background-color: rgba(201, 122, 66, 0.4) !important;
+      }
+
+      /* Mobile Menu warm */
+      .fewo-theme #mobile-menu > div {
+        background-color: rgba(245, 240, 235, 0.98) !important;
+        border-top-color: var(--fewo-border) !important;
+      }
+
+      .fewo-theme #mobile-menu a {
+        color: var(--fewo-text-muted) !important;
+        border-bottom-color: var(--fewo-border) !important;
+      }
+
+      .fewo-theme #mobile-menu a:hover {
+        color: var(--fewo-text) !important;
+      }
+
+      /* Phone link in navbar */
+      .fewo-theme nav + div + a {
+        color: var(--fewo-text-muted) !important;
+      }
+
+      .fewo-theme nav + div + a:hover {
+        color: var(--fewo-accent) !important;
+      }
+
+      /* Footer warm override */
+      .fewo-theme footer {
+        background-color: #3A2E25 !important;
+      }
+
+      /* Scrollbar warm */
+      .fewo-theme::-webkit-scrollbar-track {
+        background: var(--fewo-bg-alt);
+      }
+
+      .fewo-theme::-webkit-scrollbar-thumb {
+        background: rgba(58, 46, 37, 0.2);
+      }
+
+      .fewo-theme::-webkit-scrollbar-thumb:hover {
+        background: rgba(58, 46, 37, 0.35);
+      }
+
+      .fewo-theme ::selection {
+        background-color: var(--fewo-accent);
+        color: white;
+      }
+    </style>
+  </body>
+</html>

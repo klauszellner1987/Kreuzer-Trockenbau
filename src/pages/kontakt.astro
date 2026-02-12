@@ -7,63 +7,29 @@ const base = import.meta.env.BASE_URL;
   title="Kontakt – Kreuzer Trockenbau & Malerbetrieb"
   description="Kontaktieren Sie Kreuzer Trockenbau & Malerbetrieb in Haibühl. Telefon, E-Mail und Anfahrt."
 >
-  <!-- Page Header — Graphic / No Photo -->
-  <section class="relative min-h-[50vh] sm:min-h-[55vh] flex items-end overflow-hidden bg-dark-950">
-    <!-- Animated gradient orbs -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div
-        class="kontakt-orb absolute w-[500px] h-[500px] rounded-full bg-accent-500/[0.07] blur-[120px] top-[-10%] left-[-5%]"
-      >
-      </div>
-      <div
-        class="kontakt-orb absolute w-[400px] h-[400px] rounded-full bg-accent-500/[0.04] blur-[100px] bottom-[0%] right-[-5%]"
-        style="animation-delay: -3s;"
-      >
-      </div>
-      <div
-        class="kontakt-orb absolute w-[300px] h-[300px] rounded-full bg-white/[0.02] blur-[80px] top-[20%] right-[20%]"
-        style="animation-delay: -6s;"
-      >
-      </div>
+  <!-- Page Header with Video Background -->
+  <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src={`${base}/images/kontakt-header.jpg`}
+        alt="Kontakt – Kreuzer Trockenbau"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-dark-950/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/40 via-30% to-transparent"></div>
     </div>
-    <!-- Subtle grid pattern -->
-    <div
-      class="absolute inset-0 opacity-[0.03]"
-      style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"
-    >
-    </div>
-    <!-- Bottom fade -->
-    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark-950 to-transparent"></div>
-
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-36 w-full text-center">
       <span class="text-accent-500 text-sm font-medium uppercase tracking-widest fade-in">Wir sind für Sie da</span>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mt-4 mb-5 fade-in font-heading tracking-tight">
         Sprechen Sie uns an
       </h1>
       <div class="h-0.5 w-16 bg-accent-500 rounded-full mx-auto mb-6 fade-in"></div>
-      <p class="text-dark-400 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
+      <p class="text-white/70 text-lg max-w-2xl mx-auto fade-in leading-relaxed">
         Rufen Sie uns an, schreiben Sie eine E-Mail oder besuchen Sie uns persönlich — wir freuen uns auf Ihre Anfrage.
       </p>
     </div>
   </section>
-
-  <style>
-    @keyframes kontakt-float {
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(30px, -20px) scale(1.05);
-      }
-      66% {
-        transform: translate(-20px, 15px) scale(0.95);
-      }
-    }
-    .kontakt-orb {
-      animation: kontakt-float 12s ease-in-out infinite;
-    }
-  </style>
 
   <!-- Wizard Section — First thing after hero -->
   <section class="py-20 sm:py-28 lg:py-32 bg-dark-950">
