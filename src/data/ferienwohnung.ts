@@ -137,10 +137,8 @@ export const faqItems: FaqItem[] = [
 ];
 
 export const galleryImages = [
-  { src: '/images/fewo/1.jpg', alt: 'Wohn- und Essbereich mit Panoramafenstern' },
-  { src: '/images/fewo/2.jpg', alt: 'Schlafzimmer mit Doppelbett' },
-  { src: '/images/fewo/3.jpg', alt: 'Einbauküche mit Geschirrspüler' },
-  { src: '/images/fewo/4.jpg', alt: 'Dusche mit Tageslicht' },
-  { src: '/images/fewo/5.jpg', alt: 'Balkon mit Bergblick' },
-  { src: '/images/fewo/6.jpg', alt: 'Kinderzimmer mit Etagenbett' },
+  { src: '/images/fewo/fewo-platzhalter-1.png', alt: 'Wohnbereich mit Panoramafenstern (Visualisierung)' },
+  { src: '/images/fewo/fewo-platzhalter-2.png', alt: 'Schlafzimmer (Visualisierung)' },
+  { src: '/images/fewo/fewo-platzhalter-1.png', alt: 'Essbereich (Visualisierung)' },
+  { src: '/images/fewo/fewo-platzhalter-2.png', alt: 'Gemütliches Ambiente (Visualisierung)' },
 ];

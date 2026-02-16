@@ -2,9 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { testimonials } from '../data/testimonials';
 import { projects, categories } from '../data/projects';
+// Base URL for assets
 const base = import.meta.env.BASE_URL;
-// Lokal: public/ wird unter Root ausgeliefert (/images/...). Build: unter base (/Kreuzer-Trockenbau/images/...)
-const imageBase = import.meta.env.DEV ? '' : base;
 ---
 
 <Layout
@@ -15,7 +14,7 @@ const imageBase = import.meta.env.DEV ? '' : base;
   <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
     <div class="absolute inset-0">
       <img
-        src={`${imageBase}/images/referenzen-header.jpg`}
+        src={`${base}/images/referenzen-header.jpg`}
         alt="Referenzen – Kreuzer Trockenbau"
         class="w-full h-full object-cover"
         loading="eager"
