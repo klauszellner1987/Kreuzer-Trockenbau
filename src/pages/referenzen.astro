@@ -125,7 +125,7 @@ const base = import.meta.env.BASE_URL;
                     <svg class="w-3.5 h-3.5 text-accent-500/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span class="text-dark-300 text-sm">{project.client}<span class="text-dark-500">, {project.location}</span></span>
+                    <span class="text-dark-300 text-sm">{project.client}{project.location ? <span class="text-dark-500">, {project.location}</span> : null}</span>
                   </div>
                 ))}
                 </div>
