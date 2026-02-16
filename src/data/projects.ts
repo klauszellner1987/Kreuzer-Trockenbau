@@ -39,7 +39,7 @@ export const projects: Project[] = [
 ];
 
 export const categories: Category[] = [
-  { name: 'Innenausbau', image: '/images/referenzen-header.jpg' },
+  { name: 'Innenausbau', image: '/images/ref-innenausbau.jpg' },
   { name: 'Trockenbau', image: '/images/referenzen-header.jpg' },
   { name: 'Komplettsanierung', image: '/images/referenzen-header.jpg' },
   { name: 'Badsanierung', image: '/images/referenzen-header.jpg' },

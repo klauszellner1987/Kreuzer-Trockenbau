@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import { testimonials } from '../data/testimonials';
 import { projects, categories } from '../data/projects';
 const base = import.meta.env.BASE_URL;
+// Lokal: public/ wird unter Root ausgeliefert (/images/...). Build: unter base (/Kreuzer-Trockenbau/images/...)
+const imageBase = import.meta.env.DEV ? '' : base;
 ---
 
 <Layout
@@ -13,7 +15,7 @@ const base = import.meta.env.BASE_URL;
   <section class="relative min-h-[50vh] sm:min-h-[60vh] flex items-end overflow-hidden">
     <div class="absolute inset-0">
       <img
-        src={`${base}/images/referenzen-header.jpg`}
+        src={`${imageBase}/images/referenzen-header.jpg`}
         alt="Referenzen – Kreuzer Trockenbau"
         class="w-full h-full object-cover"
         loading="eager"
@@ -100,21 +102,12 @@ const base = import.meta.env.BASE_URL;
           const catProjects = projects.filter((p) => p.category === cat.name);
           return (
             <div class="rounded-2xl overflow-hidden border border-white/[0.03] hover:border-white/[0.06] transition-all duration-700 group bg-dark-800/30">
-              {/* Image with centered title */}
-              <div class="relative h-[220px] sm:h-[250px] overflow-hidden">
-                <img
-                  src={`${base}${cat.image}`}
-                  alt={cat.name}
-                  class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.05]"
-                  loading="lazy"
-                />
-                <div class="absolute inset-0 bg-dark-950/50"></div>
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                  <h3 class="text-white text-3xl sm:text-4xl font-heading font-light tracking-wide drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]">{cat.name}</h3>
-                  <span class="text-accent-500 text-xs font-heading font-medium uppercase tracking-[0.2em] mt-3 drop-shadow-[0_0_10px_rgba(201,122,66,0.3)]">
-                    {catProjects.length} {catProjects.length === 1 ? 'Projekt' : 'Projekte'}
-                  </span>
-                </div>
+              {/* Centered title without image */}
+              <div class="relative h-[220px] sm:h-[250px] flex flex-col items-center justify-center text-center px-6 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
+                <h3 class="text-white text-3xl sm:text-4xl font-heading font-light tracking-wide">{cat.name}</h3>
+                <span class="text-accent-500 text-xs font-heading font-medium uppercase tracking-[0.2em] mt-3">
+                  {catProjects.length} {catProjects.length === 1 ? 'Projekt' : 'Projekte'}
+                </span>
               </div>
 
               {/* Client list */}
