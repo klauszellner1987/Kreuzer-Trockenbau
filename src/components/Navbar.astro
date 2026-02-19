@@ -186,11 +186,13 @@ function isActive(linkHref: string) {
     if (isOpen) {
       hamburgerLines[0]?.classList.add('rotate-45', 'translate-y-[4px]');
       hamburgerLines[1]?.classList.add('opacity-0', 'scale-x-0');
-      hamburgerLines[2]?.classList.add('-rotate-45', '-translate-y-[3px]', 'w-full', 'ml-0');
+      hamburgerLines[2]?.classList.remove('w-3', 'ml-auto');
+      hamburgerLines[2]?.classList.add('-rotate-45', '-translate-y-[4px]', 'w-full', 'ml-0');
     } else {
       hamburgerLines[0]?.classList.remove('rotate-45', 'translate-y-[4px]');
       hamburgerLines[1]?.classList.remove('opacity-0', 'scale-x-0');
-      hamburgerLines[2]?.classList.remove('-rotate-45', '-translate-y-[3px]', 'w-full', 'ml-0');
+      hamburgerLines[2]?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-full', 'ml-0');
+      hamburgerLines[2]?.classList.add('w-3', 'ml-auto');
     }
   });
 </script>
