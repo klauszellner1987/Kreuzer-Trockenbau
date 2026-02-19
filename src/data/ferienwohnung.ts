@@ -151,43 +151,43 @@ export const roomGalleries: RoomGallery[] = [
   {
     title: 'Wohnbereich',
     images: [
-      { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich1.jpeg', alt: 'Wohnbereich mit Panoramafenstern' },
-      { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich2.jpeg', alt: 'Gemütlicher Wohnbereich' },
-      { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich3.jpeg', alt: 'Wohnbereich mit Blick nach draußen' },
-      { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich_essen.jpeg', alt: 'Essbereich im Wohnraum' },
+      { src: '/images/fewo/Wohnbereich1.jpeg', alt: 'Wohnbereich mit Panoramafenstern' },
+      { src: '/images/fewo/Wohnbereich2.jpeg', alt: 'Gemütlicher Wohnbereich' },
+      { src: '/images/fewo/Wohnbereich3.jpeg', alt: 'Wohnbereich mit Blick nach draußen' },
+      { src: '/images/fewo/Wohnbereich_essen.jpeg', alt: 'Essbereich im Wohnraum' },
     ],
   },
   {
     title: 'Schlafzimmer',
     images: [
-      { src: '/Kreuzer-Trockenbau/images/fewo/Schlafzimmer_1.jpeg', alt: 'Schlafzimmer mit Doppelbett' },
+      { src: '/images/fewo/Schlafzimmer_1.jpeg', alt: 'Schlafzimmer mit Doppelbett' },
     ],
   },
   {
     title: 'Kinderzimmer',
     images: [
-      { src: '/Kreuzer-Trockenbau/images/fewo/Schlafzimmer_kids.jpeg', alt: 'Kinderzimmer mit Etagenbett' },
+      { src: '/images/fewo/Schlafzimmer_kids.jpeg', alt: 'Kinderzimmer mit Etagenbett' },
     ],
   },
   {
     title: 'Küche',
     images: [
-      { src: '/Kreuzer-Trockenbau/images/fewo/Küche.jpeg', alt: 'Einbauküche mit Geschirrspüler' },
+      { src: '/images/fewo/Küche.jpeg', alt: 'Einbauküche mit Geschirrspüler' },
     ],
   },
   {
     title: 'Badezimmer',
     images: [
-      { src: '/Kreuzer-Trockenbau/images/fewo/Badezimmer_1.jpeg', alt: 'Badezimmer mit Dusche' },
-      { src: '/Kreuzer-Trockenbau/images/fewo/Badezimmer_2.jpeg', alt: 'Große Dusche mit Tageslicht' },
+      { src: '/images/fewo/Badezimmer_1.jpeg', alt: 'Badezimmer mit Dusche' },
+      { src: '/images/fewo/Badezimmer_2.jpeg', alt: 'Große Dusche mit Tageslicht' },
     ],
   },
   {
     title: 'Außenansicht & Balkon',
     images: [
-      { src: '/Kreuzer-Trockenbau/images/fewo/Aussenansicht.jpeg', alt: 'Außenansicht der Ferienwohnung' },
-      { src: '/Kreuzer-Trockenbau/images/fewo/Balkon_aussicht.jpeg', alt: 'Balkon mit Bergblick' },
-      { src: '/Kreuzer-Trockenbau/images/fewo/Aussicht.jpeg', alt: 'Aussicht vom Balkon' },
+      { src: '/images/fewo/Aussenansicht.jpeg', alt: 'Außenansicht der Ferienwohnung' },
+      { src: '/images/fewo/Balkon_aussicht.jpeg', alt: 'Balkon mit Bergblick' },
+      { src: '/images/fewo/Aussicht.jpeg', alt: 'Aussicht vom Balkon' },
     ],
   },
 ];
@@ -195,16 +195,16 @@ export const roomGalleries: RoomGallery[] = [
 // Hauptgalerie für die Übersicht (alle Bilder kombiniert)
 // Pfade mit Base-Path für korrekte Auflösung
 export const galleryImages: GalleryImage[] = [
-  { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich1.jpeg', alt: 'Wohnbereich mit Panoramafenstern' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Schlafzimmer_1.jpeg', alt: 'Schlafzimmer mit Doppelbett' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Küche.jpeg', alt: 'Einbauküche mit Geschirrspüler' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Badezimmer_1.jpeg', alt: 'Badezimmer mit Dusche' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Schlafzimmer_kids.jpeg', alt: 'Kinderzimmer mit Etagenbett' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Balkon_aussicht.jpeg', alt: 'Balkon mit Bergblick' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich2.jpeg', alt: 'Gemütlicher Wohnbereich' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Badezimmer_2.jpeg', alt: 'Große Dusche mit Tageslicht' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Aussenansicht.jpeg', alt: 'Außenansicht der Ferienwohnung' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich3.jpeg', alt: 'Wohnbereich mit Blick nach draußen' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Wohnbereich_essen.jpeg', alt: 'Essbereich im Wohnraum' },
-  { src: '/Kreuzer-Trockenbau/images/fewo/Aussicht.jpeg', alt: 'Aussicht vom Balkon' },
+  { src: '/images/fewo/Wohnbereich1.jpeg', alt: 'Wohnbereich mit Panoramafenstern' },
+  { src: '/images/fewo/Schlafzimmer_1.jpeg', alt: 'Schlafzimmer mit Doppelbett' },
+  { src: '/images/fewo/Küche.jpeg', alt: 'Einbauküche mit Geschirrspüler' },
+  { src: '/images/fewo/Badezimmer_1.jpeg', alt: 'Badezimmer mit Dusche' },
+  { src: '/images/fewo/Schlafzimmer_kids.jpeg', alt: 'Kinderzimmer mit Etagenbett' },
+  { src: '/images/fewo/Balkon_aussicht.jpeg', alt: 'Balkon mit Bergblick' },
+  { src: '/images/fewo/Wohnbereich2.jpeg', alt: 'Gemütlicher Wohnbereich' },
+  { src: '/images/fewo/Badezimmer_2.jpeg', alt: 'Große Dusche mit Tageslicht' },
+  { src: '/images/fewo/Aussenansicht.jpeg', alt: 'Außenansicht der Ferienwohnung' },
+  { src: '/images/fewo/Wohnbereich3.jpeg', alt: 'Wohnbereich mit Blick nach draußen' },
+  { src: '/images/fewo/Wohnbereich_essen.jpeg', alt: 'Essbereich im Wohnraum' },
+  { src: '/images/fewo/Aussicht.jpeg', alt: 'Aussicht vom Balkon' },
 ];

@@ -6,7 +6,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://klauszellner1987.github.io',
-  base: '/Kreuzer-Trockenbau',
+  site: 'https://www.kreuzer-trockenbau.de',
+  base: '/',
   integrations: [sitemap()],
 });
