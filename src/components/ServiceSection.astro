@@ -7,7 +7,7 @@ interface Props {
   total: number;
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { service, index, total } = Astro.props;
 const hasImages = service.images && service.images.length > 0;
 const hasGallery = service.gallery && service.gallery.length > 0;

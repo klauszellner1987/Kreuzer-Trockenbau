@@ -1,5 +1,5 @@
 ---
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const heroImages = [
   { src: `${base}/images/team/team-hero.jpg`, alt: 'Das Team von Kreuzer Trockenbau & Malerbetrieb' },
   { src: `${base}/images/hero/hero-family.jpg`, alt: 'Das gesamte Team mit Familie' },

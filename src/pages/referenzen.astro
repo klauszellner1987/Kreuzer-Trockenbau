@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { testimonials } from '../data/testimonials';
 import { projects, categories } from '../data/projects';
 // Base URL for assets
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout

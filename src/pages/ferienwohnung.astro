@@ -1,7 +1,7 @@
 ---
 import LayoutFewo from '../layouts/LayoutFewo.astro';
 import { amenities, prices, guestReviews, galleryImages, roomGalleries, faqItems } from '../data/ferienwohnung';
-const base = import.meta.env.BASE_URL || '/';
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 ---
 
 <LayoutFewo title="Ferienwohnung Arrach | Haibühler Spitz – Bayerischer Wald, Lamer Winkel">

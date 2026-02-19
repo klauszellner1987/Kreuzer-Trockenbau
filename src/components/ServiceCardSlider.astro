@@ -6,7 +6,7 @@ interface Props {
   large?: boolean;
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { title, description, images, large = false } = Astro.props;
 const imageSrcs = images.map((img) => (img.startsWith('/') ? `${base}${img}` : img));
 const sliderId = `slider-${Math.random().toString(36).slice(2, 8)}`;

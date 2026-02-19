@@ -6,7 +6,7 @@ interface Props {
   large?: boolean;
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { title, description, image, large = false } = Astro.props;
 const imageSrc = image.startsWith('/') ? `${base}${image}` : image;
 ---
