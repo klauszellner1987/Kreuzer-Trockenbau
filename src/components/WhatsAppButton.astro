@@ -209,9 +209,18 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
     const footerTop = footer?.getBoundingClientRect().top ?? Infinity;
     const nearFooter = footerTop < window.innerHeight + 200;
 
+    // Ferienwohnung-Teaser erkennen (kann Buttons verdecken)
+    const fewoSection = document.getElementById('fewo-teaser');
+    let inFewoSection = false;
+    if (fewoSection) {
+      const rect = fewoSection.getBoundingClientRect();
+      // Widget verstecken wenn Ferienwohnung-Section im Viewport ist (mit etwas Puffer)
+      inFewoSection = rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
     // Logik: Zeigen wenn am Hero vorbei UND (hochscrollt ODER gerade erst am Hero vorbei)
-    // Verstecken wenn im Kontakt/Footer-Bereich oder ganz oben
-    if (!pastHero || nearFooter) {
+    // Verstecken wenn im Kontakt/Footer-Bereich, ganz oben, ODER in der Ferienwohnung-Section
+    if (!pastHero || nearFooter || inFewoSection) {
       hideWidget();
     } else if (scrollingUp || (pastHero && !widgetVisible)) {
       showWidget();
