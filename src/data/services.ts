@@ -278,18 +278,4 @@ export const services: Service[] = [
       '/images/leistungen/montage/img-0249.jpg',
     ],
   },
-  {
-    title: 'Reparaturarbeiten',
-    description: 'Reparaturarbeiten diverser Art am Haus, um größere Schäden rechtzeitig zu vermeiden.',
-    longDescription:
-      'Kleine Schäden werden schnell zu großen Problemen, wenn man sie ignoriert. Wir reparieren Löcher in Wänden, beschädigte Böden, defekte Fliesen und vieles mehr — schnell und unkompliziert. Lieber heute reparieren als morgen sanieren.',
-    icon: 'tools',
-    features: [
-      'Wand- & Deckenreparaturen',
-      'Bodenreparaturen',
-      'Fliesenreparaturen',
-      'Feuchtigkeitsschäden',
-      'Allgemeine Instandhaltung',
-    ],
-  },
 ];
