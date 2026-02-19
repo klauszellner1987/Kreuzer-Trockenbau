@@ -27,8 +27,8 @@ function isActive(linkHref: string) {
 >
   <!-- Schwarzer Verlauf links: solide bis nach "Start", dann sanfter Übergang -->
   <div class="absolute inset-0 pointer-events-none navbar-black-fade"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center h-14 sm:h-16 gap-8 lg:gap-10">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+    <div class="flex items-center h-14 sm:h-16 gap-8 lg:gap-10 overflow-visible">
       <!-- Logo -->
       <a href={`${base}/`} class="shrink-0 logo-wrap relative" id="logo-link">
         <div class="relative h-8 sm:h-9 overflow-hidden w-[90px] sm:w-[110px]">
@@ -95,13 +95,13 @@ function isActive(linkHref: string) {
       <!-- Mobile Hamburger -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-3 -mr-3 ml-auto min-h-[44px] min-w-[44px] flex items-center justify-center"
+        class="md:hidden p-3 -mr-2 ml-auto min-h-[44px] min-w-[44px] flex items-center justify-center overflow-visible"
         aria-label="Menü öffnen"
       >
-        <div class="flex flex-col gap-1.5 w-5">
-          <span class="hamburger-line h-px bg-white/70 transition-all duration-300 origin-center w-full"></span>
-          <span class="hamburger-line h-px bg-white/70 transition-all duration-300 origin-center w-full"></span>
-          <span class="hamburger-line h-px bg-white/70 transition-all duration-300 origin-center w-3 ml-auto"></span>
+        <div class="hamburger-wrap flex flex-col gap-1.5 w-5 overflow-visible">
+          <span class="hamburger-line h-0.5 bg-white/70 rounded-full transition-all duration-300 origin-center"></span>
+          <span class="hamburger-line h-0.5 bg-white/70 rounded-full transition-all duration-300 origin-center"></span>
+          <span class="hamburger-line h-0.5 bg-white/70 rounded-full transition-all duration-300 origin-center"></span>
         </div>
       </button>
     </div>
@@ -175,25 +175,13 @@ function isActive(linkHref: string) {
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerLines = document.querySelectorAll('.hamburger-line');
 
   let isOpen = false;
 
   mobileMenuBtn?.addEventListener('click', () => {
     isOpen = !isOpen;
     mobileMenu?.classList.toggle('hidden');
-
-    if (isOpen) {
-      hamburgerLines[0]?.classList.add('rotate-45', 'translate-y-[4px]');
-      hamburgerLines[1]?.classList.add('opacity-0', 'scale-x-0');
-      hamburgerLines[2]?.classList.remove('w-3', 'ml-auto');
-      hamburgerLines[2]?.classList.add('-rotate-45', '-translate-y-[4px]', 'w-full', 'ml-0');
-    } else {
-      hamburgerLines[0]?.classList.remove('rotate-45', 'translate-y-[4px]');
-      hamburgerLines[1]?.classList.remove('opacity-0', 'scale-x-0');
-      hamburgerLines[2]?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-full', 'ml-0');
-      hamburgerLines[2]?.classList.add('w-3', 'ml-auto');
-    }
+    mobileMenuBtn?.classList.toggle('is-open');
   });
 </script>
 
@@ -215,5 +203,29 @@ function isActive(linkHref: string) {
   /* Schwarzer Verlauf links in der Navbar */
   .navbar-black-fade {
     background: linear-gradient(to right, #0a0a0a 0%, #0a0a0a 22%, transparent 38%);
+  }
+
+  /* Hamburger default: line 3 short + right-aligned */
+  .hamburger-line:nth-child(1),
+  .hamburger-line:nth-child(2) {
+    width: 100%;
+  }
+  .hamburger-line:nth-child(3) {
+    width: 60%;
+    margin-left: auto;
+  }
+
+  /* X animation */
+  .is-open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .is-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .is-open .hamburger-line:nth-child(3) {
+    width: 100%;
+    margin-left: 0;
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 </style>
