@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description = 'Kreuzer Trockenbau & Malerbetrieb – Ihr Spezialist für Trockenbau, Innenausbau und Malerarbeiten im Bayerischen Wald. Qualität aus Meisterhand seit 2010.',
-  ogImage = '/images/team-hero.jpg',
+  ogImage = '/images/team/team-hero.jpg',
   showWhatsApp = false,
 } = Astro.props;
 
@@ -104,7 +104,7 @@ const ogImageURL = new URL(import.meta.env.BASE_URL + ogImage, siteURL);
             closes: '17:00',
           },
         ],
-        image: new URL(import.meta.env.BASE_URL + '/images/team-hero.jpg', siteURL).href,
+        image: new URL(import.meta.env.BASE_URL + '/images/team/team-hero.jpg', siteURL).href,
         priceRange: '$$',
         foundingDate: '2010',
         founder: {

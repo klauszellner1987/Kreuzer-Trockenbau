@@ -39,10 +39,10 @@ export const projects: Project[] = [
 ];
 
 export const categories: Category[] = [
-  { name: 'Innenausbau', image: '/images/ref-innenausbau.jpg' },
-  { name: 'Trockenbau', image: '/images/referenzen-header.jpg' },
-  { name: 'Komplettsanierung', image: '/images/referenzen-header.jpg' },
-  { name: 'Badsanierung', image: '/images/referenzen-header.jpg' },
-  { name: 'Malerarbeiten', image: '/images/referenzen-header.jpg' },
-  { name: 'Fassadensanierung', image: '/images/referenzen-header.jpg' },
+  { name: 'Innenausbau', image: '/images/referenzen/ref-innenausbau.jpg' },
+  { name: 'Trockenbau', image: '/images/referenzen/referenzen-header.jpg' },
+  { name: 'Komplettsanierung', image: '/images/referenzen/referenzen-header.jpg' },
+  { name: 'Badsanierung', image: '/images/referenzen/referenzen-header.jpg' },
+  { name: 'Malerarbeiten', image: '/images/referenzen/referenzen-header.jpg' },
+  { name: 'Fassadensanierung', image: '/images/referenzen/referenzen-header.jpg' },
 ];
