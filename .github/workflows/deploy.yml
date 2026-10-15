@@ -21,17 +21,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Read site mode
+        id: site-mode
+        run: |
+          mode="$(cat SITE_MODE)"
+          case "$mode" in
+            online|offline) ;;
+            *) echo "SITE_MODE must be 'online' or 'offline'" >&2; exit 1 ;;
+          esac
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+
       - name: Setup Node
+        if: steps.site-mode.outputs.mode == 'online'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
       - name: Install dependencies
+        if: steps.site-mode.outputs.mode == 'online'
         run: npm ci
 
       - name: Build Astro
+        if: steps.site-mode.outputs.mode == 'online'
         run: npm run build
+
+      - name: Prepare offline site
+        if: steps.site-mode.outputs.mode == 'offline'
+        run: |
+          mkdir -p dist
+          cp offline/index.html offline/404.html offline/robots.txt offline/CNAME dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

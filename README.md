@@ -83,6 +83,10 @@ npm run preview
 
 Die Website wird automatisch über **GitHub Pages** deployt. Push auf `main` triggert den Build.
 
+### Website vorübergehend offline schalten
+
+Die Datei `SITE_MODE` steuert den veröffentlichten Stand. Mit `offline` veröffentlicht der Workflow nur die neutrale Seite aus `offline/`, eine passende `404.html`, `robots.txt` und die Domain-Datei `CNAME`. Dadurch werden auch alte Direktlinks und Formulare nicht mehr aus der Website ausgeliefert. Zum Wiederherstellen `SITE_MODE` auf `online` setzen und nach `main` pushen; der Workflow baut dann wieder die vollständige Astro-Website. GitHub Pages und die DNS-Einträge bleiben dabei unverändert.
+
 ## Entwickelt von
 
 **Klaus Zellner** — Design & Entwicklung
